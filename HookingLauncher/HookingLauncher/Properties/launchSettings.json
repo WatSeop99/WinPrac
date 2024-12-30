@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HookingLauncher": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

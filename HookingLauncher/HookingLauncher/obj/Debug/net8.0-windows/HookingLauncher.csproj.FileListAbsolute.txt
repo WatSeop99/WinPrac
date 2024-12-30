@@ -1,0 +1,17 @@
+D:\workspace\test\HookingLauncher\HookingLauncher\bin\Debug\net8.0-windows\HookingLauncher.exe
+D:\workspace\test\HookingLauncher\HookingLauncher\bin\Debug\net8.0-windows\HookingLauncher.deps.json
+D:\workspace\test\HookingLauncher\HookingLauncher\bin\Debug\net8.0-windows\HookingLauncher.runtimeconfig.json
+D:\workspace\test\HookingLauncher\HookingLauncher\bin\Debug\net8.0-windows\HookingLauncher.dll
+D:\workspace\test\HookingLauncher\HookingLauncher\bin\Debug\net8.0-windows\HookingLauncher.pdb
+D:\workspace\test\HookingLauncher\HookingLauncher\obj\Debug\net8.0-windows\HookingLauncher.csproj.GenerateResource.cache
+D:\workspace\test\HookingLauncher\HookingLauncher\obj\Debug\net8.0-windows\HookingLauncher.GeneratedMSBuildEditorConfig.editorconfig
+D:\workspace\test\HookingLauncher\HookingLauncher\obj\Debug\net8.0-windows\HookingLauncher.AssemblyInfoInputs.cache
+D:\workspace\test\HookingLauncher\HookingLauncher\obj\Debug\net8.0-windows\HookingLauncher.AssemblyInfo.cs
+D:\workspace\test\HookingLauncher\HookingLauncher\obj\Debug\net8.0-windows\HookingLauncher.csproj.CoreCompileInputs.cache
+D:\workspace\test\HookingLauncher\HookingLauncher\obj\Debug\net8.0-windows\HookingLauncher.dll
+D:\workspace\test\HookingLauncher\HookingLauncher\obj\Debug\net8.0-windows\refint\HookingLauncher.dll
+D:\workspace\test\HookingLauncher\HookingLauncher\obj\Debug\net8.0-windows\HookingLauncher.pdb
+D:\workspace\test\HookingLauncher\HookingLauncher\obj\Debug\net8.0-windows\HookingLauncher.genruntimeconfig.cache
+D:\workspace\test\HookingLauncher\HookingLauncher\obj\Debug\net8.0-windows\ref\HookingLauncher.dll
+D:\workspace\test\HookingLauncher\HookingLauncher\obj\Debug\net8.0-windows\HookingLauncher.Properties.Resources.resources
+D:\workspace\test\HookingLauncher\HookingLauncher\obj\Debug\net8.0-windows\HookingLauncher.MainForm.resources
