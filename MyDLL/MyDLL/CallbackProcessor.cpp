@@ -78,7 +78,7 @@ bool CallbackProcessor::Update(int targetWidth, int targetHeight)
 	SYSTEMTIME curSystemTime = {};
 	GetLocalTime(&curSystemTime);
 
-	// Set text.
+	// 텍스트 설정.
 	WCHAR szSystemTimeAndUser[MAX_PATH] = { 0, };
 	swprintf_s(szSystemTimeAndUser, MAX_PATH, L"%d-%d-%d %d:%d:%d TEST_USER",
 			   curSystemTime.wYear, curSystemTime.wMonth, curSystemTime.wDay, curSystemTime.wHour, curSystemTime.wMinute, curSystemTime.wSecond);
@@ -113,7 +113,7 @@ bool CallbackProcessor::Update(int targetWidth, int targetHeight)
 
 		Gdiplus::RectF commonRect(0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight());
 
-		const WCHAR* FILE_NAME = L"./Setting.ini";
+		const WCHAR* FILE_NAME = L"E:\\WinPrac\\HookingLauncherDLL\\Debug\\Setting.ini";
 		const WCHAR* CATEGORY_STRING = L"Watermark-String";
 		const WCHAR* CATEGORY_IMAGE = L"Watermark-Image";
 		WCHAR szString[MAX_PATH];
@@ -131,7 +131,7 @@ bool CallbackProcessor::Update(int targetWidth, int targetHeight)
 		GetPrivateProfileString(CATEGORY_STRING, L"Style", L"0", szStyle, 2 * sizeof(WCHAR), FILE_NAME);
 		GetPrivateProfileString(CATEGORY_STRING, L"Unit", L"3", szUnit, 3 * sizeof(WCHAR), FILE_NAME);
 		GetPrivateProfileString(CATEGORY_STRING, L"Color", L"0", szColor, MAX_PATH * sizeof(WCHAR), FILE_NAME);
-		GetPrivateProfileString(CATEGORY_IMAGE, L"Path", L"./sample.bmp", szImagePath, MAX_PATH * sizeof(WCHAR), FILE_NAME);
+		GetPrivateProfileString(CATEGORY_IMAGE, L"Path", L"E:\\WinPrac\\HookingLauncherDLL\\Debug\\sample.bmp", szImagePath, MAX_PATH * sizeof(WCHAR), FILE_NAME);
 
 
 		Gdiplus::Font font(szFamily, _wtoi(szSize), (Gdiplus::FontStyle)_wtoi(szStyle), (Gdiplus::Unit)_wtoi(szUnit));
@@ -187,21 +187,24 @@ bool CallbackProcessor::Update(int targetWidth, int targetHeight)
 			// 테이블에 있는 핸들값을 이용해 사이즈만큼 워터마크 덮어씌움.
 			for (auto iter = WindowTable.begin(), endIter = WindowTable.end(); iter != endIter; ++iter)
 			{
+				// 윈도우 크기 얻어옴.
 				RECT rect = { 0, };
 				GetWindowRect(*iter, &rect);
 
 				int width = rect.right - rect.left;
 				int height = rect.bottom - rect.top;
-				if (width == 0 || height == 0)
+				if (width == 0 || height == 0) // 사이즈 0
 				{
 					__debugbreak();
 				}
 
+				// 가려져 있거나 최상위 창이 아님.
 				if (rect.left < 0 || rect.top < 0)
 				{
 					continue;
 				}
 
+				// 크기 잡아놓은 후 그림.
 				Gdiplus::RectF windowRect(rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top);
 				m_pWatermarkGraphics->DrawImage(m_pWatermarkImage, windowRect, 0, 0, m_pWatermarkImage->GetWidth(), m_pWatermarkImage->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
 				m_pWatermarkGraphics->DrawImage(m_pWatermarkString, windowRect, 0, 0, m_pWatermarkString->GetWidth(), m_pWatermarkString->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
@@ -302,7 +305,6 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 
 	
 LB_CLEANUP:
-	// Cleanup.
 	if (pTempDCGraphics)
 	{
 		delete pTempDCGraphics;
@@ -375,10 +377,12 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam)
 	// 맞다면 윈도우 테이블에 추가.
 	for (SIZE_T i = 0, size = _countof(g_pszCLASS_NAMES); i < size; ++i)
 	{
-		if (wcsncmp(szClassName, g_pszCLASS_NAMES[i], wcslen(g_pszCLASS_NAMES[i])) == 0)
+		if (wcsncmp(szClassName, g_pszCLASS_NAMES[i], wcslen(szClassName)) == 0)
 		{
 			pProcessor->WindowTable.insert(hwnd);
 			break;
 		}
 	}
+
+	return TRUE;
 }

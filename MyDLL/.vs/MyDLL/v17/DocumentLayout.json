@@ -1,41 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\workspace\\test\\MyDLL\\",
+  "WorkspaceRootPath": "E:\\WinPrac\\MyDLL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|D:\\workspace\\test\\MyDLL\\MyDLL\\CallbackProcessor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\CallbackProcessor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|D:\\workspace\\test\\MyDLL\\MyDLL\\CallbackProcessor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\CallbackProcessor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|D:\\workspace\\test\\MyDLL\\MyDLL\\MyDll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\MyDll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|D:\\workspace\\test\\MyDLL\\MyDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|D:\\workspace\\test\\MyDLL\\MyDLL\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|D:\\workspace\\test\\MyDLL\\MyDLL\\MyDll.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\MyDll.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|D:\\workspace\\test\\MyDLL\\MyDLL\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|D:\\workspace\\test\\MyDLL\\MyDLL\\TypeDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\TypeDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\TypeDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|D:\\workspace\\test\\MyDLL\\MyDLL\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\MyDll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\MyDll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\MyDll.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\MyDll.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\CallbackProcessor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -50,13 +50,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "dllmain.cpp",
-              "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\dllmain.cpp",
+              "DocumentMoniker": "E:\\WinPrac\\MyDLL\\MyDLL\\dllmain.cpp",
               "RelativeDocumentMoniker": "MyDLL\\dllmain.cpp",
-              "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\dllmain.cpp",
+              "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\dllmain.cpp",
               "RelativeToolTip": "MyDLL\\dllmain.cpp",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACYAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACwAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-19T00:10:10.23Z",
               "IsPinned": true,
@@ -66,11 +66,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "CallbackProcessor.cpp",
-              "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
+              "DocumentMoniker": "E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
               "RelativeDocumentMoniker": "MyDLL\\CallbackProcessor.cpp",
-              "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
+              "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
               "RelativeToolTip": "MyDLL\\CallbackProcessor.cpp",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAIQAAABpAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAIIBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-19T04:00:57.574Z",
               "IsPinned": true,
@@ -78,37 +78,50 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "MyDll.h",
-              "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\MyDll.h",
+              "DocumentMoniker": "E:\\WinPrac\\MyDLL\\MyDLL\\MyDll.h",
               "RelativeDocumentMoniker": "MyDLL\\MyDll.h",
-              "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\MyDll.h",
+              "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\MyDll.h",
               "RelativeToolTip": "MyDLL\\MyDll.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-05T05:07:57.551Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MyDll.cpp",
-              "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\MyDll.cpp",
+              "DocumentMoniker": "E:\\WinPrac\\MyDLL\\MyDLL\\MyDll.cpp",
               "RelativeDocumentMoniker": "MyDLL\\MyDll.cpp",
-              "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\MyDll.cpp",
+              "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\MyDll.cpp",
               "RelativeToolTip": "MyDLL\\MyDll.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-19T04:14:51.425Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "framework.h",
-              "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\framework.h",
+              "DocumentMoniker": "E:\\WinPrac\\MyDLL\\MyDLL\\framework.h",
               "RelativeDocumentMoniker": "MyDLL\\framework.h",
-              "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\framework.h",
+              "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\framework.h",
               "RelativeToolTip": "MyDLL\\framework.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -118,9 +131,9 @@
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "pch.h",
-              "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\pch.h",
+              "DocumentMoniker": "E:\\WinPrac\\MyDLL\\MyDLL\\pch.h",
               "RelativeDocumentMoniker": "MyDLL\\pch.h",
-              "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\pch.h",
+              "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\pch.h",
               "RelativeToolTip": "MyDLL\\pch.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -128,36 +141,37 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "CallbackProcessor.h",
-              "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\CallbackProcessor.h",
+              "DocumentMoniker": "E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.h",
               "RelativeDocumentMoniker": "MyDLL\\CallbackProcessor.h",
-              "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\CallbackProcessor.h",
+              "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.h",
               "RelativeToolTip": "MyDLL\\CallbackProcessor.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-12T02:03:56.763Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "TypeDef.h",
-              "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\TypeDef.h",
+              "DocumentMoniker": "E:\\WinPrac\\MyDLL\\MyDLL\\TypeDef.h",
               "RelativeDocumentMoniker": "MyDLL\\TypeDef.h",
-              "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\TypeDef.h",
+              "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\TypeDef.h",
               "RelativeToolTip": "MyDLL\\TypeDef.h",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T06:50:19.293Z"
+              "WhenOpened": "2024-12-06T06:50:19.293Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "pch.cpp",
-              "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\pch.cpp",
+              "DocumentMoniker": "E:\\WinPrac\\MyDLL\\MyDLL\\pch.cpp",
               "RelativeDocumentMoniker": "MyDLL\\pch.cpp",
-              "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\pch.cpp",
+              "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\pch.cpp",
               "RelativeToolTip": "MyDLL\\pch.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",

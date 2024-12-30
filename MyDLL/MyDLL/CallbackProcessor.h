@@ -2,8 +2,6 @@
 
 #include "TypeDef.h"
 
-typedef BOOL(WINAPI* PFnStretchBlt)(HDC, int, int, int, int, HDC, int, int, int, int, DWORD);
-
 class CallbackProcessor
 {
 private:

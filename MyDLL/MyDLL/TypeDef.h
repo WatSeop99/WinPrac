@@ -51,3 +51,6 @@ typedef struct _FSP_EXTENSION_PARAM
 	DWORD_PTR dwParam19;
 	DWORD_PTR dwParam20;
 } FSP_EXTENSION_PARAM, * PFSP_EXTENSION_PARAM, * LPFSP_EXTENSION_PARAM;
+
+typedef BOOL(WINAPI* PFnStretchBlt)(HDC, int, int, int, int, HDC, int, int, int, int, DWORD);
+typedef int (*PFnCallbackFunc)(FSP_EXTENSION_PARAM*);

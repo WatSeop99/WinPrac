@@ -1,4 +1,1 @@
-﻿  Program.cpp
-D:\workspace\test\SimpleScreenCapture\SimpleScreenCapture\Program.cpp(103,43): warning C4311: 'type cast': pointer truncation from 'HBRUSH' to 'LONG'
-D:\workspace\test\SimpleScreenCapture\SimpleScreenCapture\Program.cpp(103,43): warning C4302: 'type cast': truncation from 'HBRUSH' to 'LONG'
-  SimpleScreenCapture.vcxproj -> D:\workspace\test\SimpleScreenCapture\x64\Debug\SimpleScreenCapture.exe
+﻿  SimpleScreenCapture.vcxproj -> E:\WinPrac\SimpleScreenCapture\x64\Debug\SimpleScreenCapture.exe

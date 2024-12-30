@@ -1,2 +1,19 @@
-﻿  dllmain.cpp
-  HookingLauncherDLL.vcxproj -> D:\workspace\test\HookingLauncherDLL\Debug\HookingLauncherDLL.dll
+﻿  HookingLauncher.cpp
+E:\WinPrac\HookingLauncherDLL\HookingLauncherDLL\HookingLauncher.cpp(1,9): warning C4603: 'HOOKING_API': macro is not defined or definition is different after precompiled header use
+  (compiling source file '/HookingLauncher.cpp')
+      E:\WinPrac\HookingLauncherDLL\HookingLauncherDLL\HookingLauncher.cpp(1,9):
+      Add macro to precompiled header instead of defining here
+      E:\WinPrac\HookingLauncherDLL\HookingLauncherDLL\HookingLauncher.cpp(3,1):
+      use of precompiled header
+  
+E:\WinPrac\HookingLauncherDLL\HookingLauncherDLL\HookingLauncher.cpp(44,6): warning C4273: 'StartHook': inconsistent dll linkage
+  (compiling source file '/HookingLauncher.cpp')
+      E:\WinPrac\HookingLauncherDLL\HookingLauncherDLL\HookingLauncher.h(7,18):
+      see previous definition of 'StartHook'
+  
+E:\WinPrac\HookingLauncherDLL\HookingLauncherDLL\HookingLauncher.cpp(124,6): warning C4273: 'StopHook': inconsistent dll linkage
+  (compiling source file '/HookingLauncher.cpp')
+      E:\WinPrac\HookingLauncherDLL\HookingLauncherDLL\HookingLauncher.h(8,18):
+      see previous definition of 'StopHook'
+  
+  HookingLauncherDLL.vcxproj -> E:\WinPrac\HookingLauncherDLL\Debug\HookingLauncherDLL.dll

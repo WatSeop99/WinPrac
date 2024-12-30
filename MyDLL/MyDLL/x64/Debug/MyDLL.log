@@ -1,85 +1,90 @@
-﻿  CallbackProcessor.cpp
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(114,84): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
+﻿  pch.cpp
+  dllmain.cpp
+  CallbackProcessor.cpp
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(114,84): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(114,57): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(114,57): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(137,37): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(138,37): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(143,55): warning C4244: 'argument': conversion from 'SIZE_T' to 'INT', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(144,55): warning C4244: 'argument': conversion from 'SIZE_T' to 'INT', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(147,78): warning C4244: '+=': conversion from 'Gdiplus::REAL' to 'int', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(148,78): warning C4244: '+=': conversion from 'Gdiplus::REAL' to 'int', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(149,78): warning C4244: '+=': conversion from 'Gdiplus::REAL' to 'int', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(150,78): warning C4244: '+=': conversion from 'Gdiplus::REAL' to 'int', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(151,15): warning C4244: '=': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(152,15): warning C4244: '=': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(152,15): warning C4244: '=': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(153,15): warning C4244: '=': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(153,54): warning C4244: 'argument': conversion from 'SIZE_T' to 'INT', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(154,54): warning C4244: 'argument': conversion from 'SIZE_T' to 'INT', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(174,52): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(175,52): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(174,40): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(175,40): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(174,34): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(175,34): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(174,28): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(175,28): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(205,88): warning C4244: 'argument': conversion from 'LONG' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(206,88): warning C4244: 'argument': conversion from 'LONG' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(205,63): warning C4244: 'argument': conversion from 'LONG' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(206,63): warning C4244: 'argument': conversion from 'LONG' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(205,46): warning C4244: 'argument': conversion from 'LONG' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(206,46): warning C4244: 'argument': conversion from 'LONG' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(205,35): warning C4244: 'argument': conversion from 'LONG' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(206,35): warning C4244: 'argument': conversion from 'LONG' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(206,133): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(207,133): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(206,101): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(207,101): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(207,136): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(208,136): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(207,103): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(208,103): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(295,41): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(296,41): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(295,35): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(296,35): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(296,111): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(297,111): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(296,84): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(297,84): warning C4244: 'argument': conversion from 'UINT' to 'Gdiplus::REAL', possible loss of data
   (compiling source file '/CallbackProcessor.cpp')
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(248,13): warning C4533: initialization of 'bmi' is skipped by 'goto LB_RET'
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(249,13): warning C4533: initialization of 'bmi' is skipped by 'goto LB_RET'
   (compiling source file '/CallbackProcessor.cpp')
-      D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(248,13):
+      E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(249,13):
       see declaration of 'bmi'
-      D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(321,1):
+      E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(322,1):
       see declaration of 'LB_RET'
   
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp(384,1): warning C4715: 'EnumWindowsProc': not all control paths return a value
-  MyDLL.vcxproj -> D:\workspace\test\MyDLL\x64\Debug\MyDLL.dll
+  MyDll.cpp
+  Generating Code...
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp(385,1): warning C4715: 'EnumWindowsProc': not all control paths return a value
+  LINK : E:\WinPrac\MyDLL\x64\Debug\MyDLL.dll not found or not built by the last incremental link; performing full link
+  MyDLL.vcxproj -> E:\WinPrac\MyDLL\x64\Debug\MyDLL.dll

@@ -20,7 +20,7 @@ namespace HookingLauncher
         [DllImport("Kernel32")]
         private static extern long GetPrivateProfileString(string section, string key, string def, StringBuilder reVal, int size, string filePath);
 
-        private string m_FilePath = "D:\\workspace\\test\\MyDLL\\Debug\\Setting.ini";
+        private string m_FilePath = "E:\\WinPrac\\HookingLauncherDLL\\x64\\Debug\\Setting.ini";
         private bool m_bActivated = false;
 
         public MainForm()
@@ -76,7 +76,7 @@ namespace HookingLauncher
             WritePrivateProfileString("Watermark-String", "Color", "536805376", m_FilePath); // 0x1FFF0000
 
             // image path.
-            WritePrivateProfileString("Watermark-Image", "Path", "D:\\workspace\\test\\MyDLL\\MyDLL\\sample.bmp", m_FilePath);
+            WritePrivateProfileString("Watermark-Image", "Path", "E:\\WinPrac\\HookingLauncherDLL\\Debug\\sample.bmp", m_FilePath);
 
             // image alpha value.
             WritePrivateProfileString("Watermark-Image", "Alpha", "31", m_FilePath);

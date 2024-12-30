@@ -20,22 +20,18 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 	{
 		case DLL_PROCESS_ATTACH:
 		{
-//#ifndef _WIN64
-//			const WCHAR* pszHOOKING_MODULE_PATH = L"D:\\workspace\\test\\MyDLL\\Debug\\MyDLL.dll";
-//#else
-//			const WCHAR* pszHOOKING_MODULE_PATH = L"D:\\workspace\\test\\MyDLL\\x64\\Debug\\MyDLL.dll";
-//#endif
-			//if (!CopyFile(pszHOOKING_MODULE_PATH, L"./Hooking.dll", FALSE))
-			//{
-			//	return FALSE;
-			//}
-
-			const WCHAR* pszHOOKING_MODULE_PATH = L"./MyDLL.dll";
+#ifndef _WIN64
+			//const WCHAR* pszHOOKING_MODULE_PATH = L"D:\\workspace\\test\\MyDLL\\Debug\\MyDLL.dll";
+			const WCHAR* pszHOOKING_MODULE_PATH = L"E:\\WinPrac\\MyDLL\\Debug\\MyDLL.dll";
+#else
+			const WCHAR* pszHOOKING_MODULE_PATH = L"D:\\workspace\\test\\MyDLL\\x64\\Debug\\MyDLL.dll";
+#endif
 
 			_ASSERT(!g_HookingModule);
 			g_HookingModule = LoadLibrary(pszHOOKING_MODULE_PATH);
 			if (!g_HookingModule)
 			{
+				__debugbreak();
 				return FALSE;
 			}
 
@@ -52,6 +48,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 			}
 			else
 			{
+				__debugbreak();
 				return FALSE;
 			}
 
@@ -60,6 +57,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 			g_pfnOriginStretchBlt = (PFnStrecthFunc)GetProcAddress(GetModuleHandle(pszTARGET_MODULE_NAME), "StretchBlt");
 			if (!g_pfnOriginStretchBlt)
 			{
+				__debugbreak();
 				return FALSE;
 			}
 
@@ -101,8 +99,6 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 					return FALSE;
 				}
 				g_HookingModule = nullptr;
-
-				DeleteFile(L"./Hooking.dll");
 			}
 
 			break;

@@ -1,9 +1,7 @@
 #include "pch.h"
 #include "CallbackProcessor.h"
+#include "TypeDef.h"
 #include "MyDll.h"
-
-typedef BOOL(WINAPI *PFnStretchBlt)(HDC, int, int, int, int, HDC, int, int, int, int, DWORD);
-typedef int (*PFnCallbackFunc)(FSP_EXTENSION_PARAM*);
 
 CallbackProcessor* g_pCallbackProcessor = nullptr;
 

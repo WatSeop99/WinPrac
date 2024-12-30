@@ -6,7 +6,7 @@
 HANDLE SearchTargetProcess(const WCHAR* pszPROCESS_NAME, DWORD* pOutProcessID, WCHAR* pOutPath);
 HMODULE SearchInjectionModule(HANDLE hProcess, const WCHAR* pszTARGET_MODULE_PATH);
 
-WCHAR g_pszFORCE_INJECTION_PATH[MAX_PATH] = L"./ForceInjection.dll";
+WCHAR g_pszFORCE_INJECTION_PATH[MAX_PATH] = L"E:\\WinPrac\\ForceInjection\\Debug\\ForceInjection.dll";
 
 bool EnableDebugPrivilege()
 {
@@ -45,10 +45,10 @@ bool StartHook()
 {
 	bool bRet = true;
 
-	if (!EnableDebugPrivilege())
+	/*if (!EnableDebugPrivilege())
 	{
 		__debugbreak();
-	}
+	}*/
 
 	DWORD targetProcessID;
 	WCHAR pszTargetPath[MAX_PATH];
@@ -63,24 +63,17 @@ bool StartHook()
 		goto LB_RET;
 	}
 
-	WCHAR szForceInjectionLib[MAX_PATH] = L"ForceInjection.dll";
-	wcscat_s(pszTargetPath, MAX_PATH, szForceInjectionLib);
-
 	// 타깃 프로세스에 DLL 경로값 작성.
 	SIZE_T cb = (1 + wcslen(g_pszFORCE_INJECTION_PATH)) * sizeof(WCHAR);
 	WCHAR* pszLibFileRemote = (WCHAR*)VirtualAllocEx(hTargetProcess, nullptr, cb, MEM_COMMIT, PAGE_READWRITE);
 	if (!pszLibFileRemote)
 	{
-		ZeroMemory(pszTargetPath, sizeof(pszTargetPath));
-
 		MessageBox(nullptr, L"Can't alloc remote memory.", L"ERROR", MB_OK);
 		bRet = false;
 		goto LB_CLEAN_PROCESS;
 	}
 	if (!WriteProcessMemory(hTargetProcess, pszLibFileRemote, (void*)g_pszFORCE_INJECTION_PATH, cb, nullptr))
 	{
-		ZeroMemory(pszTargetPath, sizeof(pszTargetPath));
-
 		MessageBox(nullptr, L"Can't write remote memory.", L"ERROR", MB_OK);
 		bRet = false;
 		goto LB_CLEAN_MEMORY;
@@ -90,19 +83,15 @@ bool StartHook()
 	PTHREAD_START_ROUTINE pfnThreadRtn = (PTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandle(TEXT("Kernel32")), "LoadLibraryW");
 	if (!pfnThreadRtn)
 	{
-		ZeroMemory(pszTargetPath, sizeof(pszTargetPath));
-
 		MessageBox(nullptr, L"LoadLibrary is null.", L"ERROR", MB_OK);
 		bRet = false;
 		goto LB_CLEAN_MEMORY;
 	}
 
-	// Create a remote thread that calls LoadLibraryW(DLLPathname)
+	// 원격 스레드 생성.
 	HANDLE hRemoteThread = CreateRemoteThread(hTargetProcess, nullptr, 0, pfnThreadRtn, pszLibFileRemote, 0, 0);
 	if (!hRemoteThread || hRemoteThread == INVALID_HANDLE_VALUE)
 	{
-		ZeroMemory(pszTargetPath, sizeof(pszTargetPath));
-
 		MessageBox(nullptr, L"Can't create remote thread.", L"ERROR", MB_OK);
 		bRet = false;
 		goto LB_CLEAN_MEMORY;
@@ -138,7 +127,8 @@ bool StopHook()
 
 	DWORD targetProcessID;
 	WCHAR pszTargetPath[MAX_PATH];
-	HANDLE hTargetProcess = SearchTargetProcess(L"picpick.exe", &targetProcessID, pszTargetPath);
+	//HANDLE hTargetProcess = SearchTargetProcess(L"picpick.exe", &targetProcessID, pszTargetPath);
+	HANDLE hTargetProcess = SearchTargetProcess(L"SimpleScreenCapture.exe", &targetProcessID, pszTargetPath);
 	if (!hTargetProcess || hTargetProcess == INVALID_HANDLE_VALUE)
 	{
 		MessageBox(nullptr, L"Can't open target process.", L"ERROR", MB_OK);
@@ -146,10 +136,10 @@ bool StopHook()
 		goto LB_RET;
 	}
 
-	wcscat_s(pszTargetPath, MAX_PATH, L"ForceInjection.dll");
+	//wcscat_s(pszTargetPath, MAX_PATH, L"ForceInjection.dll");
 
 
-	HMODULE hTargetModule = SearchInjectionModule(hTargetProcess, pszTargetPath);
+	HMODULE hTargetModule = SearchInjectionModule(hTargetProcess, g_pszFORCE_INJECTION_PATH);
 	if (!hTargetModule || hTargetModule == INVALID_HANDLE_VALUE)
 	{
 		MessageBox(nullptr, L"Can't load target DLL.", L"ERROR", MB_OK);
@@ -175,11 +165,7 @@ bool StopHook()
 	}
 
 	WaitForSingleObject(hRemoteThread, INFINITE);
-
-
 	CloseHandle(hRemoteThread);
-
-	DeleteFile(pszTargetPath);
 
 LB_CLEAN_PROCESS:
 	CloseHandle(hTargetProcess);
@@ -215,7 +201,8 @@ HANDLE SearchTargetProcess(const WCHAR* pszPROCESS_NAME, DWORD* pOutProcessID, W
 		{
 			DWORD lastErrorCode;
 
-			hRetProcess = OpenProcess(PROCESS_CREATE_THREAD | PROCESS_VM_OPERATION | PROCESS_VM_WRITE | PROCESS_VM_READ,
+			//hRetProcess = OpenProcess(PROCESS_CREATE_THREAD | PROCESS_VM_OPERATION | PROCESS_VM_WRITE | PROCESS_VM_READ,
+			hRetProcess = OpenProcess(PROCESS_ALL_ACCESS,
 									  FALSE,
 									  processIDs[i]);
 			lastErrorCode = GetLastError();
@@ -279,7 +266,7 @@ HMODULE SearchInjectionModule(HANDLE hProcess, const WCHAR* pszTARGET_MODULE_PAT
 		WCHAR szModulePath[MAX_PATH];
 		GetModuleFileNameEx(hProcess, hModules[i], szModulePath, MAX_PATH);
 
-		if (wcsncmp(pszTARGET_MODULE_PATH, szModulePath, wcslen(pszTARGET_MODULE_PATH)) == 0)
+		if (wcsncmp(pszTARGET_MODULE_PATH, szModulePath, wcslen(szModulePath)) == 0)
 		{
 			hRetModule = hModules[i];
 			break;

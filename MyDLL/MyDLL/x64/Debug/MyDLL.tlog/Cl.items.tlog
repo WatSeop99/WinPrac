@@ -1,4 +1,4 @@
-D:\workspace\test\MyDLL\MyDLL\dllmain.cpp;D:\workspace\test\MyDLL\MyDLL\x64\Debug\dllmain.obj
-D:\workspace\test\MyDLL\MyDLL\CallbackProcessor.cpp;D:\workspace\test\MyDLL\MyDLL\x64\Debug\CallbackProcessor.obj
-D:\workspace\test\MyDLL\MyDLL\MyDll.cpp;D:\workspace\test\MyDLL\MyDLL\x64\Debug\MyDll.obj
-D:\workspace\test\MyDLL\MyDLL\pch.cpp;D:\workspace\test\MyDLL\MyDLL\x64\Debug\pch.obj
+E:\WinPrac\MyDLL\MyDLL\dllmain.cpp;E:\WinPrac\MyDLL\MyDLL\x64\Debug\dllmain.obj
+E:\WinPrac\MyDLL\MyDLL\CallbackProcessor.cpp;E:\WinPrac\MyDLL\MyDLL\x64\Debug\CallbackProcessor.obj
+E:\WinPrac\MyDLL\MyDLL\MyDll.cpp;E:\WinPrac\MyDLL\MyDLL\x64\Debug\MyDll.obj
+E:\WinPrac\MyDLL\MyDLL\pch.cpp;E:\WinPrac\MyDLL\MyDLL\x64\Debug\pch.obj
