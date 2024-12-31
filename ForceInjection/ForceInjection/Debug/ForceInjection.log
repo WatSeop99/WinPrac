@@ -1,2 +1,4 @@
-﻿  dllmain.cpp
-  ForceInjection.vcxproj -> E:\WinPrac\ForceInjection\Debug\ForceInjection.dll
+﻿  pch.cpp
+  dllmain.cpp
+  LINK : D:\workspace\WinPrac\ForceInjection\Debug\ForceInjection.dll not found or not built by the last incremental link; performing full link
+  ForceInjection.vcxproj -> D:\workspace\WinPrac\ForceInjection\Debug\ForceInjection.dll

@@ -20,6 +20,12 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 	{
 		case DLL_PROCESS_ATTACH:
 		{
+			WCHAR szCurrentFilePath[MAX_PATH];
+			WCHAR* pszFilePart = nullptr;
+			GetModuleFileName(hModule, szCurrentFilePath, MAX_PATH);
+			pszFilePart = wcsrchr(szCurrentFilePath, '\\') + 1;
+
+
 #ifndef _WIN64
 			//const WCHAR* pszHOOKING_MODULE_PATH = L"D:\\workspace\\test\\MyDLL\\Debug\\MyDLL.dll";
 			const WCHAR* pszHOOKING_MODULE_PATH = L"E:\\WinPrac\\MyDLL\\Debug\\MyDLL.dll";

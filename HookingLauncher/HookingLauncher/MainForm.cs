@@ -20,12 +20,14 @@ namespace HookingLauncher
         [DllImport("Kernel32")]
         private static extern long GetPrivateProfileString(string section, string key, string def, StringBuilder reVal, int size, string filePath);
 
-        private string m_FilePath = "E:\\WinPrac\\HookingLauncherDLL\\x64\\Debug\\Setting.ini";
+        private string m_SettingFilePath = "";
         private bool m_bActivated = false;
 
         public MainForm()
         {
             InitializeComponent();
+
+            ConfigureSetting();
 
             //try
             //{
@@ -48,38 +50,39 @@ namespace HookingLauncher
             //}
 
             FormClosing += new FormClosingEventHandler(Closing);
+            
 
-            FileStream stream = File.Create(m_FilePath);
+            FileStream stream = File.Create(m_SettingFilePath);
             stream.Close();
 
-            if (!File.Exists(m_FilePath))
+            if (!File.Exists(m_SettingFilePath))
             {
                 Debugger.Break();
             }
 
             // font string.
-            WritePrivateProfileString("Watermark-String", "String", "test", m_FilePath);
+            WritePrivateProfileString("Watermark-String", "String", "test", m_SettingFilePath);
 
             // font family.
-            WritePrivateProfileString("Watermark-String", "Family", "¸¼Àº °íµñ", m_FilePath);
+            WritePrivateProfileString("Watermark-String", "Family", "¸¼Àº °íµñ", m_SettingFilePath);
 
             // font size.
-            WritePrivateProfileString("Watermark-String", "Size", "60", m_FilePath);
+            WritePrivateProfileString("Watermark-String", "Size", "60", m_SettingFilePath);
 
             // font style.
-            WritePrivateProfileString("Watermark-String", "Style", "0", m_FilePath);
+            WritePrivateProfileString("Watermark-String", "Style", "0", m_SettingFilePath);
 
             // font unit.
-            WritePrivateProfileString("Watermark-String", "Unit", "3", m_FilePath);
+            WritePrivateProfileString("Watermark-String", "Unit", "3", m_SettingFilePath);
 
             // font brush.
-            WritePrivateProfileString("Watermark-String", "Color", "536805376", m_FilePath); // 0x1FFF0000
+            WritePrivateProfileString("Watermark-String", "Color", "536805376", m_SettingFilePath); // 0x1FFF0000
 
             // image path.
-            WritePrivateProfileString("Watermark-Image", "Path", "E:\\WinPrac\\HookingLauncherDLL\\Debug\\sample.bmp", m_FilePath);
+            WritePrivateProfileString("Watermark-Image", "Path", "E:\\WinPrac\\HookingLauncherDLL\\Debug\\sample.bmp", m_SettingFilePath);
 
             // image alpha value.
-            WritePrivateProfileString("Watermark-Image", "Alpha", "31", m_FilePath);
+            WritePrivateProfileString("Watermark-Image", "Alpha", "31", m_SettingFilePath);
         }
 
         ~MainForm()
@@ -99,7 +102,7 @@ namespace HookingLauncher
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     WatermarkImagePath.Text = openFileDialog.FileName;
-                    WritePrivateProfileString("Watermark-Image", "Path", openFileDialog.FileName, m_FilePath);
+                    WritePrivateProfileString("Watermark-Image", "Path", openFileDialog.FileName, m_SettingFilePath);
                 }
             }
         }
@@ -108,7 +111,7 @@ namespace HookingLauncher
         {
             if (WatermarkString.Text.Length > 0)
             {
-                WritePrivateProfileString("Watermark-String", "String", WatermarkString.Text, m_FilePath);
+                WritePrivateProfileString("Watermark-String", "String", WatermarkString.Text, m_SettingFilePath);
             }
         }
 
@@ -146,11 +149,11 @@ namespace HookingLauncher
 
             if (fontDialog.ShowDialog() != DialogResult.Cancel)
             {
-                WritePrivateProfileString("Watermark-String", "Family", fontDialog.Font.Name.ToString(), m_FilePath);
-                WritePrivateProfileString("Watermark-String", "Size", ((int)fontDialog.Font.Size).ToString(), m_FilePath);
-                WritePrivateProfileString("Watermark-String", "Style", ((int)fontDialog.Font.Style).ToString(), m_FilePath);
-                WritePrivateProfileString("Watermark-String", "Unit", ((int)fontDialog.Font.Unit).ToString(), m_FilePath);
-                WritePrivateProfileString("Watermark-String", "Color", fontDialog.Color.ToArgb().ToString(), m_FilePath);
+                WritePrivateProfileString("Watermark-String", "Family", fontDialog.Font.Name.ToString(), m_SettingFilePath);
+                WritePrivateProfileString("Watermark-String", "Size", ((int)fontDialog.Font.Size).ToString(), m_SettingFilePath);
+                WritePrivateProfileString("Watermark-String", "Style", ((int)fontDialog.Font.Style).ToString(), m_SettingFilePath);
+                WritePrivateProfileString("Watermark-String", "Unit", ((int)fontDialog.Font.Unit).ToString(), m_SettingFilePath);
+                WritePrivateProfileString("Watermark-String", "Color", fontDialog.Color.ToArgb().ToString(), m_SettingFilePath);
             }
         }
 
@@ -158,6 +161,32 @@ namespace HookingLauncher
         {
             StopHook();
             m_bActivated = false;
+        }
+
+        private void ConfigureSetting()
+        {
+            string filePath = Directory.GetCurrentDirectory();
+            string settingDirectoryPath = filePath + "\\Settings";
+            string settingFile = settingDirectoryPath + "\\setting.ini";
+
+            if (Directory.Exists(settingDirectoryPath) == false)
+            {
+                Directory.CreateDirectory(settingDirectoryPath);
+            }
+            if (Directory.Exists(settingFile) == false)
+            {
+                Directory.CreateDirectory(settingFile);
+            }
+            
+            m_SettingFilePath = settingFile;
+
+            WritePrivateProfileString("FileConfigure", "", filePath + "\\..\\..\\DLL\\ForceInjection.dll", m_SettingFilePath);
+            WritePrivateProfileString("FileConfigure", "", filePath + "\\..\\..\\DLL\\MyDLL.dll", m_SettingFilePath);
+            WritePrivateProfileString();
+
+            int b = 3;
+
+
         }
     }
 }
