@@ -59,8 +59,7 @@
               "ViewState": "AgIAABsAAAAAAAAAAAAAACwAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-19T00:10:10.23Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -70,7 +69,7 @@
               "RelativeDocumentMoniker": "MyDLL\\CallbackProcessor.cpp",
               "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
               "RelativeToolTip": "MyDLL\\CallbackProcessor.cpp",
-              "ViewState": "AgIAAF8BAAAAAAAAAAAAAIIBAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAEsBAAAAAAAAAAAQwGwBAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-19T04:00:57.574Z",
               "IsPinned": true,
@@ -87,8 +86,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-05T05:07:57.551Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -112,8 +110,7 @@
               "RelativeToolTip": "MyDLL\\MyDll.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-19T04:14:51.425Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-19T04:14:51.425Z"
             },
             {
               "$type": "Document",
@@ -149,8 +146,7 @@
               "RelativeToolTip": "MyDLL\\CallbackProcessor.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-12T02:03:56.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T02:03:56.763Z"
             },
             {
               "$type": "Document",
@@ -162,8 +158,7 @@
               "RelativeToolTip": "MyDLL\\TypeDef.h",
               "ViewState": "AgIAABgAAAAAAAAAAAAAACQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T06:50:19.293Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T06:50:19.293Z"
             },
             {
               "$type": "Document",

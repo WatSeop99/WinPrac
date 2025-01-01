@@ -66,3 +66,8 @@ D:\workspace\WinPrac\Output\Debug\Debug\net8.0-windows\HookingLauncher.deps.json
 D:\workspace\WinPrac\Output\Debug\Debug\net8.0-windows\HookingLauncher.runtimeconfig.json
 D:\workspace\WinPrac\Output\Debug\Debug\net8.0-windows\HookingLauncher.dll
 D:\workspace\WinPrac\Output\Debug\Debug\net8.0-windows\HookingLauncher.pdb
+E:\WinPrac\Output\Debug\net8.0-windows\HookingLauncher.exe
+E:\WinPrac\Output\Debug\net8.0-windows\HookingLauncher.deps.json
+E:\WinPrac\Output\Debug\net8.0-windows\HookingLauncher.runtimeconfig.json
+E:\WinPrac\Output\Debug\net8.0-windows\HookingLauncher.dll
+E:\WinPrac\Output\Debug\net8.0-windows\HookingLauncher.pdb

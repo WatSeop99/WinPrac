@@ -8,10 +8,10 @@ namespace HookingLauncher
 {
     public partial class MainForm : Form
     {
-        [DllImport("HookingLauncherDLL.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto)]
+        [DllImport("..\\DLL\\HookingLauncherDLL.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto)]
         public static extern bool StartHook();
 
-        [DllImport("HookingLauncherDLL.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto)]
+        [DllImport("..\\DLL\\HookingLauncherDLL.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto)]
         public static extern bool StopHook();
 
         [DllImport("Kernel32")]
@@ -29,60 +29,9 @@ namespace HookingLauncher
 
             ConfigureSetting();
 
-            //try
-            //{
-            //    string regPath = @"Software\HookingDLL";
-            //    string regKey = "Setting_Dir";
-
-            //    RegistryKey reg = Registry.LocalMachine.OpenSubKey(regPath, true);
-            //    if (reg == null)
-            //    {
-            //        reg = Registry.LocalMachine.CreateSubKey(regPath);
-            //    }
-
-            //    reg.SetValue(regKey, m_FilePath);
-            //    reg.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    Debug.WriteLine(ex.Message);
-            //    Debugger.Break();
-            //}
-
             FormClosing += new FormClosingEventHandler(Closing);
-            
 
-            FileStream stream = File.Create(m_SettingFilePath);
-            stream.Close();
-
-            if (!File.Exists(m_SettingFilePath))
-            {
-                Debugger.Break();
-            }
-
-            // font string.
-            WritePrivateProfileString("Watermark-String", "String", "test", m_SettingFilePath);
-
-            // font family.
-            WritePrivateProfileString("Watermark-String", "Family", "¸¼Àº °íµñ", m_SettingFilePath);
-
-            // font size.
-            WritePrivateProfileString("Watermark-String", "Size", "60", m_SettingFilePath);
-
-            // font style.
-            WritePrivateProfileString("Watermark-String", "Style", "0", m_SettingFilePath);
-
-            // font unit.
-            WritePrivateProfileString("Watermark-String", "Unit", "3", m_SettingFilePath);
-
-            // font brush.
-            WritePrivateProfileString("Watermark-String", "Color", "536805376", m_SettingFilePath); // 0x1FFF0000
-
-            // image path.
-            WritePrivateProfileString("Watermark-Image", "Path", "E:\\WinPrac\\HookingLauncherDLL\\Debug\\sample.bmp", m_SettingFilePath);
-
-            // image alpha value.
-            WritePrivateProfileString("Watermark-Image", "Alpha", "31", m_SettingFilePath);
+            InitializeWatermarkSetting();
         }
 
         ~MainForm()
@@ -173,20 +122,42 @@ namespace HookingLauncher
             {
                 Directory.CreateDirectory(settingDirectoryPath);
             }
-            if (Directory.Exists(settingFile) == false)
+            if (File.Exists(settingFile) == false)
             {
-                Directory.CreateDirectory(settingFile);
+                File.Create(settingFile);
             }
             
             m_SettingFilePath = settingFile;
 
-            WritePrivateProfileString("FileConfigure", "", filePath + "\\..\\..\\DLL\\ForceInjection.dll", m_SettingFilePath);
-            WritePrivateProfileString("FileConfigure", "", filePath + "\\..\\..\\DLL\\MyDLL.dll", m_SettingFilePath);
-            WritePrivateProfileString();
+            WritePrivateProfileString("FileConfigure", "Injector", filePath + "\\DLL\\ForceInjection.dll", m_SettingFilePath);
+            WritePrivateProfileString("FileConfigure", "CallbackDLL", filePath + "\\DLL\\MyDLL.dll", m_SettingFilePath);
+        }
 
-            int b = 3;
+        private void InitializeWatermarkSetting()
+        {
+            // font string.
+            WritePrivateProfileString("Watermark-String", "String", "test", m_SettingFilePath);
 
+            // font family.
+            WritePrivateProfileString("Watermark-String", "Family", "¸¼Àº °íµñ", m_SettingFilePath);
 
+            // font size.
+            WritePrivateProfileString("Watermark-String", "Size", "60", m_SettingFilePath);
+
+            // font style.
+            WritePrivateProfileString("Watermark-String", "Style", "0", m_SettingFilePath);
+
+            // font unit.
+            WritePrivateProfileString("Watermark-String", "Unit", "3", m_SettingFilePath);
+
+            // font brush.
+            WritePrivateProfileString("Watermark-String", "Color", "536805376", m_SettingFilePath); // 0x1FFF0000
+
+            // image path.
+            WritePrivateProfileString("Watermark-Image", "Path", "E:\\WinPrac\\HookingLauncherDLL\\Debug\\sample.bmp", m_SettingFilePath);
+
+            // image alpha value.
+            WritePrivateProfileString("Watermark-Image", "Alpha", "31", m_SettingFilePath);
         }
     }
 }

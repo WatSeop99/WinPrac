@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\WinPrac\\MyDLL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\CallbackProcessor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|solutionrelative:MyDLL\\CallbackProcessor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|MyDLL\\MyDLL.vcxproj|E:\\WinPrac\\MyDLL\\MyDLL\\TypeDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -46,17 +46,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "dllmain.cpp",
               "DocumentMoniker": "E:\\WinPrac\\MyDLL\\MyDLL\\dllmain.cpp",
               "RelativeDocumentMoniker": "MyDLL\\dllmain.cpp",
               "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\dllmain.cpp",
               "RelativeToolTip": "MyDLL\\dllmain.cpp",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACwAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-19T00:10:10.23Z",
               "IsPinned": true,
@@ -64,13 +64,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CallbackProcessor.cpp",
               "DocumentMoniker": "E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
               "RelativeDocumentMoniker": "MyDLL\\CallbackProcessor.cpp",
               "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
               "RelativeToolTip": "MyDLL\\CallbackProcessor.cpp",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAIIBAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHcAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-19T04:00:57.574Z",
               "IsPinned": true,
@@ -87,8 +87,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-05T05:07:57.551Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -112,8 +111,7 @@
               "RelativeToolTip": "MyDLL\\MyDll.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-19T04:14:51.425Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-19T04:14:51.425Z"
             },
             {
               "$type": "Document",
@@ -149,8 +147,7 @@
               "RelativeToolTip": "MyDLL\\CallbackProcessor.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-12T02:03:56.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T02:03:56.763Z"
             },
             {
               "$type": "Document",
@@ -162,8 +159,7 @@
               "RelativeToolTip": "MyDLL\\TypeDef.h",
               "ViewState": "AgIAABgAAAAAAAAAAAAAACQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T06:50:19.293Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T06:50:19.293Z"
             },
             {
               "$type": "Document",

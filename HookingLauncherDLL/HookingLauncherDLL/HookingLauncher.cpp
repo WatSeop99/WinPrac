@@ -6,7 +6,8 @@
 HANDLE SearchTargetProcess(const WCHAR* pszPROCESS_NAME, DWORD* pOutProcessID, WCHAR* pOutPath);
 HMODULE SearchInjectionModule(HANDLE hProcess, const WCHAR* pszTARGET_MODULE_PATH);
 
-WCHAR g_pszFORCE_INJECTION_PATH[MAX_PATH] = L"E:\\WinPrac\\ForceInjection\\Debug\\ForceInjection.dll";
+HMODULE g_hModule = nullptr;
+WCHAR g_pszInjectorModulePath[MAX_PATH];
 
 bool EnableDebugPrivilege()
 {
@@ -54,8 +55,8 @@ bool StartHook()
 	WCHAR pszTargetPath[MAX_PATH];
 
 	// 타깃 프로세스 핸들 값 가져옴.
-	//HANDLE hTargetProcess = SearchTargetProcess(L"picpick.exe", &targetProcessID, pszTargetPath);
-	HANDLE hTargetProcess = SearchTargetProcess(L"SimpleScreenCapture.exe", &targetProcessID, pszTargetPath);
+	HANDLE hTargetProcess = SearchTargetProcess(L"picpick.exe", &targetProcessID, pszTargetPath);
+	//HANDLE hTargetProcess = SearchTargetProcess(L"SimpleScreenCapture.exe", &targetProcessID, pszTargetPath);
 	if (!hTargetProcess || hTargetProcess == INVALID_HANDLE_VALUE)
 	{
 		MessageBox(nullptr, L"Target process not exists.", L"ERROR", MB_OK);
@@ -63,8 +64,15 @@ bool StartHook()
 		goto LB_RET;
 	}
 
-	// 타깃 프로세스에 DLL 경로값 작성.
-	SIZE_T cb = (1 + wcslen(g_pszFORCE_INJECTION_PATH)) * sizeof(WCHAR);
+	// 타깃 프로세스에 Injector DLL 경로값 작성.
+	_ASSERT(g_hModule);
+	WCHAR* pszFilePart = nullptr;
+	GetModuleFileNameW(g_hModule, g_pszInjectorModulePath, MAX_PATH);
+	pszFilePart = wcsrchr(g_pszInjectorModulePath, L'\\');
+	ZeroMemory(pszFilePart, wcslen(pszFilePart));
+	wcsncat_s(g_pszInjectorModulePath, MAX_PATH, L"\\ForceInjection.dll", wcslen(L"\\ForceInjection.dll"));
+
+	SIZE_T cb = (1 + wcslen(g_pszInjectorModulePath)) * sizeof(WCHAR);
 	WCHAR* pszLibFileRemote = (WCHAR*)VirtualAllocEx(hTargetProcess, nullptr, cb, MEM_COMMIT, PAGE_READWRITE);
 	if (!pszLibFileRemote)
 	{
@@ -72,7 +80,7 @@ bool StartHook()
 		bRet = false;
 		goto LB_CLEAN_PROCESS;
 	}
-	if (!WriteProcessMemory(hTargetProcess, pszLibFileRemote, (void*)g_pszFORCE_INJECTION_PATH, cb, nullptr))
+	if (!WriteProcessMemory(hTargetProcess, pszLibFileRemote, (void*)g_pszInjectorModulePath, cb, nullptr))
 	{
 		MessageBox(nullptr, L"Can't write remote memory.", L"ERROR", MB_OK);
 		bRet = false;
@@ -106,7 +114,6 @@ bool StartHook()
 	{
 		MessageBox(nullptr, L"Remote thread return value '0'.", L"ERROR", MB_OK);
 		bRet = false;
-
 	}
 
 	CloseHandle(hRemoteThread);
@@ -127,8 +134,10 @@ bool StopHook()
 
 	DWORD targetProcessID;
 	WCHAR pszTargetPath[MAX_PATH];
-	//HANDLE hTargetProcess = SearchTargetProcess(L"picpick.exe", &targetProcessID, pszTargetPath);
-	HANDLE hTargetProcess = SearchTargetProcess(L"SimpleScreenCapture.exe", &targetProcessID, pszTargetPath);
+
+	// 타깃 프로세스 핸들 값 가져옴.
+	HANDLE hTargetProcess = SearchTargetProcess(L"picpick.exe", &targetProcessID, pszTargetPath);
+	//HANDLE hTargetProcess = SearchTargetProcess(L"SimpleScreenCapture.exe", &targetProcessID, pszTargetPath);
 	if (!hTargetProcess || hTargetProcess == INVALID_HANDLE_VALUE)
 	{
 		MessageBox(nullptr, L"Can't open target process.", L"ERROR", MB_OK);
@@ -136,10 +145,8 @@ bool StopHook()
 		goto LB_RET;
 	}
 
-	//wcscat_s(pszTargetPath, MAX_PATH, L"ForceInjection.dll");
-
-
-	HMODULE hTargetModule = SearchInjectionModule(hTargetProcess, g_pszFORCE_INJECTION_PATH);
+	// 타깃 프로세스에서 Injector DLL 주소 가져옴.
+	HMODULE hTargetModule = SearchInjectionModule(hTargetProcess, g_pszInjectorModulePath);
 	if (!hTargetModule || hTargetModule == INVALID_HANDLE_VALUE)
 	{
 		MessageBox(nullptr, L"Can't load target DLL.", L"ERROR", MB_OK);
@@ -147,7 +154,7 @@ bool StopHook()
 		goto LB_CLEAN_PROCESS;
 	}
 
-
+	// FreeLibrary 주소 가져옴.
 	PTHREAD_START_ROUTINE pfnThreadRtn = (PTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandle(TEXT("Kernel32")), "FreeLibrary");
 	if (!pfnThreadRtn)
 	{
@@ -156,6 +163,7 @@ bool StopHook()
 		goto LB_CLEAN_PROCESS;
 	}
 
+	// 원격 스레드 생성.
 	HANDLE hRemoteThread = CreateRemoteThread(hTargetProcess, nullptr, 0, pfnThreadRtn, hTargetModule, 0, nullptr);
 	if (!hRemoteThread || hRemoteThread == INVALID_HANDLE_VALUE)
 	{
@@ -190,28 +198,23 @@ HANDLE SearchTargetProcess(const WCHAR* pszPROCESS_NAME, DWORD* pOutProcessID, W
 
 	DWORD processIDs[1024] = { 0, };
 	DWORD needed = 0;
+	// 실행중인 프로세스 목록 가져옴.
 	if (!EnumProcesses(processIDs, sizeof(processIDs), &needed))
 	{
 		goto LB_RET;
 	}
 
+	// 루프를 돌면서 이름이 일치하는 프로세스 ID, 경로 가져옴.
 	for (DWORD i = 0, totalProcesses = needed / sizeof(DWORD); i < totalProcesses; ++i)
 	{
 		if (processIDs[i])
 		{
-			DWORD lastErrorCode;
-
-			//hRetProcess = OpenProcess(PROCESS_CREATE_THREAD | PROCESS_VM_OPERATION | PROCESS_VM_WRITE | PROCESS_VM_READ,
-			hRetProcess = OpenProcess(PROCESS_ALL_ACCESS,
-									  FALSE,
-									  processIDs[i]);
-			lastErrorCode = GetLastError();
+			hRetProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, processIDs[i]);
 			if (!hRetProcess || hRetProcess == INVALID_HANDLE_VALUE)
 			{
 				SetLastError(0);
 				continue;
 			}
-			
 
 			WCHAR buffer[MAX_PATH];
 			WCHAR* pFilePart = nullptr;
@@ -256,11 +259,13 @@ HMODULE SearchInjectionModule(HANDLE hProcess, const WCHAR* pszTARGET_MODULE_PAT
 
 	HMODULE hModules[1024] = { 0, };
 	DWORD needed;
+	// 로드된 모듈 목록 가져옴.
 	if (!EnumProcessModules(hProcess, hModules, sizeof(hModules), &needed))
 	{
 		goto LB_RET;
 	}
 
+	// 루프를 돌면서 경로가 일치하는 모듈의 주소를 반환.
 	for (SIZE_T i = 0, size = needed / sizeof(HMODULE); i < size; ++i)
 	{
 		WCHAR szModulePath[MAX_PATH];

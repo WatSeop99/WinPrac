@@ -1,18 +1,13 @@
 #include "pch.h"
 #include "TypeDef.h"
 
-typedef BOOL(APIENTRY *PFnDLLMain)(HMODULE, DWORD, LPVOID);
-typedef BOOL(WINAPI *PFnStrecthFunc)(HDC, int, int, int, int, HDC, int, int, int, int, DWORD);
-typedef int (*PFnCallbackFunc)(FSP_EXTENSION_PARAM*);
-
 HMODULE g_HookingModule = nullptr;
 DLL_DIRECTORY_COOKIE g_pfnDLLCookie = nullptr;
 PFnStrecthFunc g_pfnOriginStretchBlt = nullptr;
 PFnCallbackFunc g_pfnCallbackStretchBlt = nullptr;
 
-HMODULE ModuleFromAddress(void* pV);
+bool GetCallbackModulePath(HMODULE hModule, WCHAR* pOutPath);
 BOOL WINAPI MyStretchBlt(HDC hdcDest, int xDest, int yDest, int wDest, int hDest, HDC hdcSrc, int xSrc, int ySrc, int wSrc, int hSrc, DWORD rop);
-void ReplaceIATEntryInOneMod(PCSTR pszCalleeModName, PFnStrecthFunc pfnCurrent, PFnStrecthFunc pfnNew, HMODULE hmodCaller);
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
@@ -20,21 +15,17 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 	{
 		case DLL_PROCESS_ATTACH:
 		{
-			WCHAR szCurrentFilePath[MAX_PATH];
-			WCHAR* pszFilePart = nullptr;
-			GetModuleFileName(hModule, szCurrentFilePath, MAX_PATH);
-			pszFilePart = wcsrchr(szCurrentFilePath, '\\') + 1;
+			// 콜백 모듈 경로 가져옴.
+			WCHAR szCallbackModulePath[MAX_PATH];
+			if (!GetCallbackModulePath(hModule, szCallbackModulePath))
+			{
+				__debugbreak();
+				return FALSE;
+			}
 
-
-#ifndef _WIN64
-			//const WCHAR* pszHOOKING_MODULE_PATH = L"D:\\workspace\\test\\MyDLL\\Debug\\MyDLL.dll";
-			const WCHAR* pszHOOKING_MODULE_PATH = L"E:\\WinPrac\\MyDLL\\Debug\\MyDLL.dll";
-#else
-			const WCHAR* pszHOOKING_MODULE_PATH = L"D:\\workspace\\test\\MyDLL\\x64\\Debug\\MyDLL.dll";
-#endif
-
+			// 콜백 모듈 로드.
 			_ASSERT(!g_HookingModule);
-			g_HookingModule = LoadLibrary(pszHOOKING_MODULE_PATH);
+			g_HookingModule = LoadLibrary(szCallbackModulePath);
 			if (!g_HookingModule)
 			{
 				__debugbreak();
@@ -45,8 +36,10 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 			PIMAGE_DOS_HEADER pDosHeader = (PIMAGE_DOS_HEADER)g_HookingModule;
 			PIMAGE_NT_HEADERS pNTHeader = (PIMAGE_NT_HEADERS)((LPBYTE)pDosHeader + (DWORD)pDosHeader->e_lfanew);
 
+			// 실행 모듈로부터 entry point 주소 가져옴.
 			PFnDLLMain pfnDllMain = (PFnDLLMain)((LPBYTE)g_HookingModule + pNTHeader->OptionalHeader.AddressOfEntryPoint);
 
+			// 콜백함수 가져옴.
 			DWORD_PTR dwAddr = 0;
 			if (pfnDllMain(g_HookingModule, DLL_PROCESS_GET_PROCEDURE, &dwAddr) && dwAddr)
 			{
@@ -58,7 +51,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 				return FALSE;
 			}
 
-
+			// StretchBlt의 원형 주소 가져옴.
 			const WCHAR* pszTARGET_MODULE_NAME = L"Gdi32.dll";
 			g_pfnOriginStretchBlt = (PFnStrecthFunc)GetProcAddress(GetModuleHandle(pszTARGET_MODULE_NAME), "StretchBlt");
 			if (!g_pfnOriginStretchBlt)
@@ -67,6 +60,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 				return FALSE;
 			}
 
+			// Detour를 통해 콜백 등록.
 			DetourRestoreAfterWith();
 			DetourTransactionBegin();
 			DetourUpdateThread(GetCurrentThread());
@@ -84,6 +78,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 		{
 			if (g_HookingModule)
 			{
+				// Detour 콜백 해제.
 				DetourTransactionBegin();
 				DetourUpdateThread(GetCurrentThread());
 				DetourDetach(&(PVOID&)g_pfnOriginStretchBlt, MyStretchBlt);
@@ -93,8 +88,10 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 				PIMAGE_DOS_HEADER pDosHeader = (PIMAGE_DOS_HEADER)g_HookingModule;
 				PIMAGE_NT_HEADERS pNTHeader = (PIMAGE_NT_HEADERS)((LPBYTE)pDosHeader + (DWORD)pDosHeader->e_lfanew);
 
+				// 콜백 모듈 entrypoint 주소 가져옴.
 				PFnDLLMain pfnDllMain = (PFnDLLMain)((LPBYTE)g_HookingModule + pNTHeader->OptionalHeader.AddressOfEntryPoint);
 
+				// 콜백 모듈 해제.
 				if (!pfnDllMain(g_HookingModule, DLL_PROCESS_RELEASE_PROCEDURE, 0))
 				{
 					return FALSE;
@@ -114,89 +111,32 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 	return TRUE;
 }
 
-void ReplaceIATEntryInOneMod(PCSTR pszCalleeModName, PFnStrecthFunc pfnCurrent, PFnStrecthFunc pfnNew, HMODULE hmodCaller)
+bool GetCallbackModulePath(HMODULE hModule, WCHAR* pOutPath)
 {
-	_ASSERT(pszCalleeModName);
-	_ASSERT(pfnCurrent);
-	_ASSERT(pfnNew);
-	_ASSERT(hmodCaller);
+	_ASSERT(hModule);
+	_ASSERT(pOutPath);
 
-	BYTE* pImageBase = (BYTE*)hmodCaller;
-	if (!pImageBase)
+	if (hModule == INVALID_HANDLE_VALUE)
 	{
-		__debugbreak();
+		return false;
 	}
 
-	PIMAGE_DOS_HEADER pIDH = (PIMAGE_DOS_HEADER)pImageBase;
-	if (pIDH->e_magic != IMAGE_DOS_SIGNATURE)
-	{
-		__debugbreak();
-	}
+	// 현재 모듈의 원 파일 경로를 가져옴.
+	WCHAR szCurrentFilePath[MAX_PATH];
+	WCHAR* pszFilePart = nullptr;
+	GetModuleFileNameW(hModule, szCurrentFilePath, MAX_PATH);
+	pszFilePart = wcsrchr(szCurrentFilePath, '\\');
 
-	PIMAGE_NT_HEADERS pINH = (PIMAGE_NT_HEADERS)(pImageBase + pIDH->e_lfanew);
-	if (pINH->Signature != IMAGE_NT_SIGNATURE)
-	{
-		__debugbreak();
-	}
+	// 경로만 복사.
+	wcsncpy_s(pOutPath, MAX_PATH, szCurrentFilePath, pszFilePart - szCurrentFilePath);
 
-	PIMAGE_DATA_DIRECTORY pIDD = &pINH->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT];
-	PIMAGE_IMPORT_DESCRIPTOR pIID = (PIMAGE_IMPORT_DESCRIPTOR)(pImageBase + pIDD->VirtualAddress);
-	for (; pIID->Name; ++pIID)
-	{
-		const char* pszMOD_NAME = (const char*)(pImageBase + pIID->Name);
-		if (_strcmpi(pszMOD_NAME, pszCalleeModName) == 0)
-		{
-			break;
-		}
-	}
-	if (!pIID->Name)
-	{
-		__debugbreak();
-	}
+	// 콜백 모듈 경로 붙임.
+	wcsncat_s(pOutPath, MAX_PATH, L"\\MyDLL.dll", wcslen(L"\\MyDLL.dll"));
 
-	bool bFinished = false;
-	PIMAGE_THUNK_DATA pThunk = (PIMAGE_THUNK_DATA)(pImageBase + pIID->FirstThunk);
-	for (; pThunk->u1.Function; ++pThunk)
-	{
-		PFnStrecthFunc* ppfn = (PFnStrecthFunc*)&pThunk->u1.Function;
-		if (*ppfn == pfnCurrent)
-		{
-			if (!WriteProcessMemory(GetCurrentProcess(), ppfn, &pfnNew, sizeof(pfnNew), nullptr))
-			{
-				DWORD dwOldProtect;
-				if (VirtualProtect(ppfn, sizeof(pfnNew), PAGE_WRITECOPY, &dwOldProtect))
-				{
-					WriteProcessMemory(GetCurrentProcess(), ppfn, &pfnNew, sizeof(pfnNew), nullptr);
-					VirtualProtect(ppfn, sizeof(pfnNew), dwOldProtect, &dwOldProtect);
-					bFinished = true;
-				}
-				else
-				{
-					__debugbreak();
-				}
-			}
-			else
-			{
-				bFinished = true;
-			}
-
-			break;
-		}
-	}
-
-	if (!bFinished)
-	{
-		__debugbreak();
-	}
+	return true;
 }
 
-HMODULE ModuleFromAddress(void* pV)
-{
-	MEMORY_BASIC_INFORMATION mbi = {};
-	return (VirtualQuery(pV, &mbi, sizeof(mbi)) != 0 ? (HMODULE)mbi.AllocationBase : nullptr);
-}
-
-BOOL WINAPI MyStretchBlt(HDC hdcDest, 
+BOOL WINAPI MyStretchBlt(HDC hdcDest,
 						 int xDest, int yDest, 
 						 int wDest, int hDest,
 						 HDC hdcSrc, 

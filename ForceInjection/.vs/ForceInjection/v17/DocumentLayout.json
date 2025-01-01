@@ -1,25 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\workspace\\WinPrac\\ForceInjection\\",
+  "WorkspaceRootPath": "E:\\WinPrac\\ForceInjection\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|E:\\WinPrac\\ForceInjection\\ForceInjection\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|solutionrelative:ForceInjection\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|solutionrelative:ForceInjection\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\TypeDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|E:\\WinPrac\\ForceInjection\\ForceInjection\\TypeDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|solutionrelative:ForceInjection\\TypeDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|E:\\WinPrac\\ForceInjection\\ForceInjection\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|solutionrelative:ForceInjection\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|E:\\WinPrac\\ForceInjection\\ForceInjection\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|solutionrelative:ForceInjection\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|E:\\WinPrac\\ForceInjection\\ForceInjection\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B227C84D-00B7-494D-B583-3B303A9D3805}|ForceInjection\\ForceInjection.vcxproj|solutionrelative:ForceInjection\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -30,40 +30,53 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "dllmain.cpp",
-              "DocumentMoniker": "D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\dllmain.cpp",
+              "DocumentMoniker": "E:\\WinPrac\\ForceInjection\\ForceInjection\\dllmain.cpp",
               "RelativeDocumentMoniker": "ForceInjection\\dllmain.cpp",
-              "ToolTip": "D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\dllmain.cpp",
+              "ToolTip": "E:\\WinPrac\\ForceInjection\\ForceInjection\\dllmain.cpp",
               "RelativeToolTip": "ForceInjection\\dllmain.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAlwHEAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-06T02:06:13.337Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "TypeDef.h",
-              "DocumentMoniker": "D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\TypeDef.h",
+              "DocumentMoniker": "E:\\WinPrac\\ForceInjection\\ForceInjection\\TypeDef.h",
               "RelativeDocumentMoniker": "ForceInjection\\TypeDef.h",
-              "ToolTip": "D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\TypeDef.h",
+              "ToolTip": "E:\\WinPrac\\ForceInjection\\ForceInjection\\TypeDef.h",
               "RelativeToolTip": "ForceInjection\\TypeDef.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAA0AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T05:47:50.747Z"
+              "WhenOpened": "2024-12-06T05:47:50.747Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "pch.cpp",
-              "DocumentMoniker": "D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\pch.cpp",
+              "DocumentMoniker": "E:\\WinPrac\\ForceInjection\\ForceInjection\\pch.cpp",
               "RelativeDocumentMoniker": "ForceInjection\\pch.cpp",
-              "ToolTip": "D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\pch.cpp",
+              "ToolTip": "E:\\WinPrac\\ForceInjection\\ForceInjection\\pch.cpp",
               "RelativeToolTip": "ForceInjection\\pch.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -73,9 +86,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "pch.h",
-              "DocumentMoniker": "D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\pch.h",
+              "DocumentMoniker": "E:\\WinPrac\\ForceInjection\\ForceInjection\\pch.h",
               "RelativeDocumentMoniker": "ForceInjection\\pch.h",
-              "ToolTip": "D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\pch.h",
+              "ToolTip": "E:\\WinPrac\\ForceInjection\\ForceInjection\\pch.h",
               "RelativeToolTip": "ForceInjection\\pch.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -83,15 +96,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "framework.h",
-              "DocumentMoniker": "D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\framework.h",
+              "DocumentMoniker": "E:\\WinPrac\\ForceInjection\\ForceInjection\\framework.h",
               "RelativeDocumentMoniker": "ForceInjection\\framework.h",
-              "ToolTip": "D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\framework.h",
+              "ToolTip": "E:\\WinPrac\\ForceInjection\\ForceInjection\\framework.h",
               "RelativeToolTip": "ForceInjection\\framework.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T02:06:32.728Z"
+              "WhenOpened": "2024-12-06T02:06:32.728Z",
+              "EditorCaption": ""
             }
           ]
         }

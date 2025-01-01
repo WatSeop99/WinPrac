@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\HookingLauncher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\HookingLauncher.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -34,8 +34,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "dllmain.cpp",
+              "DocumentMoniker": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
+              "RelativeDocumentMoniker": "HookingLauncherDLL\\dllmain.cpp",
+              "ToolTip": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
+              "RelativeToolTip": "HookingLauncherDLL\\dllmain.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-16T08:35:49.409Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
@@ -56,22 +70,23 @@
               "RelativeDocumentMoniker": "HookingLauncherDLL\\HookingLauncher.cpp",
               "ToolTip": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
               "RelativeToolTip": "HookingLauncherDLL\\HookingLauncher.cpp",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAAAJMAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-16T08:39:35.475Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "HookingLauncher.h",
               "DocumentMoniker": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.h",
               "RelativeDocumentMoniker": "HookingLauncherDLL\\HookingLauncher.h",
               "ToolTip": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.h",
               "RelativeToolTip": "HookingLauncherDLL\\HookingLauncher.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-16T08:38:36.275Z"
+              "WhenOpened": "2024-12-16T08:38:36.275Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -87,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "framework.h",
               "DocumentMoniker": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\framework.h",
               "RelativeDocumentMoniker": "HookingLauncherDLL\\framework.h",
@@ -96,18 +111,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-16T08:37:23.577Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "dllmain.cpp",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
-              "RelativeDocumentMoniker": "HookingLauncherDLL\\dllmain.cpp",
-              "ToolTip": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
-              "RelativeToolTip": "HookingLauncherDLL\\dllmain.cpp",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAEAAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-16T08:35:49.409Z"
             },
             {
               "$type": "Document",

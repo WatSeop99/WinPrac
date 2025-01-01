@@ -114,6 +114,11 @@ bool CallbackProcessor::Update(int targetWidth, int targetHeight)
 		Gdiplus::RectF commonRect(0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight());
 
 		const WCHAR* FILE_NAME = L"E:\\WinPrac\\HookingLauncherDLL\\Debug\\Setting.ini";
+
+		WCHAR pszFileName[MAX_PATH];
+		GetModuleFileNameW(nullptr, pszFileName, MAX_PATH);
+		__debugbreak();
+
 		const WCHAR* CATEGORY_STRING = L"Watermark-String";
 		const WCHAR* CATEGORY_IMAGE = L"Watermark-Image";
 		WCHAR szString[MAX_PATH];
