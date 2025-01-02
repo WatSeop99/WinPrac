@@ -7,11 +7,10 @@
 
 #define MY_DLL_API extern "C"
 
-extern HHOOK g_hHook;
-
 MY_DLL_API int CallbackStretchBlt(LPFSP_EXTENSION_PARAM lpParam);
+MY_DLL_API int CallbackBitBlt(LPFSP_EXTENSION_PARAM lpParam);
 
-DWORD_PTR GetProcedure();
+DWORD_PTR GetProcedure(const DWORD PROCEDURE_TYPE);
 
-bool InitializeModule();
+bool InitializeModule(HMODULE hModule);
 bool CleanupModule();

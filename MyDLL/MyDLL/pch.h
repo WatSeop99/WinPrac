@@ -10,4 +10,10 @@
 // add headers that you want to pre-compile here
 #include "framework.h"
 
+#ifdef _DEBUG
+#define DEBUG_BREAK __debugbreak();
+#else
+#define DEBUG_BREAK
+#endif
+
 #endif //PCH_H

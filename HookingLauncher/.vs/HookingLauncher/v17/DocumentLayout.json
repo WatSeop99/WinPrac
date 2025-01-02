@@ -1,34 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\WinPrac\\HookingLauncher\\",
+  "WorkspaceRootPath": "D:\\workspace\\WinPrac\\HookingLauncher\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|e:\\winprac\\hookinglauncher\\hookinglauncher\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|d:\\workspace\\winprac\\hookinglauncher\\hookinglauncher\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|solutionrelative:hookinglauncher\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|e:\\winprac\\hookinglauncher\\hookinglauncher\\hookinglauncher.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|d:\\workspace\\winprac\\hookinglauncher\\hookinglauncher\\hookinglauncher.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|solutionrelative:hookinglauncher\\hookinglauncher.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|e:\\winprac\\hookinglauncher\\hookinglauncher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|d:\\workspace\\winprac\\hookinglauncher\\hookinglauncher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|solutionrelative:hookinglauncher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|E:\\WinPrac\\HookingLauncher\\hookinglauncher\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|D:\\workspace\\WinPrac\\HookingLauncher\\hookinglauncher\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|solutionrelative:hookinglauncher\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\anjs0918\\AppData\\Local\\Temp\\.vsdbgsrc\\af701bb82e0b831bf0d9dfacaf89fde8b9ee60ea\\ApplicationConfiguration.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\workspace\\test\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|e:\\winprac\\hookinglauncher\\hookinglauncher\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|d:\\workspace\\winprac\\hookinglauncher\\hookinglauncher\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F65606B-323E-4EB2-B9B6-F315ADBDBFBE}|HookingLauncher\\HookingLauncher.csproj|solutionrelative:hookinglauncher\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -39,108 +39,102 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "dllmain.cpp",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
+              "RelativeDocumentMoniker": "..\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
+              "RelativeToolTip": "..\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-02T08:27:44.551Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "HookingLauncher.cpp",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
+              "RelativeDocumentMoniker": "..\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
+              "RelativeToolTip": "..\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAAAFsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-02T08:28:26.839Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "MainForm.cs",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncher\\HookingLauncher\\MainForm.cs",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncher\\HookingLauncher\\MainForm.cs",
               "RelativeDocumentMoniker": "HookingLauncher\\MainForm.cs",
-              "ToolTip": "E:\\WinPrac\\HookingLauncher\\HookingLauncher\\MainForm.cs",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncher\\HookingLauncher\\MainForm.cs",
               "RelativeToolTip": "HookingLauncher\\MainForm.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAuwH0AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-16T08:19:43.703Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "dllmain.cpp",
-              "DocumentMoniker": "D:\\workspace\\test\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
-              "ToolTip": "D:\\workspace\\test\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAEcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-23T07:08:00.495Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncher\\HookingLauncher\\Program.cs",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncher\\HookingLauncher\\Program.cs",
               "RelativeDocumentMoniker": "HookingLauncher\\Program.cs",
-              "ToolTip": "E:\\WinPrac\\HookingLauncher\\HookingLauncher\\Program.cs",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncher\\HookingLauncher\\Program.cs",
               "RelativeToolTip": "HookingLauncher\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAqwA8AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T00:26:20.298Z"
+              "WhenOpened": "2024-12-19T00:26:20.298Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "MainForm.Designer.cs",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncher\\HookingLauncher\\MainForm.Designer.cs",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncher\\HookingLauncher\\MainForm.Designer.cs",
               "RelativeDocumentMoniker": "HookingLauncher\\MainForm.Designer.cs",
-              "ToolTip": "E:\\WinPrac\\HookingLauncher\\HookingLauncher\\MainForm.Designer.cs",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncher\\HookingLauncher\\MainForm.Designer.cs",
               "RelativeToolTip": "HookingLauncher\\MainForm.Designer.cs",
               "ViewState": "AgIAAH0AAAAAAAAAAAAAAI4AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T00:26:37.516Z"
+              "WhenOpened": "2024-12-19T00:26:37.516Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplicationConfiguration.g.cs",
+              "DocumentMoniker": "C:\\Users\\anjs0918\\AppData\\Local\\Temp\\.vsdbgsrc\\af701bb82e0b831bf0d9dfacaf89fde8b9ee60ea\\ApplicationConfiguration.g.cs",
+              "ToolTip": "C:\\Users\\anjs0918\\AppData\\Local\\Temp\\.vsdbgsrc\\af701bb82e0b831bf0d9dfacaf89fde8b9ee60ea\\ApplicationConfiguration.g.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T04:56:38.762Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ApplicationConfiguration.g.cs",
-              "DocumentMoniker": "C:\\Users\\anjs0918\\AppData\\Local\\Temp\\.vsdbgsrc\\af701bb82e0b831bf0d9dfacaf89fde8b9ee60ea\\ApplicationConfiguration.g.cs",
-              "ToolTip": "C:\\Users\\anjs0918\\AppData\\Local\\Temp\\.vsdbgsrc\\af701bb82e0b831bf0d9dfacaf89fde8b9ee60ea\\ApplicationConfiguration.g.cs [Read Only]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T04:56:38.762Z",
-              "EditorCaption": " [Read Only]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "MainForm.cs [Design]",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncher\\HookingLauncher\\MainForm.cs",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncher\\HookingLauncher\\MainForm.cs",
               "RelativeDocumentMoniker": "HookingLauncher\\MainForm.cs",
               "ToolTip": "E:\\WinPrac\\HookingLauncher\\HookingLauncher\\MainForm.cs [Design]",
-              "RelativeToolTip": "HookingLauncher\\MainForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-19T00:27:32.712Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HookingLauncher.cpp",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
-              "RelativeDocumentMoniker": "..\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
-              "ToolTip": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
-              "RelativeToolTip": "..\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAcwHIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-30T12:08:31.164Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "HookingLauncher",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncher\\HookingLauncher\\HookingLauncher.csproj",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncher\\HookingLauncher\\HookingLauncher.csproj",
               "RelativeDocumentMoniker": "HookingLauncher\\HookingLauncher.csproj",
-              "ToolTip": "E:\\WinPrac\\HookingLauncher\\HookingLauncher\\HookingLauncher.csproj",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncher\\HookingLauncher\\HookingLauncher.csproj",
               "RelativeToolTip": "HookingLauncher\\HookingLauncher.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-12-30T12:11:37.243Z",

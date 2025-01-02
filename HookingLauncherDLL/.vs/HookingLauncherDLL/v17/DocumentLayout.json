@@ -1,29 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\WinPrac\\HookingLauncherDLL\\",
+  "WorkspaceRootPath": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\HookingLauncher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\HookingLauncher.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\HookingLauncher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{EE1331F1-49F8-4EDA-8890-4E043E96CC3D}|HookingLauncherDLL\\HookingLauncherDLL.vcxproj|solutionrelative:HookingLauncherDLL\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -34,56 +34,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "dllmain.cpp",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
               "RelativeDocumentMoniker": "HookingLauncherDLL\\dllmain.cpp",
-              "ToolTip": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\dllmain.cpp",
               "RelativeToolTip": "HookingLauncherDLL\\dllmain.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-16T08:35:49.409Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "HookingLauncher.cpp",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
               "RelativeDocumentMoniker": "HookingLauncherDLL\\HookingLauncher.cpp",
-              "ToolTip": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
               "RelativeToolTip": "HookingLauncherDLL\\HookingLauncher.cpp",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAABgAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-16T08:39:35.475Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "HookingLauncher.h",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.h",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.h",
               "RelativeDocumentMoniker": "HookingLauncherDLL\\HookingLauncher.h",
-              "ToolTip": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.h",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.h",
               "RelativeToolTip": "HookingLauncherDLL\\HookingLauncher.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-16T08:38:36.275Z",
               "EditorCaption": ""
@@ -92,9 +80,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "pch.cpp",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.cpp",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.cpp",
               "RelativeDocumentMoniker": "HookingLauncherDLL\\pch.cpp",
-              "ToolTip": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.cpp",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.cpp",
               "RelativeToolTip": "HookingLauncherDLL\\pch.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -104,9 +92,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "framework.h",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\framework.h",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\framework.h",
               "RelativeDocumentMoniker": "HookingLauncherDLL\\framework.h",
-              "ToolTip": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\framework.h",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\framework.h",
               "RelativeToolTip": "HookingLauncherDLL\\framework.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -116,9 +104,9 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "pch.h",
-              "DocumentMoniker": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.h",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.h",
               "RelativeDocumentMoniker": "HookingLauncherDLL\\pch.h",
-              "ToolTip": "E:\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.h",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\pch.h",
               "RelativeToolTip": "HookingLauncherDLL\\pch.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",

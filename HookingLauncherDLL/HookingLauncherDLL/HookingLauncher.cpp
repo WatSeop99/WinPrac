@@ -9,47 +9,9 @@ HMODULE SearchInjectionModule(HANDLE hProcess, const WCHAR* pszTARGET_MODULE_PAT
 HMODULE g_hModule = nullptr;
 WCHAR g_pszInjectorModulePath[MAX_PATH];
 
-bool EnableDebugPrivilege()
-{
-	HANDLE hToken;
-	if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken))
-	{
-		std::cerr << "OpenProcessToken failed. Error: " << GetLastError() << std::endl;
-		return false;
-	}
-
-	LUID luid;
-	if (!LookupPrivilegeValue(nullptr, SE_DEBUG_NAME, &luid))
-	{
-		std::cerr << "LookupPrivilegeValue failed. Error: " << GetLastError() << std::endl;
-		CloseHandle(hToken);
-		return false;
-	}
-
-	TOKEN_PRIVILEGES tp;
-	tp.PrivilegeCount = 1;
-	tp.Privileges[0].Luid = luid;
-	tp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
-
-	if (!AdjustTokenPrivileges(hToken, FALSE, &tp, sizeof(TOKEN_PRIVILEGES), nullptr, nullptr))
-	{
-		std::cerr << "AdjustTokenPrivileges failed. Error: " << GetLastError() << std::endl;
-		CloseHandle(hToken);
-		return false;
-	}
-
-	CloseHandle(hToken);
-	return GetLastError() == ERROR_SUCCESS;
-}
-
 bool StartHook()
 {
 	bool bRet = true;
-
-	/*if (!EnableDebugPrivilege())
-	{
-		__debugbreak();
-	}*/
 
 	DWORD targetProcessID;
 	WCHAR pszTargetPath[MAX_PATH];
@@ -72,6 +34,7 @@ bool StartHook()
 	ZeroMemory(pszFilePart, wcslen(pszFilePart));
 	wcsncat_s(g_pszInjectorModulePath, MAX_PATH, L"\\ForceInjection.dll", wcslen(L"\\ForceInjection.dll"));
 
+	// 경로값 타깃 프로세스에 복사.
 	SIZE_T cb = (1 + wcslen(g_pszInjectorModulePath)) * sizeof(WCHAR);
 	WCHAR* pszLibFileRemote = (WCHAR*)VirtualAllocEx(hTargetProcess, nullptr, cb, MEM_COMMIT, PAGE_READWRITE);
 	if (!pszLibFileRemote)

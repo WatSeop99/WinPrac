@@ -1,23 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\WinPrac\\SimpleScreenCapture\\",
+  "WorkspaceRootPath": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\",
   "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|solutionrelative:SimpleScreenCapture\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\workspace\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\workspace\\WinPrac\\MyDLL\\MyDLL\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\SimpleScreenCapture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|solutionrelative:SimpleScreenCapture\\SimpleScreenCapture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\WinPrac\\ForceInjection\\ForceInjection\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|solutionrelative:SimpleScreenCapture\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\SimpleScreenCapture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|solutionrelative:SimpleScreenCapture\\SimpleScreenCapture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\workspace\\test\\MyDLL\\MyDLL\\CallbackProcessor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\workspace\\test\\MyDLL\\MyDLL\\Thread.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
@@ -29,7 +32,7 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\workspace\\test\\TestDLL\\TestDLL\\Hooker.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|solutionrelative:SimpleScreenCapture\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
@@ -48,22 +51,22 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\workspace\\test\\MyDLL\\MyDLL\\MyDll.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Program.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Program.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|solutionrelative:SimpleScreenCapture\\Program.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\workspace\\test\\TestDLL\\TestDLL\\TestDLL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Resource.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Resource.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|solutionrelative:SimpleScreenCapture\\Resource.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\targetver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\targetver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|solutionrelative:SimpleScreenCapture\\targetver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\SimpleScreenCapture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\SimpleScreenCapture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{952601A1-341A-482B-BC1B-E451D6433430}|SimpleScreenCapture\\SimpleScreenCapture.vcxproj|solutionrelative:SimpleScreenCapture\\SimpleScreenCapture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -74,15 +77,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 15,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Program.h",
-              "DocumentMoniker": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Program.h",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Program.h",
               "RelativeDocumentMoniker": "SimpleScreenCapture\\Program.h",
-              "ToolTip": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Program.h",
+              "ToolTip": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Program.h",
               "RelativeToolTip": "SimpleScreenCapture\\Program.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -93,96 +96,75 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "SimpleScreenCapture.cpp",
-              "DocumentMoniker": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\SimpleScreenCapture.cpp",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\SimpleScreenCapture.cpp",
               "RelativeDocumentMoniker": "SimpleScreenCapture\\SimpleScreenCapture.cpp",
-              "ToolTip": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\SimpleScreenCapture.cpp",
+              "ToolTip": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\SimpleScreenCapture.cpp",
               "RelativeToolTip": "SimpleScreenCapture\\SimpleScreenCapture.cpp",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-04T08:09:04.638Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CallbackProcessor.cpp",
-              "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
-              "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-24T06:47:24.036Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Program.cpp",
-              "DocumentMoniker": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Program.cpp",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Program.cpp",
               "RelativeDocumentMoniker": "SimpleScreenCapture\\Program.cpp",
-              "ToolTip": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Program.cpp",
+              "ToolTip": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\Program.cpp",
               "RelativeToolTip": "SimpleScreenCapture\\Program.cpp",
-              "ViewState": "AgIAALUAAAAAAAAAAAAUwMYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALgAAAAAAAAAAAAUwLsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-04T08:47:07.762Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TypeDef.h",
-              "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\TypeDef.h",
-              "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\TypeDef.h",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T08:27:21.252Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Hooker.cpp",
-              "DocumentMoniker": "D:\\workspace\\test\\TestDLL\\TestDLL\\Hooker.cpp",
-              "ToolTip": "D:\\workspace\\test\\TestDLL\\TestDLL\\Hooker.cpp",
+              "DocumentIndex": 2,
+              "Title": "dllmain.cpp",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\MyDLL\\MyDLL\\dllmain.cpp",
+              "RelativeDocumentMoniker": "..\\MyDLL\\MyDLL\\dllmain.cpp",
+              "ToolTip": "D:\\workspace\\WinPrac\\MyDLL\\MyDLL\\dllmain.cpp",
+              "RelativeToolTip": "..\\MyDLL\\MyDLL\\dllmain.cpp",
+              "ViewState": "AgIAACQAAAAAAAAAAAAUwDEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-12T00:29:27.318Z"
+              "WhenOpened": "2025-01-02T01:10:27.106Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "TestDLL.cpp",
-              "DocumentMoniker": "D:\\workspace\\test\\TestDLL\\TestDLL\\TestDLL.cpp",
-              "ToolTip": "D:\\workspace\\test\\TestDLL\\TestDLL\\TestDLL.cpp",
-              "ViewState": "AgIAAKsAAAAAAAAAAAAAAOMAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "CallbackProcessor.cpp",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
+              "RelativeDocumentMoniker": "..\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
+              "ToolTip": "D:\\workspace\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
+              "RelativeToolTip": "..\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOMAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-10T00:35:19.168Z"
+              "WhenOpened": "2025-01-02T01:08:36.987Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "MyDll.h",
               "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\MyDll.h",
+              "RelativeDocumentMoniker": "..\\..\\test\\MyDLL\\MyDLL\\MyDll.h",
               "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\MyDll.h",
+              "RelativeToolTip": "..\\..\\test\\MyDLL\\MyDLL\\MyDll.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-09T04:53:19.037Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "targetver.h",
-              "DocumentMoniker": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\targetver.h",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\targetver.h",
               "RelativeDocumentMoniker": "SimpleScreenCapture\\targetver.h",
-              "ToolTip": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\targetver.h",
+              "ToolTip": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\targetver.h",
               "RelativeToolTip": "SimpleScreenCapture\\targetver.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -190,11 +172,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Resource.h",
-              "DocumentMoniker": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\resource.h",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\resource.h",
               "RelativeDocumentMoniker": "SimpleScreenCapture\\resource.h",
-              "ToolTip": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\resource.h",
+              "ToolTip": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\resource.h",
               "RelativeToolTip": "SimpleScreenCapture\\resource.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -202,11 +184,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "SimpleScreenCapture.h",
-              "DocumentMoniker": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\SimpleScreenCapture.h",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\SimpleScreenCapture.h",
               "RelativeDocumentMoniker": "SimpleScreenCapture\\SimpleScreenCapture.h",
-              "ToolTip": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\SimpleScreenCapture.h",
+              "ToolTip": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\SimpleScreenCapture.h",
               "RelativeToolTip": "SimpleScreenCapture\\SimpleScreenCapture.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -214,64 +196,97 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "CallbackProcessor.cpp",
               "DocumentMoniker": "E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
-              "RelativeDocumentMoniker": "..\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
               "ToolTip": "E:\\WinPrac\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
-              "RelativeToolTip": "..\\MyDLL\\MyDLL\\CallbackProcessor.cpp",
               "ViewState": "AgIAACUBAAAAAAAAAAAcwLAAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-30T12:49:48.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-30T12:49:48.856Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "dllmain.cpp",
               "DocumentMoniker": "E:\\WinPrac\\ForceInjection\\ForceInjection\\dllmain.cpp",
-              "RelativeDocumentMoniker": "..\\ForceInjection\\ForceInjection\\dllmain.cpp",
               "ToolTip": "E:\\WinPrac\\ForceInjection\\ForceInjection\\dllmain.cpp",
-              "RelativeToolTip": "..\\ForceInjection\\ForceInjection\\dllmain.cpp",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAMwHcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-01T07:49:56.366Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-01T07:49:56.366Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 16,
+              "Title": "TestDLL.cpp",
+              "DocumentMoniker": "D:\\workspace\\test\\TestDLL\\TestDLL\\TestDLL.cpp",
+              "RelativeDocumentMoniker": "..\\..\\test\\TestDLL\\TestDLL\\TestDLL.cpp",
+              "ToolTip": "D:\\workspace\\test\\TestDLL\\TestDLL\\TestDLL.cpp",
+              "RelativeToolTip": "..\\..\\test\\TestDLL\\TestDLL\\TestDLL.cpp",
+              "ViewState": "AgIAAKsAAAAAAAAAAAAAAOMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-10T00:35:19.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Hooker.cpp",
+              "DocumentMoniker": "D:\\workspace\\test\\TestDLL\\TestDLL\\Hooker.cpp",
+              "RelativeDocumentMoniker": "..\\..\\test\\TestDLL\\TestDLL\\Hooker.cpp",
+              "ToolTip": "D:\\workspace\\test\\TestDLL\\TestDLL\\Hooker.cpp",
+              "RelativeToolTip": "..\\..\\test\\TestDLL\\TestDLL\\Hooker.cpp",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-12T00:29:27.318Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TypeDef.h",
+              "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\TypeDef.h",
+              "RelativeDocumentMoniker": "..\\..\\test\\MyDLL\\MyDLL\\TypeDef.h",
+              "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\TypeDef.h",
+              "RelativeToolTip": "..\\..\\test\\MyDLL\\MyDLL\\TypeDef.h",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-06T08:27:21.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Thread.cpp",
               "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\Thread.cpp",
+              "RelativeDocumentMoniker": "..\\..\\test\\MyDLL\\MyDLL\\Thread.cpp",
               "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\Thread.cpp",
+              "RelativeToolTip": "..\\..\\test\\MyDLL\\MyDLL\\Thread.cpp",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-24T06:44:32.668Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "dllmain.cpp",
               "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\dllmain.cpp",
+              "RelativeDocumentMoniker": "..\\..\\test\\MyDLL\\MyDLL\\dllmain.cpp",
               "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\dllmain.cpp",
+              "RelativeToolTip": "..\\..\\test\\MyDLL\\MyDLL\\dllmain.cpp",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-06T08:26:23.623Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "dllmain.cpp",
               "DocumentMoniker": "D:\\workspace\\test\\ForceInjection\\ForceInjection\\dllmain.cpp",
+              "RelativeDocumentMoniker": "..\\..\\test\\ForceInjection\\ForceInjection\\dllmain.cpp",
               "ToolTip": "D:\\workspace\\test\\ForceInjection\\ForceInjection\\dllmain.cpp",
+              "RelativeToolTip": "..\\..\\test\\ForceInjection\\ForceInjection\\dllmain.cpp",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-06T08:15:52.569Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "framework.h",
-              "DocumentMoniker": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\framework.h",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\framework.h",
               "RelativeDocumentMoniker": "SimpleScreenCapture\\framework.h",
-              "ToolTip": "E:\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\framework.h",
+              "ToolTip": "D:\\workspace\\WinPrac\\SimpleScreenCapture\\SimpleScreenCapture\\framework.h",
               "RelativeToolTip": "SimpleScreenCapture\\framework.h",
               "ViewState": "AgIAAAUAAAAAAAAAAAAowBMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -279,19 +294,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "CallbackProcessor.h",
               "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\CallbackProcessor.h",
+              "RelativeDocumentMoniker": "..\\..\\test\\MyDLL\\MyDLL\\CallbackProcessor.h",
               "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\CallbackProcessor.h",
+              "RelativeToolTip": "..\\..\\test\\MyDLL\\MyDLL\\CallbackProcessor.h",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-24T07:00:58.155Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "MyDll.cpp",
               "DocumentMoniker": "D:\\workspace\\test\\MyDLL\\MyDLL\\MyDll.cpp",
+              "RelativeDocumentMoniker": "..\\..\\test\\MyDLL\\MyDLL\\MyDll.cpp",
               "ToolTip": "D:\\workspace\\test\\MyDLL\\MyDLL\\MyDll.cpp",
+              "RelativeToolTip": "..\\..\\test\\MyDLL\\MyDLL\\MyDll.cpp",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-09T00:03:29.795Z"
             }

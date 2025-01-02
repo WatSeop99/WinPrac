@@ -21,6 +21,7 @@ namespace HookingLauncher
         private static extern long GetPrivateProfileString(string section, string key, string def, StringBuilder reVal, int size, string filePath);
 
         private string m_SettingFilePath = "";
+        private string m_SettingPath = "";
         private bool m_bActivated = false;
 
         public MainForm()
@@ -77,7 +78,7 @@ namespace HookingLauncher
         {
             if (!m_bActivated)
             {
-                MessageBox.Show("Can't stop hooking!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             if (!StopHook())
             {
@@ -88,7 +89,7 @@ namespace HookingLauncher
 
         private void OptionBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            // No Imlementation..
         }
 
         private void WatermarkStringOpt_Click(object sender, EventArgs e)
@@ -108,6 +109,10 @@ namespace HookingLauncher
 
         private void Closing(object sender, FormClosingEventArgs e)
         {
+            if (!m_bActivated)
+            {
+                return;
+            }
             StopHook();
             m_bActivated = false;
         }
@@ -115,7 +120,7 @@ namespace HookingLauncher
         private void ConfigureSetting()
         {
             string filePath = Directory.GetCurrentDirectory();
-            string settingDirectoryPath = filePath + "\\Settings";
+            string settingDirectoryPath = filePath + "\\..\\Settings";
             string settingFile = settingDirectoryPath + "\\setting.ini";
 
             if (Directory.Exists(settingDirectoryPath) == false)
@@ -126,15 +131,21 @@ namespace HookingLauncher
             {
                 File.Create(settingFile);
             }
-            
+
+            m_SettingPath = settingDirectoryPath;
             m_SettingFilePath = settingFile;
 
-            WritePrivateProfileString("FileConfigure", "Injector", filePath + "\\DLL\\ForceInjection.dll", m_SettingFilePath);
-            WritePrivateProfileString("FileConfigure", "CallbackDLL", filePath + "\\DLL\\MyDLL.dll", m_SettingFilePath);
+            WritePrivateProfileString("FileConfigure", "Injector", filePath + "\\..\\DLL\\ForceInjection.dll", m_SettingFilePath);
+            WritePrivateProfileString("FileConfigure", "CallbackDLL", filePath + "\\..\\DLL\\MyDLL.dll", m_SettingFilePath);
         }
 
         private void InitializeWatermarkSetting()
         {
+            //if (File.Exists(m_SettingFilePath))
+            //{
+            //    return;
+            //}
+
             // font string.
             WritePrivateProfileString("Watermark-String", "String", "test", m_SettingFilePath);
 
@@ -154,7 +165,7 @@ namespace HookingLauncher
             WritePrivateProfileString("Watermark-String", "Color", "536805376", m_SettingFilePath); // 0x1FFF0000
 
             // image path.
-            WritePrivateProfileString("Watermark-Image", "Path", "E:\\WinPrac\\HookingLauncherDLL\\Debug\\sample.bmp", m_SettingFilePath);
+            WritePrivateProfileString("Watermark-Image", "Path", m_SettingPath + "\\sample.bmp", m_SettingFilePath);
 
             // image alpha value.
             WritePrivateProfileString("Watermark-Image", "Alpha", "31", m_SettingFilePath);

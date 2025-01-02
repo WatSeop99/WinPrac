@@ -11,9 +11,11 @@ const WCHAR* g_pszCLASS_NAMES[] =
 	L"XLMAIN"
 };
 
-bool CallbackProcessor::Initialize()
+bool CallbackProcessor::Initialize(HMODULE hModule)
 {
 	bool bRet = true;
+
+	m_hModule = hModule;
 
 	if (Gdiplus::GdiplusStartup(&m_Token, &m_Input, nullptr) != Gdiplus::Ok)
 	{
@@ -113,11 +115,17 @@ bool CallbackProcessor::Update(int targetWidth, int targetHeight)
 
 		Gdiplus::RectF commonRect(0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight());
 
-		const WCHAR* FILE_NAME = L"E:\\WinPrac\\HookingLauncherDLL\\Debug\\Setting.ini";
+		WCHAR szFilePath[MAX_PATH];
+		WCHAR szImageFilePath[MAX_PATH];
+		WCHAR* pszFilePart = nullptr;
+		GetModuleFileName(m_hModule, szFilePath, MAX_PATH);
+		
+		pszFilePart = wcsrchr(szFilePath, '\\');
+		ZeroMemory(pszFilePart, wcslen(pszFilePart));
+		wcsncpy_s(szImageFilePath, MAX_PATH, szFilePath, wcslen(szFilePath));
 
-		WCHAR pszFileName[MAX_PATH];
-		GetModuleFileNameW(nullptr, pszFileName, MAX_PATH);
-		__debugbreak();
+		wcsncat_s(szFilePath, MAX_PATH, L"\\..\\Settings\\setting.ini", wcslen(L"\\..\\Settings\\setting.ini"));
+		wcsncat_s(szImageFilePath, MAX_PATH, L"\\..\\Settings\\sample.bmp", wcslen(L"\\..\\Settings\\sample.bmp"));
 
 		const WCHAR* CATEGORY_STRING = L"Watermark-String";
 		const WCHAR* CATEGORY_IMAGE = L"Watermark-Image";
@@ -130,13 +138,13 @@ bool CallbackProcessor::Update(int targetWidth, int targetHeight)
 		WCHAR szImagePath[MAX_PATH];
 
 		// .ini 파일로부터 설정값들을 가져옴.
-		GetPrivateProfileString(CATEGORY_STRING, L"String", szSystemTimeAndUser, szString, MAX_PATH * sizeof(WCHAR), FILE_NAME);
-		GetPrivateProfileString(CATEGORY_STRING, L"Faily", L"Arial", szFamily, MAX_PATH * sizeof(WCHAR), FILE_NAME);
-		GetPrivateProfileString(CATEGORY_STRING, L"Size", L"60", szSize, 5 * sizeof(WCHAR), FILE_NAME);
-		GetPrivateProfileString(CATEGORY_STRING, L"Style", L"0", szStyle, 2 * sizeof(WCHAR), FILE_NAME);
-		GetPrivateProfileString(CATEGORY_STRING, L"Unit", L"3", szUnit, 3 * sizeof(WCHAR), FILE_NAME);
-		GetPrivateProfileString(CATEGORY_STRING, L"Color", L"0", szColor, MAX_PATH * sizeof(WCHAR), FILE_NAME);
-		GetPrivateProfileString(CATEGORY_IMAGE, L"Path", L"E:\\WinPrac\\HookingLauncherDLL\\Debug\\sample.bmp", szImagePath, MAX_PATH * sizeof(WCHAR), FILE_NAME);
+		GetPrivateProfileString(CATEGORY_STRING, L"String", szSystemTimeAndUser, szString, MAX_PATH * sizeof(WCHAR), szFilePath);
+		GetPrivateProfileString(CATEGORY_STRING, L"Faily", L"Arial", szFamily, MAX_PATH * sizeof(WCHAR), szFilePath);
+		GetPrivateProfileString(CATEGORY_STRING, L"Size", L"60", szSize, 5 * sizeof(WCHAR), szFilePath);
+		GetPrivateProfileString(CATEGORY_STRING, L"Style", L"0", szStyle, 2 * sizeof(WCHAR), szFilePath);
+		GetPrivateProfileString(CATEGORY_STRING, L"Unit", L"3", szUnit, 3 * sizeof(WCHAR), szFilePath);
+		GetPrivateProfileString(CATEGORY_STRING, L"Color", L"0", szColor, MAX_PATH * sizeof(WCHAR), szFilePath);
+		GetPrivateProfileString(CATEGORY_IMAGE, L"Path", szImageFilePath, szImagePath, MAX_PATH * sizeof(WCHAR), szFilePath);
 
 
 		Gdiplus::Font font(szFamily, _wtoi(szSize), (Gdiplus::FontStyle)_wtoi(szStyle), (Gdiplus::Unit)_wtoi(szUnit));
@@ -181,8 +189,8 @@ bool CallbackProcessor::Update(int targetWidth, int targetHeight)
 		// 이미지 Draw.
 		m_pWatermarkImageGraphics->Clear(Gdiplus::Color(0, 0, 0, 0));
 		m_pWatermarkImageGraphics->DrawImage(pImage, imageRect);
-
 		delete pImage;
+		pImage = nullptr;
 
 		{
 			// 순회하면서 윈도우 핸들 얻어옴.
@@ -233,7 +241,11 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 							   int   hSrc,
 							   DWORD rop)
 {
-	_ASSERT(m_pfnOriginFunc);
+	if (m_pfnOriginStretchBltFunc == nullptr)
+	{
+		return false;
+	}
+
 
 	bool bRet = true;
 
@@ -260,12 +272,14 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 	bmi.bmiHeader.biPlanes = 1;
 	bmi.bmiHeader.biBitCount = 24;
 	bmi.bmiHeader.biCompression = BI_RGB;
+
 	hDummyBitmap = CreateDIBSection(hTempDC, &bmi, DIB_RGB_COLORS, (void**)&pBitmapDataForDummy, nullptr, 0);
 	if (!hDummyBitmap || hDummyBitmap == INVALID_HANDLE_VALUE)
 	{
 		bRet = false;
 		goto LB_CLEAN_TEMP_DC;
 	}
+
 	hDummyWrite = (HBITMAP)SelectObject(hTempDC, hDummyBitmap);
 	if (!hDummyWrite || hDummyWrite == INVALID_HANDLE_VALUE)
 	{
@@ -282,7 +296,7 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 	}
 
 	// Capture whole screen.
-	if (!m_pfnOriginFunc(hTempDC, 0, 0, wSrc, hSrc, hdcSrc, xSrc, ySrc, wSrc, hSrc, rop))
+	if (!m_pfnOriginStretchBltFunc(hTempDC, 0, 0, wSrc, hSrc, hdcSrc, xSrc, ySrc, wSrc, hSrc, rop))
 	{
 		bRet = false;
 		goto LB_CLEANUP;
@@ -300,10 +314,11 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 		};
 		Gdiplus::ImageAttributes imageAtt;
 		imageAtt.SetColorMatrix(&colorMatrix, Gdiplus::ColorMatrixFlagsDefault, Gdiplus::ColorAdjustTypeBitmap);
+
 		Gdiplus::RectF screenSize(0, 0, wSrc, hSrc);
 		pTempDCGraphics->DrawImage(m_pWatermark, screenSize, 0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
 	}
-	if (!m_pfnOriginFunc(hdcDest, xDest, yDest, wDest, hDest, hTempDC, 0, 0, wSrc, hSrc, rop))
+	if (!m_pfnOriginStretchBltFunc(hdcDest, xDest, yDest, wDest, hDest, hTempDC, 0, 0, wSrc, hSrc, rop))
 	{
 		bRet = false;
 	}
@@ -315,6 +330,123 @@ LB_CLEANUP:
 		delete pTempDCGraphics;
 		pTempDCGraphics = nullptr;
 	}
+
+LB_CLEAN_DUMMY_WRITE:
+	DeleteObject(hDummyWrite);
+
+LB_CLEAN_DUMMY_BITMAP:
+	DeleteObject(hDummyBitmap);
+
+LB_CLEAN_TEMP_DC:
+	DeleteDC(hTempDC);
+
+LB_RET:
+	return bRet;
+}
+
+bool CallbackProcessor::Render(HDC   hdc, 
+							   int   x, 
+							   int   y, 
+							   int   cx, 
+							   int   cy, 
+							   HDC   hdcSrc, 
+							   int   x1, 
+							   int   y1, 
+							   DWORD rop)
+{
+	if (m_pfnOriginBitBlt == nullptr)
+	{
+		return false;
+	}
+
+
+	bool bRet = true;
+
+	HDC hWatermarkDC = nullptr;
+	HDC hTempDC = nullptr;
+	HBITMAP hDummyBitmap = nullptr;
+	HBITMAP hDummyWrite = nullptr;
+	BYTE* pBitmapDataForDummy = nullptr;
+	Gdiplus::Graphics* pTempDCGraphics = nullptr;
+
+	// Create compatible dc.
+	hTempDC = CreateCompatibleDC(hdc);
+	if (!hTempDC || hTempDC == INVALID_HANDLE_VALUE)
+	{
+		bRet = false;
+		goto LB_RET;
+	}
+
+	// Create bitmap for compatible dc.
+	BITMAP bitmapHeader = { 0, };
+	HGDIOBJ hBitmap = GetCurrentObject(hdcSrc, OBJ_BITMAP);
+	GetObject(hBitmap, sizeof(HGDIOBJ), &bitmapHeader);
+
+	BITMAPINFO bmi = { 0, };
+	bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+	bmi.bmiHeader.biWidth = bitmapHeader.bmWidth;
+	bmi.bmiHeader.biHeight = bitmapHeader.bmHeight;
+	bmi.bmiHeader.biPlanes = 1;
+	bmi.bmiHeader.biBitCount = 24;
+	bmi.bmiHeader.biCompression = BI_RGB;
+
+	hDummyBitmap = CreateDIBSection(hTempDC, &bmi, DIB_RGB_COLORS, (void**)&pBitmapDataForDummy, nullptr, 0);
+	if (!hDummyBitmap || hDummyBitmap == INVALID_HANDLE_VALUE)
+	{
+		bRet = false;
+		goto LB_CLEAN_TEMP_DC;
+	}
+
+	hDummyWrite = (HBITMAP)SelectObject(hTempDC, hDummyBitmap);
+	if (!hDummyWrite || hDummyWrite == INVALID_HANDLE_VALUE)
+	{
+		bRet = false;
+		goto LB_CLEAN_DUMMY_BITMAP;
+	}
+
+	// Create gdi+ graphics object for compatible dc.
+	pTempDCGraphics = Gdiplus::Graphics::FromHDC(hTempDC);
+	if (!pTempDCGraphics || pTempDCGraphics->GetLastStatus() != Gdiplus::Ok)
+	{
+		bRet = false;
+		goto LB_CLEAN_DUMMY_WRITE;
+	}
+
+	// Capture whole screen.
+	if (!m_pfnOriginBitBlt(hTempDC, 0, 0, bitmapHeader.bmWidth, bitmapHeader.bmHeight, hdcSrc, x1, y1, rop))
+	{
+		bRet = false;
+		goto LB_CLEANUP;
+	}
+
+	// Draw watermark to captured image.
+	{
+		Gdiplus::ColorMatrix colorMatrix =
+		{
+			1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 0.0f, 0.5f, 0.0f,
+			0.0f, 0.0f, 0.0f, 0.0f, 1.0f
+		};
+		Gdiplus::ImageAttributes imageAtt;
+		imageAtt.SetColorMatrix(&colorMatrix, Gdiplus::ColorMatrixFlagsDefault, Gdiplus::ColorAdjustTypeBitmap);
+		Gdiplus::RectF screenSize(0, 0, bitmapHeader.bmWidth, bitmapHeader.bmHeight);
+		pTempDCGraphics->DrawImage(m_pWatermark, screenSize, 0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
+	}
+	if (!m_pfnOriginBitBlt(hdc, x, y, cx, cy, hTempDC, 0, 0, rop))
+	{
+		bRet = false;
+	}
+
+
+LB_CLEANUP:
+	if (pTempDCGraphics)
+	{
+		delete pTempDCGraphics;
+		pTempDCGraphics = nullptr;
+	}
+	DeleteObject(hBitmap);
 
 LB_CLEAN_DUMMY_WRITE:
 	DeleteObject(hDummyWrite);
@@ -361,6 +493,8 @@ bool CallbackProcessor::Cleanup()
 		delete m_pWatermark;
 		m_pWatermark = nullptr;
 	}
+
+	m_hModule = nullptr;
 
 	return true;
 }

@@ -11,7 +11,7 @@ public:
 	CallbackProcessor() = default;
 	~CallbackProcessor() { Cleanup(); }
 
-	bool Initialize();
+	bool Initialize(HMODULE hModule);
 
 	bool Update(int targetWidth, int targetHeight);
 
@@ -26,6 +26,15 @@ public:
 				int   wSrc,
 				int   hSrc,
 				DWORD rop);
+	bool Render(HDC   hdc,
+				int   x,
+				int   y,
+				int   cx,
+				int   cy,
+				HDC   hdcSrc,
+				int   x1,
+				int   y1,
+				DWORD rop);
 
 	bool Cleanup();
 
@@ -34,8 +43,10 @@ public:
 	inline Gdiplus::Bitmap* GetWatermarkImage() { return m_pWatermarkImage; }
 	inline Gdiplus::Graphics* GetWatermarkGraphics() { return m_pWatermarkGraphics; }
 
-	inline void SetOriginFunc(PFnStretchBlt pfnOrigin) { m_pfnOriginFunc = pfnOrigin; }
-	inline void SetNullOriginFunc() { m_pfnOriginFunc = nullptr; }
+	inline void SetOriginStretchBltFunc(PFnStretchBlt pfnOrigin) { m_pfnOriginStretchBltFunc = pfnOrigin; }
+	inline void SetOriginBitBltFunc(PFnBitBlt pfnOrigin) { m_pfnOriginBitBlt = pfnOrigin; }
+	inline void SetNullOriginStretchBltFunc() { m_pfnOriginStretchBltFunc = nullptr; }
+	inline void SetNullOriginBitBltFunc() { m_pfnOriginBitBlt = nullptr; }
 
 public:
 	std::unordered_set<HWND> WindowTable;
@@ -52,5 +63,7 @@ private:
 	Gdiplus::GdiplusStartupInput m_Input;
 
 	// DO NOT Release directly.
-	PFnStretchBlt m_pfnOriginFunc = nullptr;
+	HMODULE m_hModule = nullptr;
+	PFnStretchBlt m_pfnOriginStretchBltFunc = nullptr;
+	PFnBitBlt m_pfnOriginBitBlt = nullptr;
 };
