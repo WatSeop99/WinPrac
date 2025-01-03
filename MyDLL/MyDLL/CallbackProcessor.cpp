@@ -69,7 +69,7 @@ LB_RET:
 	return bRet;
 }
 
-bool CallbackProcessor::Update(int targetWidth, int targetHeight)
+bool CallbackProcessor::Update(int targetX, int targetY, int targetWidth, int targetHeight)
 {
 	_ASSERT(m_pWatermark);
 	_ASSERT(m_pWatermarkGraphics);
@@ -192,37 +192,10 @@ bool CallbackProcessor::Update(int targetWidth, int targetHeight)
 		delete pImage;
 		pImage = nullptr;
 
-		{
-			// 순회하면서 윈도우 핸들 얻어옴.
-			WindowTable.clear();
-			EnumWindows(EnumWindowsProc, (LPARAM)this);
 
-			// 테이블에 있는 핸들값을 이용해 사이즈만큼 워터마크 덮어씌움.
-			for (auto iter = WindowTable.begin(), endIter = WindowTable.end(); iter != endIter; ++iter)
-			{
-				// 윈도우 크기 얻어옴.
-				RECT rect = { 0, };
-				GetWindowRect(*iter, &rect);
-
-				int width = rect.right - rect.left;
-				int height = rect.bottom - rect.top;
-				if (width == 0 || height == 0) // 사이즈 0
-				{
-					__debugbreak();
-				}
-
-				// 가려져 있거나 최상위 창이 아님.
-				if (rect.left < 0 || rect.top < 0)
-				{
-					continue;
-				}
-
-				// 크기 잡아놓은 후 그림.
-				Gdiplus::RectF windowRect(rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top);
-				m_pWatermarkGraphics->DrawImage(m_pWatermarkImage, windowRect, 0, 0, m_pWatermarkImage->GetWidth(), m_pWatermarkImage->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
-				m_pWatermarkGraphics->DrawImage(m_pWatermarkString, windowRect, 0, 0, m_pWatermarkString->GetWidth(), m_pWatermarkString->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
-			}
-		}
+		Gdiplus::RectF windowRect(0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight());
+		m_pWatermarkGraphics->DrawImage(m_pWatermarkImage, windowRect, 0, 0, m_pWatermarkImage->GetWidth(), m_pWatermarkImage->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
+		m_pWatermarkGraphics->DrawImage(m_pWatermarkString, windowRect, 0, 0, m_pWatermarkString->GetWidth(), m_pWatermarkString->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
 	}
 
 LB_RET:
@@ -315,8 +288,45 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 		Gdiplus::ImageAttributes imageAtt;
 		imageAtt.SetColorMatrix(&colorMatrix, Gdiplus::ColorMatrixFlagsDefault, Gdiplus::ColorAdjustTypeBitmap);
 
-		Gdiplus::RectF screenSize(0, 0, wSrc, hSrc);
-		pTempDCGraphics->DrawImage(m_pWatermark, screenSize, 0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
+		// 순회하면서 윈도우 핸들 얻어옴.
+		WindowTable.clear();
+		EnumWindows(EnumWindowsProc, (LPARAM)this);
+
+		// 테이블에 있는 핸들값을 이용해 사이즈만큼 워터마크 덮어씌움.
+		for (auto iter = WindowTable.begin(), endIter = WindowTable.end(); iter != endIter; ++iter)
+		{
+			// 윈도우 크기 얻어옴.
+			RECT rect = { 0, };
+			GetWindowRect(*iter, &rect);
+
+			int width = rect.right - rect.left;
+			int height = rect.bottom - rect.top;
+			if (width == 0 || height == 0) // 사이즈 0
+			{
+				__debugbreak();
+			}
+
+			// 가려져 있거나 최상위 창이 아님.
+			if (rect.left < 0 || rect.top < 0)
+			{
+				continue;
+			}
+
+
+			RECT overrapedRect = { 0, };
+			overrapedRect.left = max(xSrc, rect.left);
+			overrapedRect.top = max(ySrc, rect.top);
+			overrapedRect.right = min(xSrc + wSrc, rect.right);
+			overrapedRect.bottom = min(ySrc + hSrc, rect.bottom);
+			if (overrapedRect.left >= overrapedRect.right || overrapedRect.top >= overrapedRect.bottom)
+			{
+				continue;
+			}
+
+			// 크기 잡아놓은 후 그림.
+			Gdiplus::RectF windowRect(overrapedRect.left - xSrc, overrapedRect.top - ySrc, overrapedRect.right - overrapedRect.left, overrapedRect.bottom - overrapedRect.top);
+			pTempDCGraphics->DrawImage(m_pWatermark, windowRect, 0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
+		}
 	}
 	if (!m_pfnOriginStretchBltFunc(hdcDest, xDest, yDest, wDest, hDest, hTempDC, 0, 0, wSrc, hSrc, rop))
 	{
@@ -378,14 +388,10 @@ bool CallbackProcessor::Render(HDC   hdc,
 	}
 
 	// Create bitmap for compatible dc.
-	BITMAP bitmapHeader = { 0, };
-	HGDIOBJ hBitmap = GetCurrentObject(hdcSrc, OBJ_BITMAP);
-	GetObject(hBitmap, sizeof(HGDIOBJ), &bitmapHeader);
-
 	BITMAPINFO bmi = { 0, };
 	bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-	bmi.bmiHeader.biWidth = bitmapHeader.bmWidth;
-	bmi.bmiHeader.biHeight = bitmapHeader.bmHeight;
+	bmi.bmiHeader.biWidth = cx;
+	bmi.bmiHeader.biHeight = cy;
 	bmi.bmiHeader.biPlanes = 1;
 	bmi.bmiHeader.biBitCount = 24;
 	bmi.bmiHeader.biCompression = BI_RGB;
@@ -413,7 +419,7 @@ bool CallbackProcessor::Render(HDC   hdc,
 	}
 
 	// Capture whole screen.
-	if (!m_pfnOriginBitBlt(hTempDC, 0, 0, bitmapHeader.bmWidth, bitmapHeader.bmHeight, hdcSrc, x1, y1, rop))
+	if (!m_pfnOriginBitBlt(hTempDC, 0, 0, cx, cy, hdcSrc, x1, y1, rop))
 	{
 		bRet = false;
 		goto LB_CLEANUP;
@@ -431,8 +437,49 @@ bool CallbackProcessor::Render(HDC   hdc,
 		};
 		Gdiplus::ImageAttributes imageAtt;
 		imageAtt.SetColorMatrix(&colorMatrix, Gdiplus::ColorMatrixFlagsDefault, Gdiplus::ColorAdjustTypeBitmap);
-		Gdiplus::RectF screenSize(0, 0, bitmapHeader.bmWidth, bitmapHeader.bmHeight);
-		pTempDCGraphics->DrawImage(m_pWatermark, screenSize, 0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
+		
+		// 순회하면서 윈도우 핸들 얻어옴.
+		WindowTable.clear();
+		EnumWindows(EnumWindowsProc, (LPARAM)this);
+
+		// 테이블에 있는 핸들값을 이용해 사이즈만큼 워터마크 덮어씌움.
+		for (auto iter = WindowTable.begin(), endIter = WindowTable.end(); iter != endIter; ++iter)
+		{
+			// 윈도우 크기 얻어옴.
+			RECT rect = { 0, };
+			GetWindowRect(*iter, &rect);
+
+			int width = rect.right - rect.left;
+			int height = rect.bottom - rect.top;
+			if (width == 0 || height == 0) // 사이즈 0
+			{
+				__debugbreak();
+			}
+
+			// 가려져 있거나 최상위 창이 아님.
+			if (rect.left < 0 || rect.top < 0)
+			{
+				continue;
+			}
+
+
+			RECT overrapedRect = { 0, };
+			overrapedRect.left = max(x, rect.left);
+			overrapedRect.top = max(y, rect.top);
+			overrapedRect.right = min(x + cx, rect.right);
+			overrapedRect.bottom = min(y + cy, rect.bottom);
+			if (overrapedRect.left >= overrapedRect.right || overrapedRect.top >= overrapedRect.bottom)
+			{
+				continue;
+			}
+
+			// 크기 잡아놓은 후 그림.
+			Gdiplus::RectF windowRect(overrapedRect.left - x, overrapedRect.top - y, overrapedRect.right - overrapedRect.left, overrapedRect.bottom - overrapedRect.top);
+			pTempDCGraphics->DrawImage(m_pWatermark, windowRect, 0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
+		}
+		
+		/*Gdiplus::RectF screenSize(0, 0, cx, cy);
+		pTempDCGraphics->DrawImage(m_pWatermark, screenSize, 0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight(), Gdiplus::UnitPixel, &imageAtt);*/
 	}
 	if (!m_pfnOriginBitBlt(hdc, x, y, cx, cy, hTempDC, 0, 0, rop))
 	{
@@ -446,7 +493,6 @@ LB_CLEANUP:
 		delete pTempDCGraphics;
 		pTempDCGraphics = nullptr;
 	}
-	DeleteObject(hBitmap);
 
 LB_CLEAN_DUMMY_WRITE:
 	DeleteObject(hDummyWrite);

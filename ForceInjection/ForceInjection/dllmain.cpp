@@ -59,15 +59,15 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 			}
 			g_pfnCallbackStretchBlt = (PFnCallbackFunc)dwAddr;
 
-			//dwAddr = 0;
-			//bResult = pfnDllMain(g_HookingModule, (DLL_PROCESS_GET_PROCEDURE | DLL_PROCEDURE_BITBLT), &dwAddr);
-			//if (!bResult || dwAddr == 0)
-			//{
-			//	//DEBUG_BREAK;
-			//	MessageBox(nullptr, L"Failed in DllMain call-Injector", L"Error", MB_OK);
-			//	return FALSE;
-			//}
-			//g_pfnCallbackBitBlt = (PFnCallbackFunc)dwAddr;
+			dwAddr = 0;
+			bResult = pfnDllMain(g_HookingModule, (DLL_PROCESS_GET_PROCEDURE | DLL_PROCEDURE_BITBLT), &dwAddr);
+			if (!bResult || dwAddr == 0)
+			{
+				//DEBUG_BREAK;
+				MessageBox(nullptr, L"Failed in DllMain call-Injector", L"Error", MB_OK);
+				return FALSE;
+			}
+			g_pfnCallbackBitBlt = (PFnCallbackFunc)dwAddr;
 
 			// StretchBlt, BitBlt의 원형 주소 가져옴.
 			/*_ASSERT(g_pfnOriginStretchBlt == nullptr);
@@ -80,20 +80,19 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 				DEBUG_BREAK;
 				return FALSE;
 			}
-			//g_pfnOriginBitBlt = (PFnBitBltFunc)GetProcAddress(GetModuleHandleW(pszTARGET_MODULE_NAME), "BitBlt");
-			//if (g_pfnOriginBitBlt == nullptr)
-			//{
-			//	//DEBUG_BREAK;
-			//	MessageBox(nullptr, L"Failed in GetProcAddress-Injector", L"Error", MB_OK);
-			//	return FALSE;
-			//}
+			g_pfnOriginBitBlt = (PFnBitBltFunc)GetProcAddress(GetModuleHandleW(pszTARGET_MODULE_NAME), "BitBlt");
+			if (g_pfnOriginBitBlt == nullptr)
+			{
+				MessageBox(nullptr, L"Failed in GetProcAddress-Injector", L"Error", MB_OK);
+				return FALSE;
+			}
 
 			// Detour를 통해 콜백 등록.
 			DetourRestoreAfterWith();
 			DetourTransactionBegin();
 			DetourUpdateThread(GetCurrentThread());
 			DetourAttach(&(PVOID&)g_pfnOriginStretchBlt, MyStretchBlt);
-			//DetourAttach(&(PVOID&)g_pfnOriginBitBlt, MyBitBlt);
+			DetourAttach(&(PVOID&)g_pfnOriginBitBlt, MyBitBlt);
 			DetourTransactionCommit();
 
 			break;
@@ -111,7 +110,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 				DetourTransactionBegin();
 				DetourUpdateThread(GetCurrentThread());
 				DetourDetach(&(PVOID&)g_pfnOriginStretchBlt, MyStretchBlt);
-				//DetourDetach(&(PVOID&)g_pfnOriginBitBlt, MyBitBlt);
+				DetourDetach(&(PVOID&)g_pfnOriginBitBlt, MyBitBlt);
 				DetourTransactionCommit();
 
 				// 콜백 모듈 해제.

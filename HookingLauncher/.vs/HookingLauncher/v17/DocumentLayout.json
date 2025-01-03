@@ -52,8 +52,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-02T08:27:44.551Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -77,7 +76,7 @@
               "RelativeDocumentMoniker": "HookingLauncher\\MainForm.cs",
               "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncher\\HookingLauncher\\MainForm.cs",
               "RelativeToolTip": "HookingLauncher\\MainForm.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAI4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-16T08:19:43.703Z",
               "EditorCaption": ""
@@ -92,8 +91,7 @@
               "RelativeToolTip": "HookingLauncher\\Program.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAqwA8AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T00:26:20.298Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-19T00:26:20.298Z"
             },
             {
               "$type": "Document",
@@ -105,8 +103,7 @@
               "RelativeToolTip": "HookingLauncher\\MainForm.Designer.cs",
               "ViewState": "AgIAAH0AAAAAAAAAAAAAAI4AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T00:26:37.516Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-19T00:26:37.516Z"
             },
             {
               "$type": "Document",
@@ -115,8 +112,7 @@
               "DocumentMoniker": "C:\\Users\\anjs0918\\AppData\\Local\\Temp\\.vsdbgsrc\\af701bb82e0b831bf0d9dfacaf89fde8b9ee60ea\\ApplicationConfiguration.g.cs",
               "ToolTip": "C:\\Users\\anjs0918\\AppData\\Local\\Temp\\.vsdbgsrc\\af701bb82e0b831bf0d9dfacaf89fde8b9ee60ea\\ApplicationConfiguration.g.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T04:56:38.762Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-26T04:56:38.762Z"
             },
             {
               "$type": "Document",
@@ -137,8 +133,7 @@
               "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncher\\HookingLauncher\\HookingLauncher.csproj",
               "RelativeToolTip": "HookingLauncher\\HookingLauncher.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-30T12:11:37.243Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-30T12:11:37.243Z"
             }
           ]
         }

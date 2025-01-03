@@ -18,7 +18,6 @@ bool StartHook()
 
 	// 타깃 프로세스 핸들 값 가져옴.
 	HANDLE hTargetProcess = SearchTargetProcess(L"picpick.exe", &targetProcessID, pszTargetPath);
-	//HANDLE hTargetProcess = SearchTargetProcess(L"SimpleScreenCapture.exe", &targetProcessID, pszTargetPath);
 	if (!hTargetProcess || hTargetProcess == INVALID_HANDLE_VALUE)
 	{
 		MessageBox(nullptr, L"Target process not exists.", L"ERROR", MB_OK);
@@ -100,7 +99,6 @@ bool StopHook()
 
 	// 타깃 프로세스 핸들 값 가져옴.
 	HANDLE hTargetProcess = SearchTargetProcess(L"picpick.exe", &targetProcessID, pszTargetPath);
-	//HANDLE hTargetProcess = SearchTargetProcess(L"SimpleScreenCapture.exe", &targetProcessID, pszTargetPath);
 	if (!hTargetProcess || hTargetProcess == INVALID_HANDLE_VALUE)
 	{
 		MessageBox(nullptr, L"Can't open target process.", L"ERROR", MB_OK);

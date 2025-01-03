@@ -13,7 +13,7 @@ public:
 
 	bool Initialize(HMODULE hModule);
 
-	bool Update(int targetWidth, int targetHeight);
+	bool Update(int targetX, int targetY, int targetWidth, int targetHeight);
 
 	bool Render(HDC   hdcDest,
 				int   xDest,

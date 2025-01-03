@@ -11,7 +11,7 @@ D:\workspace\WinPrac\HookingLauncherDLL\HookingLauncherDLL\HookingLauncher.cpp(1
       D:\workspace\WinPrac\HookingLauncherDLL\HookingLauncherDLL\HookingLauncher.h(7,18):
       see previous definition of 'StartHook'
   
-D:\workspace\WinPrac\HookingLauncherDLL\HookingLauncherDLL\HookingLauncher.cpp(94,6): warning C4273: 'StopHook': inconsistent dll linkage
+D:\workspace\WinPrac\HookingLauncherDLL\HookingLauncherDLL\HookingLauncher.cpp(93,6): warning C4273: 'StopHook': inconsistent dll linkage
   (compiling source file '/HookingLauncher.cpp')
       D:\workspace\WinPrac\HookingLauncherDLL\HookingLauncherDLL\HookingLauncher.h(8,18):
       see previous definition of 'StopHook'

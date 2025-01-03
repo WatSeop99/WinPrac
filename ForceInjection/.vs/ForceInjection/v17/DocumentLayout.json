@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "ForceInjection\\dllmain.cpp",
               "ToolTip": "D:\\workspace\\WinPrac\\ForceInjection\\ForceInjection\\dllmain.cpp",
               "RelativeToolTip": "ForceInjection\\dllmain.cpp",
-              "ViewState": "AgIAACMAAAAAAAAAAAAAAEEAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-06T02:06:13.337Z",
               "EditorCaption": ""
@@ -55,8 +55,7 @@
               "RelativeToolTip": "ForceInjection\\TypeDef.h",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T05:47:50.747Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T05:47:50.747Z"
             },
             {
               "$type": "Document",
@@ -80,8 +79,7 @@
               "RelativeToolTip": "ForceInjection\\pch.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T02:06:33.756Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T02:06:33.756Z"
             },
             {
               "$type": "Document",
@@ -93,8 +91,7 @@
               "RelativeToolTip": "ForceInjection\\framework.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T02:06:32.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T02:06:32.728Z"
             }
           ]
         }

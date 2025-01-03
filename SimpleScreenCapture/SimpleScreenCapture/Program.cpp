@@ -197,6 +197,18 @@ void Program::DoCapture(HWND hWnd)
 		MessageBox(hWnd, L"StretchBlt has failed", L"Failed", MB_OK);
 	}
 
+	/*BITMAP bitmapHeader = { 0, };
+	HGDIOBJ hBitmap = GetCurrentObject(hdcScreen, OBJ_BITMAP);
+	GetObject(hBitmap, sizeof(HGDIOBJ), &bitmapHeader);
+
+	if (!BitBlt(hdcWindow,
+				0, 0,
+				GetSystemMetrics(SM_CXSCREEN),
+				GetSystemMetrics(SM_CYSCREEN), hdcScreen, 0, 0, SRCCOPY))
+	{
+		MessageBox(hWnd, L"BitBlt has failed", L"Failed", MB_OK);
+	}*/
+
 
 	// Clean up.
 	ReleaseDC(nullptr, hdcScreen); 

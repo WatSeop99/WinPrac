@@ -47,8 +47,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-16T08:35:49.409Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -56,9 +55,9 @@
               "Title": "HookingLauncher.cpp",
               "DocumentMoniker": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
               "RelativeDocumentMoniker": "HookingLauncherDLL\\HookingLauncher.cpp",
-              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp",
-              "RelativeToolTip": "HookingLauncherDLL\\HookingLauncher.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAPAAAAAAAAAA==",
+              "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.cpp*",
+              "RelativeToolTip": "HookingLauncherDLL\\HookingLauncher.cpp*",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAGAAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-16T08:39:35.475Z",
               "EditorCaption": ""
@@ -71,7 +70,7 @@
               "RelativeDocumentMoniker": "HookingLauncherDLL\\HookingLauncher.h",
               "ToolTip": "D:\\workspace\\WinPrac\\HookingLauncherDLL\\HookingLauncherDLL\\HookingLauncher.h",
               "RelativeToolTip": "HookingLauncherDLL\\HookingLauncher.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-16T08:38:36.275Z",
               "EditorCaption": ""

@@ -37,18 +37,10 @@ int CallbackStretchBlt(LPFSP_EXTENSION_PARAM lpParam)
 
 
 	// DC로부터 popup window인지 판별.
-	HWND hwndDest = WindowFromDC(hdcDest);
-	// 시스템 전체(?) DC일 경우 그냥 처리.
-	/*if (hwndDest == nullptr)
-	{
-		pfnStretchBlt(hdcDest, nXOriginDest, nYOriginDest, nWidthDest, nHeightDest, hdcSrc, nXOriginSrc, nYOriginSrc, nWidthSrc, nHeightSrc, dwRop);
-		retVal = TRUE;
-		goto LB_RET;
-	}*/
-	// 팝업 윈도우일 경우에도 그냥 처리.
-	DWORD windowStyle = GetWindowLong(hwndDest, GWL_STYLE);
-	//if (!(windowStyle & WS_POPUP) || (windowStyle & WS_CHILD))
-	if ((windowStyle & WS_POPUP) && !(windowStyle & WS_CHILD))
+	HWND hwndSrc= WindowFromDC(hdcSrc);
+	// 팝업 윈도우일 경우, 그냥 처리.
+	DWORD windowStyle = GetWindowLong(hwndSrc, GWL_STYLE);
+	if (!(windowStyle & WS_POPUP) || (windowStyle & WS_CHILD))
 	{
 		pfnStretchBlt(hdcDest, nXOriginDest, nYOriginDest, nWidthDest, nHeightDest, hdcSrc, nXOriginSrc, nYOriginSrc, nWidthSrc, nHeightSrc, dwRop);
 		retVal = TRUE;                       
@@ -59,7 +51,7 @@ int CallbackStretchBlt(LPFSP_EXTENSION_PARAM lpParam)
 	g_pCallbackProcessor->SetOriginStretchBltFunc(pfnStretchBlt);
 
 	// Draw watermark..
-	retVal = g_pCallbackProcessor->Update(nWidthDest, nHeightDest);
+	retVal = g_pCallbackProcessor->Update(nXOriginSrc, nYOriginSrc, nWidthSrc, nHeightSrc);
 	if (!retVal)
 	{
 		goto LB_RET;
@@ -107,34 +99,27 @@ int CallbackBitBlt(LPFSP_EXTENSION_PARAM lpParam)
 	lpParam->dwParam1 = FSP_EXTRET_DEFAULT;
 
 
-	//// DC로부터 popup window인지 판별.
-	//HWND hwndDest = WindowFromDC(hdc);
-	//// 시스템 전체(?) DC일 경우 그냥 처리.
-	//if (!hwndDest)
-	//{
-	//	pfnBitBlt(hdc, x, y, cx, y, hdcSrc, x1, y1, dwRop);
-	//	retVal = TRUE;
-	//	goto LB_RET;
-	//}
-	//// 팝업 윈도우일 경우에도 그냥 처리.
-	//DWORD windowStyle = GetWindowLong(hwndDest, GWL_STYLE);
-	//if ((windowStyle & WS_POPUP) && !(windowStyle & WS_CHILD))
-	//{
-	//	pfnBitBlt(hdc, x, y, cx, y, hdcSrc, x1, y1, dwRop);
-	//	retVal = TRUE;
-	//	goto LB_RET;
-	//}
+	// DC로부터 popup window인지 판별.
+	HWND hwndSrc = WindowFromDC(hdcSrc);
+	// 팝업 윈도우일 경우, 그냥 처리.
+	DWORD windowStyle = GetWindowLong(hwndSrc, GWL_STYLE);
+	if (!(windowStyle & WS_POPUP) || (windowStyle & WS_CHILD))
+	{
+		pfnBitBlt(hdc, x, y, cx, cy, hdcSrc, x1, y1, dwRop);
+		retVal = TRUE;
+		goto LB_RET;
+	}
 
 
 	g_pCallbackProcessor->SetOriginBitBltFunc(pfnBitBlt);
 
 	// Draw watermark..
-	retVal = g_pCallbackProcessor->Update(cx, cy);
+	retVal = g_pCallbackProcessor->Update(x1, y1, cx, cy);
 	if (!retVal)
 	{
 		goto LB_RET;
 	}
-	retVal = g_pCallbackProcessor->Render(hdc, x, y, cx, y, hdcSrc, x1, y1, dwRop);
+	retVal = g_pCallbackProcessor->Render(hdc, x, y, cx, cy, hdcSrc, x1, y1, dwRop);
 	if (!retVal)
 	{
 		goto LB_RET;

@@ -141,11 +141,6 @@ namespace HookingLauncher
 
         private void InitializeWatermarkSetting()
         {
-            //if (File.Exists(m_SettingFilePath))
-            //{
-            //    return;
-            //}
-
             // font string.
             WritePrivateProfileString("Watermark-String", "String", "test", m_SettingFilePath);
 
