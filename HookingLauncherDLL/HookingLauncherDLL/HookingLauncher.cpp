@@ -31,7 +31,7 @@ bool StartHook()
 	GetModuleFileNameW(g_hModule, g_pszInjectorModulePath, MAX_PATH);
 	pszFilePart = wcsrchr(g_pszInjectorModulePath, L'\\');
 	ZeroMemory(pszFilePart, wcslen(pszFilePart));
-	wcsncat_s(g_pszInjectorModulePath, MAX_PATH, L"\\ForceInjection.dll", wcslen(L"\\ForceInjection.dll"));
+	wcsncat_s(g_pszInjectorModulePath, MAX_PATH, L"\\InjectorModule.dll", wcslen(L"\\InjectorModule.dll"));
 
 	// 경로값 타깃 프로세스에 복사.
 	SIZE_T cb = (1 + wcslen(g_pszInjectorModulePath)) * sizeof(WCHAR);

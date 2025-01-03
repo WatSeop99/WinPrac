@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\workspace\\WinPrac\\CallbackModule\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|CallbackModule\\CallbackModule.vcxproj|D:\\workspace\\WinPrac\\CallbackModule\\CallbackModule\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|CallbackModule\\CallbackModule.vcxproj|solutionrelative:CallbackModule\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|CallbackModule\\CallbackModule.vcxproj|D:\\workspace\\WinPrac\\CallbackModule\\CallbackModule\\CallbackCommon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D3640C4D-DF5D-4FE8-B1A3-9019886A17D7}|CallbackModule\\CallbackModule.vcxproj|solutionrelative:CallbackModule\\CallbackCommon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dllmain.cpp",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\CallbackModule\\CallbackModule\\dllmain.cpp",
+              "RelativeDocumentMoniker": "CallbackModule\\dllmain.cpp",
+              "ToolTip": "D:\\workspace\\WinPrac\\CallbackModule\\CallbackModule\\dllmain.cpp",
+              "RelativeToolTip": "CallbackModule\\dllmain.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-03T04:56:16.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CallbackCommon.cpp",
+              "DocumentMoniker": "D:\\workspace\\WinPrac\\CallbackModule\\CallbackModule\\CallbackCommon.cpp",
+              "RelativeDocumentMoniker": "CallbackModule\\CallbackCommon.cpp",
+              "ToolTip": "D:\\workspace\\WinPrac\\CallbackModule\\CallbackModule\\CallbackCommon.cpp",
+              "RelativeToolTip": "CallbackModule\\CallbackCommon.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-03T04:56:08.517Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
