@@ -2,7 +2,6 @@
 #include "CallbackProcessor.h"
 
 BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam);
-RECT MaxWindow(RECT* pR1, RECT* pR2);
 
 const WCHAR* g_pszCLASS_NAMES[] =
 {
@@ -10,7 +9,6 @@ const WCHAR* g_pszCLASS_NAMES[] =
 	L"PPTFrameClass",
 	L"XLMAIN"
 };
-RECT g_PrevMaxRect;
 
 bool CallbackProcessor::Initialize(HMODULE hModule)
 {
@@ -302,12 +300,9 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 			GetWindowRect(*iter, &rect);
 
 			// 겹치는 영역 판별.
+			RECT requireRect = { xSrc, ySrc, xSrc + wSrc, ySrc + hSrc };
 			RECT overrapedRect = { 0, };
-			overrapedRect.left = max(xSrc, rect.left);
-			overrapedRect.top = max(ySrc, rect.top);
-			overrapedRect.right = min(xSrc + wSrc, rect.right);
-			overrapedRect.bottom = min(ySrc + hSrc, rect.bottom);
-			if (overrapedRect.left >= overrapedRect.right || overrapedRect.top >= overrapedRect.bottom)
+			if (!IntersectRect(&overrapedRect, &rect, &requireRect))
 			{
 				continue;
 			}
@@ -439,12 +434,9 @@ bool CallbackProcessor::Render(HDC   hdc,
 			GetWindowRect(*iter, &rect);
 
 			// 겹치는 영역 판별.
+			RECT requireRect = { x, y, x + cx, y + cy };
 			RECT overrapedRect = { 0, };
-			overrapedRect.left = max(x, rect.left);
-			overrapedRect.top = max(y, rect.top);
-			overrapedRect.right = min(x + cx, rect.right);
-			overrapedRect.bottom = min(y + cy, rect.bottom);
-			if (overrapedRect.left >= overrapedRect.right || overrapedRect.top >= overrapedRect.bottom)
+			if (!IntersectRect(&overrapedRect, &rect, &requireRect))
 			{
 				continue;
 			}
@@ -526,6 +518,10 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam)
 	{
 		return FALSE;
 	}
+	if (!IsWindowVisible(hwnd))
+	{
+		return TRUE;
+	}
 
 	CallbackProcessor* pProcessor = (CallbackProcessor*)lParam;
 
@@ -533,8 +529,6 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam)
 	WCHAR szClassName[MAX_PATH];
 	GetClassName(hwnd, szClassName, MAX_PATH);
 
-
-	bool bFound = false;
 	// 원하는 클래스 이름인지 확인.
 	// 맞다면 윈도우 테이블에 추가.
 	for (SIZE_T i = 0, size = _countof(g_pszCLASS_NAMES); i < size; ++i)
@@ -559,41 +553,10 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam)
 				break;
 			}
 
-			// 창이 보이지 않음.
-			if (!IsWindowVisible(hwnd))
-			{
-				break;
-			}
-
-			/*RECT intersectionRect;
-			IntersectRect(&intersectionRect, &g_PrevMaxRect, &rect);*/
-
-			bFound = true;
 			pProcessor->WindowTable.insert(hwnd);
 			break;
 		}
 	}
 
-	/*if (!bFound)
-	{
-		RECT rect = { 0, };
-		GetWindowRect(hwnd, &rect);
-
-		g_PrevMaxRect = MaxWindow(&g_PrevMaxRect, &rect);
-	}*/
-
 	return TRUE;
 }
-
-//RECT MaxWindow(RECT* pR1, RECT* pR2)
-//{
-//	RECT ret;
-//
-//	int r1Width = pR1->right - pR1->left;
-//	int r1Height = pR1->bottom - pR1->top;
-//	int r2;
-//
-//	HRGN;
-//
-//	return ret;
-//}
