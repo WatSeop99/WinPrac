@@ -31,8 +31,6 @@ namespace HookingLauncher
             ConfigureSetting();
 
             FormClosing += new FormClosingEventHandler(Closing);
-
-            InitializeWatermarkSetting();
         }
 
         ~MainForm()
@@ -82,7 +80,7 @@ namespace HookingLauncher
             }
             if (!StopHook())
             {
-                Debugger.Break();
+                MessageBox.Show("Can't stop hooking!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             m_bActivated = false;
         }
@@ -137,33 +135,65 @@ namespace HookingLauncher
 
             WritePrivateProfileString("FileConfigure", "Injector", filePath + "\\..\\DLL\\ForceInjection.dll", m_SettingFilePath);
             WritePrivateProfileString("FileConfigure", "CallbackDLL", filePath + "\\..\\DLL\\MyDLL.dll", m_SettingFilePath);
+            InitializeWatermarkSetting();
+            WatermarkImagePath.Text = m_SettingPath + "\\sample.bmp";
         }
 
         private void InitializeWatermarkSetting()
         {
+            StringBuilder sb = new StringBuilder { Capacity = 256 };
+
             // font string.
-            WritePrivateProfileString("Watermark-String", "String", "test", m_SettingFilePath);
+            if (GetPrivateProfileString("Watermark-String", "String", "", sb, sb.Capacity, m_SettingFilePath) == 0)
+            {
+                WritePrivateProfileString("Watermark-String", "String", "test", m_SettingFilePath);
+            }
+            WatermarkString.Text = sb.ToString();
+            sb.Clear();
 
             // font family.
-            WritePrivateProfileString("Watermark-String", "Family", "¸¼Àº °íµñ", m_SettingFilePath);
+            if (GetPrivateProfileString("Watermark-String", "Family", "", sb, sb.Capacity, m_SettingFilePath) == 0)
+            {
+                WritePrivateProfileString("Watermark-String", "Family", "¸¼Àº °íµñ", m_SettingFilePath);
+            }
+            sb.Clear();
 
             // font size.
-            WritePrivateProfileString("Watermark-String", "Size", "60", m_SettingFilePath);
+            if (GetPrivateProfileString("Watermark-String", "Size", "", sb, sb.Capacity, m_SettingFilePath) == 0)
+            {
+                WritePrivateProfileString("Watermark-String", "Size", "60", m_SettingFilePath);
+            }
+            sb.Clear();
 
             // font style.
-            WritePrivateProfileString("Watermark-String", "Style", "0", m_SettingFilePath);
+            if (GetPrivateProfileString("Watermark-String", "Style", "", sb, sb.Capacity, m_SettingFilePath) == 0)
+            {
+                WritePrivateProfileString("Watermark-String", "Style", "0", m_SettingFilePath);
+            }
 
             // font unit.
-            WritePrivateProfileString("Watermark-String", "Unit", "3", m_SettingFilePath);
+            if (GetPrivateProfileString("Watermark-String", "Unit", "", sb, sb.Capacity, m_SettingFilePath) == 0)
+            {
+                WritePrivateProfileString("Watermark-String", "Unit", "3", m_SettingFilePath);
+            }
 
             // font brush.
-            WritePrivateProfileString("Watermark-String", "Color", "536805376", m_SettingFilePath); // 0x1FFF0000
+            if (GetPrivateProfileString("Watermark-String", "Color", "", sb, sb.Capacity, m_SettingFilePath) == 0)
+            {
+                WritePrivateProfileString("Watermark-String", "Color", "536805376", m_SettingFilePath); // 0x1FFF0000
+            }
 
             // image path.
-            WritePrivateProfileString("Watermark-Image", "Path", m_SettingPath + "\\sample.bmp", m_SettingFilePath);
+            if (GetPrivateProfileString("Watermark-Image", "Path", "", sb, sb.Capacity, m_SettingFilePath) == 0)
+            {
+                WritePrivateProfileString("Watermark-Image", "Path", m_SettingPath + "\\sample.bmp", m_SettingFilePath);
+            }
 
             // image alpha value.
-            WritePrivateProfileString("Watermark-Image", "Alpha", "31", m_SettingFilePath);
+            if (GetPrivateProfileString("Watermark-Image", "Alpha", "", sb, sb.Capacity, m_SettingFilePath) == 0)
+            { 
+                WritePrivateProfileString("Watermark-Image", "Alpha", "31", m_SettingFilePath);
+            }
         }
     }
 }

@@ -10,6 +10,7 @@
 #include <TlHelp32.h>
 #include <DbgHelp.h>
 
+#include <stdio.h>
 #include <crtdbg.h>
 
 #include <detours.h>

@@ -2,7 +2,7 @@
 #include "CallbackProcessor.h"
 
 BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam);
-
+RECT MaxWindow(RECT* pR1, RECT* pR2);
 
 const WCHAR* g_pszCLASS_NAMES[] =
 {
@@ -10,6 +10,7 @@ const WCHAR* g_pszCLASS_NAMES[] =
 	L"PPTFrameClass",
 	L"XLMAIN"
 };
+RECT g_PrevMaxRect;
 
 bool CallbackProcessor::Initialize(HMODULE hModule)
 {
@@ -113,17 +114,18 @@ bool CallbackProcessor::Update(int targetX, int targetY, int targetWidth, int ta
 			++s_UpdateCount;
 		}*/
 
-		Gdiplus::RectF commonRect(0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight());
-
 		WCHAR szFilePath[MAX_PATH];
 		WCHAR szImageFilePath[MAX_PATH];
 		WCHAR* pszFilePart = nullptr;
+		// 모듈 원래 경로 가져옴.
 		GetModuleFileName(m_hModule, szFilePath, MAX_PATH);
 		
+		// 디렉토리 경로만 가져옴.
 		pszFilePart = wcsrchr(szFilePath, '\\');
 		ZeroMemory(pszFilePart, wcslen(pszFilePart));
 		wcsncpy_s(szImageFilePath, MAX_PATH, szFilePath, wcslen(szFilePath));
 
+		// 파일 이름을 각각 붙임.
 		wcsncat_s(szFilePath, MAX_PATH, L"\\..\\Settings\\setting.ini", wcslen(L"\\..\\Settings\\setting.ini"));
 		wcsncat_s(szImageFilePath, MAX_PATH, L"\\..\\Settings\\sample.bmp", wcslen(L"\\..\\Settings\\sample.bmp"));
 
@@ -299,20 +301,7 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 			RECT rect = { 0, };
 			GetWindowRect(*iter, &rect);
 
-			int width = rect.right - rect.left;
-			int height = rect.bottom - rect.top;
-			if (width == 0 || height == 0) // 사이즈 0
-			{
-				__debugbreak();
-			}
-
-			// 가려져 있거나 최상위 창이 아님.
-			if (rect.left < 0 || rect.top < 0)
-			{
-				continue;
-			}
-
-
+			// 겹치는 영역 판별.
 			RECT overrapedRect = { 0, };
 			overrapedRect.left = max(xSrc, rect.left);
 			overrapedRect.top = max(ySrc, rect.top);
@@ -449,20 +438,7 @@ bool CallbackProcessor::Render(HDC   hdc,
 			RECT rect = { 0, };
 			GetWindowRect(*iter, &rect);
 
-			int width = rect.right - rect.left;
-			int height = rect.bottom - rect.top;
-			if (width == 0 || height == 0) // 사이즈 0
-			{
-				__debugbreak();
-			}
-
-			// 가려져 있거나 최상위 창이 아님.
-			if (rect.left < 0 || rect.top < 0)
-			{
-				continue;
-			}
-
-
+			// 겹치는 영역 판별.
 			RECT overrapedRect = { 0, };
 			overrapedRect.left = max(x, rect.left);
 			overrapedRect.top = max(y, rect.top);
@@ -477,9 +453,6 @@ bool CallbackProcessor::Render(HDC   hdc,
 			Gdiplus::RectF windowRect(overrapedRect.left - x, overrapedRect.top - y, overrapedRect.right - overrapedRect.left, overrapedRect.bottom - overrapedRect.top);
 			pTempDCGraphics->DrawImage(m_pWatermark, windowRect, 0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
 		}
-		
-		/*Gdiplus::RectF screenSize(0, 0, cx, cy);
-		pTempDCGraphics->DrawImage(m_pWatermark, screenSize, 0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight(), Gdiplus::UnitPixel, &imageAtt);*/
 	}
 	if (!m_pfnOriginBitBlt(hdc, x, y, cx, cy, hTempDC, 0, 0, rop))
 	{
@@ -540,6 +513,8 @@ bool CallbackProcessor::Cleanup()
 		m_pWatermark = nullptr;
 	}
 
+	Gdiplus::GdiplusShutdown(m_Token);
+
 	m_hModule = nullptr;
 
 	return true;
@@ -547,7 +522,7 @@ bool CallbackProcessor::Cleanup()
 
 BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam)
 {
-	if (!hwnd)
+	if (!hwnd || !IsWindow(hwnd))
 	{
 		return FALSE;
 	}
@@ -558,16 +533,67 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam)
 	WCHAR szClassName[MAX_PATH];
 	GetClassName(hwnd, szClassName, MAX_PATH);
 
+
+	bool bFound = false;
 	// 원하는 클래스 이름인지 확인.
 	// 맞다면 윈도우 테이블에 추가.
 	for (SIZE_T i = 0, size = _countof(g_pszCLASS_NAMES); i < size; ++i)
 	{
 		if (wcsncmp(szClassName, g_pszCLASS_NAMES[i], wcslen(szClassName)) == 0)
 		{
+			// 윈도우 크기 얻어옴.
+			RECT rect = { 0, };
+			GetWindowRect(hwnd, &rect);
+
+			int width = rect.right - rect.left;
+			int height = rect.bottom - rect.top;
+			// 창 사이즈가 0임.
+			if (width == 0 || height == 0)
+			{
+				break;
+			}
+
+			// 최상위 창이 아님.
+			if (rect.left < 0 || rect.top < 0)
+			{
+				break;
+			}
+
+			// 창이 보이지 않음.
+			if (!IsWindowVisible(hwnd))
+			{
+				break;
+			}
+
+			/*RECT intersectionRect;
+			IntersectRect(&intersectionRect, &g_PrevMaxRect, &rect);*/
+
+			bFound = true;
 			pProcessor->WindowTable.insert(hwnd);
 			break;
 		}
 	}
 
+	/*if (!bFound)
+	{
+		RECT rect = { 0, };
+		GetWindowRect(hwnd, &rect);
+
+		g_PrevMaxRect = MaxWindow(&g_PrevMaxRect, &rect);
+	}*/
+
 	return TRUE;
 }
+
+//RECT MaxWindow(RECT* pR1, RECT* pR2)
+//{
+//	RECT ret;
+//
+//	int r1Width = pR1->right - pR1->left;
+//	int r1Height = pR1->bottom - pR1->top;
+//	int r2;
+//
+//	HRGN;
+//
+//	return ret;
+//}

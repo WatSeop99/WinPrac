@@ -24,7 +24,6 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 			WCHAR szCallbackModulePath[MAX_PATH];
 			if (!GetCallbackModulePath(hModule, szCallbackModulePath))
 			{
-				//DEBUG_BREAK;
 				MessageBox(nullptr, L"Failed in GetCallbackModulePath", L"Error", MB_OK);
 				return FALSE;
 			}
@@ -34,8 +33,10 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 			g_HookingModule = LoadLibraryW(szCallbackModulePath);
 			if (!g_HookingModule)
 			{
-				//DEBUG_BREAK;
-				MessageBox(nullptr, L"Failed in LoadLibraryW-Injector", L"Error", MB_OK);
+				WCHAR szDebugString[MAX_PATH];
+				swprintf_s(szDebugString, MAX_PATH, L"Failed in LoadLibraryW-Injector: %s, and get last Error at %d", szCallbackModulePath, GetLastError());
+				//MessageBox(nullptr, L"Failed in LoadLibraryW-Injector", L"Error", MB_OK);
+				MessageBox(nullptr, szDebugString, L"Error", MB_OK);
 				return FALSE;
 			}
 
@@ -63,7 +64,6 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 			bResult = pfnDllMain(g_HookingModule, (DLL_PROCESS_GET_PROCEDURE | DLL_PROCEDURE_BITBLT), &dwAddr);
 			if (!bResult || dwAddr == 0)
 			{
-				//DEBUG_BREAK;
 				MessageBox(nullptr, L"Failed in DllMain call-Injector", L"Error", MB_OK);
 				return FALSE;
 			}
