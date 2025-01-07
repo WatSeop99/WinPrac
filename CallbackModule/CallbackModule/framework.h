@@ -16,7 +16,9 @@
 
 #include <crtdbg.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
+#include <wchar.h>
 
 #include <vector>
 #include <unordered_set>

@@ -72,20 +72,26 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)$(TargetName)\External\Detours\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)$(TargetName)\External\Detours\lib.X86\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)External\Detours\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)External\Detours\lib.X86\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(ProjectDir)..\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)$(TargetName)\External\Detours\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)$(TargetName)\External\Detours\lib.X86\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)External\Detours\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)External\Detours\lib.X86\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(ProjectDir)..\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)$(TargetName)\External\Detours\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)$(TargetName)\External\Detours\lib.X86\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)External\Detours\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)External\Detours\lib.X86\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(ProjectDir)..\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)$(TargetName)\External\Detours\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)$(TargetName)\External\Detours\lib.X86\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)External\Detours\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)External\Detours\lib.X86\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(ProjectDir)..\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -102,7 +108,7 @@
       <EnableUAC>false</EnableUAC>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
+      <Command>xcopy /Y "$(ProjectDir)..\$(Platform)\$(Configuration)\$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -124,7 +130,7 @@
       <EnableUAC>false</EnableUAC>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
+      <Command>xcopy /Y "$(ProjectDir)..\$(Platform)\$(Configuration)\$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -142,7 +148,7 @@
       <EnableUAC>false</EnableUAC>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
+      <Command>xcopy /Y "$(ProjectDir)..\$(Platform)\$(Configuration)\$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -164,7 +170,7 @@
       <EnableUAC>false</EnableUAC>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
+      <Command>xcopy /Y "$(ProjectDir)..\$(Platform)\$(Configuration)\$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

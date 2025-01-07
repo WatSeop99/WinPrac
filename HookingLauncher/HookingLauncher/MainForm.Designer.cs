@@ -33,9 +33,15 @@
             WatermarkString = new TextBox();
             WatermarkImageSet = new Button();
             WatermarkStringSet = new Button();
-            OptionBox = new CheckedListBox();
             WatermarkImagePath = new TextBox();
             WatermarkStringOpt = new Button();
+            ImageLabel = new Label();
+            TextLabel = new Label();
+            AlphaControl = new TrackBar();
+            MinAlpha = new Label();
+            MaxAlpha = new Label();
+            AlphaLabel = new Label();
+            ((System.ComponentModel.ISupportInitialize)AlphaControl).BeginInit();
             SuspendLayout();
             // 
             // StopHooking
@@ -65,7 +71,7 @@
             WatermarkString.AccessibleName = "WatermarkString";
             WatermarkString.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             WatermarkString.ForeColor = SystemColors.ActiveCaptionText;
-            WatermarkString.Location = new Point(21, 66);
+            WatermarkString.Location = new Point(21, 116);
             WatermarkString.Name = "WatermarkString";
             WatermarkString.Size = new Size(254, 23);
             WatermarkString.TabIndex = 2;
@@ -74,7 +80,7 @@
             // WatermarkImageSet
             // 
             WatermarkImageSet.AccessibleName = "WatermarkImageSet";
-            WatermarkImageSet.Location = new Point(281, 20);
+            WatermarkImageSet.Location = new Point(281, 57);
             WatermarkImageSet.Name = "WatermarkImageSet";
             WatermarkImageSet.Size = new Size(62, 27);
             WatermarkImageSet.TabIndex = 5;
@@ -85,7 +91,7 @@
             // WatermarkStringSet
             // 
             WatermarkStringSet.AccessibleName = "WatermarkStringSet";
-            WatermarkStringSet.Location = new Point(281, 63);
+            WatermarkStringSet.Location = new Point(281, 113);
             WatermarkStringSet.Name = "WatermarkStringSet";
             WatermarkStringSet.Size = new Size(62, 27);
             WatermarkStringSet.TabIndex = 7;
@@ -93,23 +99,12 @@
             WatermarkStringSet.UseVisualStyleBackColor = true;
             WatermarkStringSet.Click += WatermarkStringSet_Click;
             // 
-            // OptionBox
-            // 
-            OptionBox.AccessibleName = "OptionBox";
-            OptionBox.FormattingEnabled = true;
-            OptionBox.Items.AddRange(new object[] { "test1", "test2", "test3", "test4" });
-            OptionBox.Location = new Point(21, 112);
-            OptionBox.Name = "OptionBox";
-            OptionBox.Size = new Size(254, 94);
-            OptionBox.TabIndex = 8;
-            OptionBox.SelectedIndexChanged += OptionBox_SelectedIndexChanged;
-            // 
             // WatermarkImagePath
             // 
             WatermarkImagePath.AccessibleName = "WatermarkImagePath";
             WatermarkImagePath.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             WatermarkImagePath.ForeColor = SystemColors.ActiveCaptionText;
-            WatermarkImagePath.Location = new Point(21, 23);
+            WatermarkImagePath.Location = new Point(21, 60);
             WatermarkImagePath.Name = "WatermarkImagePath";
             WatermarkImagePath.Size = new Size(254, 23);
             WatermarkImagePath.TabIndex = 9;
@@ -118,7 +113,7 @@
             // WatermarkStringOpt
             // 
             WatermarkStringOpt.AccessibleName = "WatermarkStringOpt";
-            WatermarkStringOpt.Location = new Point(349, 63);
+            WatermarkStringOpt.Location = new Point(349, 113);
             WatermarkStringOpt.Name = "WatermarkStringOpt";
             WatermarkStringOpt.Size = new Size(62, 27);
             WatermarkStringOpt.TabIndex = 10;
@@ -126,21 +121,89 @@
             WatermarkStringOpt.UseVisualStyleBackColor = true;
             WatermarkStringOpt.Click += WatermarkStringOpt_Click;
             // 
+            // ImageLabel
+            // 
+            ImageLabel.AccessibleName = "ImageLabel";
+            ImageLabel.AutoSize = true;
+            ImageLabel.Location = new Point(21, 42);
+            ImageLabel.Name = "ImageLabel";
+            ImageLabel.Size = new Size(40, 15);
+            ImageLabel.TabIndex = 11;
+            ImageLabel.Text = "Image";
+            // 
+            // TextLabel
+            // 
+            TextLabel.AccessibleName = "TextLabel";
+            TextLabel.AutoSize = true;
+            TextLabel.Location = new Point(21, 98);
+            TextLabel.Name = "TextLabel";
+            TextLabel.Size = new Size(29, 15);
+            TextLabel.TabIndex = 12;
+            TextLabel.Text = "Text";
+            // 
+            // AlphaControl
+            // 
+            AlphaControl.AccessibleName = "AlphaControl";
+            AlphaControl.Location = new Point(21, 193);
+            AlphaControl.Maximum = 100;
+            AlphaControl.Name = "AlphaControl";
+            AlphaControl.Size = new Size(283, 45);
+            AlphaControl.TabIndex = 20;
+            AlphaControl.Scroll += AlphaControl_Scroll;
+            // 
+            // MinAlpha
+            // 
+            MinAlpha.AccessibleName = "MinAlpha";
+            MinAlpha.AutoSize = true;
+            MinAlpha.Location = new Point(21, 175);
+            MinAlpha.Name = "MinAlpha";
+            MinAlpha.Size = new Size(24, 15);
+            MinAlpha.TabIndex = 21;
+            MinAlpha.Text = "0.0";
+            // 
+            // MaxAlpha
+            // 
+            MaxAlpha.AccessibleName = "MaxAlpha";
+            MaxAlpha.AutoSize = true;
+            MaxAlpha.Location = new Point(281, 175);
+            MaxAlpha.Name = "MaxAlpha";
+            MaxAlpha.Size = new Size(24, 15);
+            MaxAlpha.TabIndex = 22;
+            MaxAlpha.Text = "1.0";
+            // 
+            // AlphaLabel
+            // 
+            AlphaLabel.AccessibleName = "AlphaLabel";
+            AlphaLabel.AutoSize = true;
+            AlphaLabel.Location = new Point(21, 155);
+            AlphaLabel.Name = "AlphaLabel";
+            AlphaLabel.Size = new Size(38, 15);
+            AlphaLabel.TabIndex = 23;
+            AlphaLabel.Text = "Alpha";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(534, 300);
+            Controls.Add(AlphaLabel);
+            Controls.Add(MaxAlpha);
+            Controls.Add(MinAlpha);
+            Controls.Add(AlphaControl);
+            Controls.Add(TextLabel);
+            Controls.Add(ImageLabel);
             Controls.Add(WatermarkStringOpt);
             Controls.Add(WatermarkImagePath);
-            Controls.Add(OptionBox);
             Controls.Add(WatermarkStringSet);
             Controls.Add(WatermarkImageSet);
             Controls.Add(WatermarkString);
             Controls.Add(StartHooking);
             Controls.Add(StopHooking);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "MainForm";
             Text = "Launcher";
+            ((System.ComponentModel.ISupportInitialize)AlphaControl).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -152,8 +215,13 @@
         private TextBox WatermarkString;
         private Button WatermarkImageSet;
         private Button WatermarkStringSet;
-        private CheckedListBox OptionBox;
         private TextBox WatermarkImagePath;
         private Button WatermarkStringOpt;
+        private Label ImageLabel;
+        private Label TextLabel;
+        private TrackBar AlphaControl;
+        private Label MinAlpha;
+        private Label MaxAlpha;
+        private Label AlphaLabel;
     }
 }

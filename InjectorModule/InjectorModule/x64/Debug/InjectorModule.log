@@ -1,8 +1,0 @@
-﻿dllmain.obj : error LNK2019: unresolved external symbol DetourTransactionBegin referenced in function DllMain
-dllmain.obj : error LNK2019: unresolved external symbol DetourTransactionCommit referenced in function DllMain
-dllmain.obj : error LNK2019: unresolved external symbol DetourUpdateThread referenced in function DllMain
-dllmain.obj : error LNK2019: unresolved external symbol DetourAttach referenced in function DllMain
-dllmain.obj : error LNK2019: unresolved external symbol DetourDetach referenced in function DllMain
-dllmain.obj : error LNK2019: unresolved external symbol DetourRestoreAfterWith referenced in function DllMain
-D:\workspace\WinPrac\InjectorModule\InjectorModule\External\Detours\lib.X86\detours.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-D:\workspace\WinPrac\InjectorModule\x64\Debug\InjectorModule.dll : fatal error LNK1120: 6 unresolved externals

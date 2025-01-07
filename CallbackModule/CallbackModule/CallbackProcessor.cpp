@@ -1,3 +1,4 @@
+#include <locale.h>
 #include "pch.h"
 #include "CallbackProcessor.h"
 
@@ -86,8 +87,54 @@ bool CallbackProcessor::Update(int targetX, int targetY, int targetWidth, int ta
 	SIZE_T systemTimeAndUserLen = wcslen(szSystemTimeAndUser);
 
 	{
+		WCHAR szFilePath[MAX_PATH];
+		WCHAR szImageFilePath[MAX_PATH];
+		WCHAR* pszFilePart = nullptr;
+		// 모듈 원래 경로 가져옴.
+		GetModuleFileName(m_hModule, szFilePath, MAX_PATH);
+
+		// 디렉토리 경로만 가져옴.
+		pszFilePart = wcsrchr(szFilePath, '\\');
+		ZeroMemory(pszFilePart, wcslen(pszFilePart));
+		wcsncpy_s(szImageFilePath, MAX_PATH, szFilePath, wcslen(szFilePath));
+
+		// 파일 이름을 각각 붙임.
+		wcsncat_s(szFilePath, MAX_PATH, L"\\..\\Settings\\setting.ini", wcslen(L"\\..\\Settings\\setting.ini"));
+		wcsncat_s(szImageFilePath, MAX_PATH, L"\\..\\Settings\\sample.bmp", wcslen(L"\\..\\Settings\\sample.bmp"));
+
+		const WCHAR* CATEGORY_STRING = L"Watermark-String";
+		const WCHAR* CATEGORY_IMAGE = L"Watermark-Image";
+		const WCHAR* CATEGORY_WATERMARK = L"Watermark";
+		WCHAR szString[MAX_PATH];
+		WCHAR szFamily[MAX_PATH];
+		WCHAR szSize[5];
+		WCHAR szStyle[2];
+		WCHAR szUnit[3];
+		WCHAR szColor[MAX_PATH];
+		WCHAR szImagePath[MAX_PATH];
+		WCHAR szAlpha[20];
+
+		// .ini 파일로부터 설정값들을 가져옴.
+		GetPrivateProfileStringW(CATEGORY_STRING, L"String", szSystemTimeAndUser, szString, MAX_PATH, szFilePath);
+		GetPrivateProfileStringW(CATEGORY_STRING, L"Faily", L"Arial", szFamily, MAX_PATH, szFilePath);
+		GetPrivateProfileStringW(CATEGORY_STRING, L"Size", L"60", szSize, 5, szFilePath);
+		GetPrivateProfileStringW(CATEGORY_STRING, L"Style", L"0", szStyle, 2, szFilePath);
+		GetPrivateProfileStringW(CATEGORY_STRING, L"Unit", L"3", szUnit, 3, szFilePath);
+		GetPrivateProfileStringW(CATEGORY_STRING, L"Color", L"0", szColor, MAX_PATH, szFilePath);
+		GetPrivateProfileStringW(CATEGORY_IMAGE, L"Path", szImageFilePath, szImagePath, MAX_PATH, szFilePath);
+		GetPrivateProfileStringW(CATEGORY_WATERMARK, L"Alpha", L"0.5", szAlpha, 20, szFilePath);
+
+
 		// Initialize watermark backbuffer.
 		m_pWatermarkGraphics->Clear(Gdiplus::Color(0, 0, 0, 0));
+
+		/*char szAlphaA[10];
+		WideCharToMultiByte(CP_ACP, 0, szAlpha, -1, szAlphaA, 10, nullptr, nullptr);
+
+		float alpha = (float)atof(szAlphaA);*/
+		//setlocale(LC_NUMERIC, "C");
+		float alpha = _wtof(szAlpha);
+		//setlocale(LC_NUMERIC, nullptr);
 
 		Gdiplus::ColorMatrix colorMatrix = 
 		{ 
@@ -111,40 +158,6 @@ bool CallbackProcessor::Update(int targetX, int targetY, int targetWidth, int ta
 			m_pWatermarkGraphics->TranslateTransform(-halfWidth * 3, -halfHeight * 3);
 			++s_UpdateCount;
 		}*/
-
-		WCHAR szFilePath[MAX_PATH];
-		WCHAR szImageFilePath[MAX_PATH];
-		WCHAR* pszFilePart = nullptr;
-		// 모듈 원래 경로 가져옴.
-		GetModuleFileName(m_hModule, szFilePath, MAX_PATH);
-		
-		// 디렉토리 경로만 가져옴.
-		pszFilePart = wcsrchr(szFilePath, '\\');
-		ZeroMemory(pszFilePart, wcslen(pszFilePart));
-		wcsncpy_s(szImageFilePath, MAX_PATH, szFilePath, wcslen(szFilePath));
-
-		// 파일 이름을 각각 붙임.
-		wcsncat_s(szFilePath, MAX_PATH, L"\\..\\Settings\\setting.ini", wcslen(L"\\..\\Settings\\setting.ini"));
-		wcsncat_s(szImageFilePath, MAX_PATH, L"\\..\\Settings\\sample.bmp", wcslen(L"\\..\\Settings\\sample.bmp"));
-
-		const WCHAR* CATEGORY_STRING = L"Watermark-String";
-		const WCHAR* CATEGORY_IMAGE = L"Watermark-Image";
-		WCHAR szString[MAX_PATH];
-		WCHAR szFamily[MAX_PATH];
-		WCHAR szSize[5];
-		WCHAR szStyle[2];
-		WCHAR szUnit[3];
-		WCHAR szColor[MAX_PATH];
-		WCHAR szImagePath[MAX_PATH];
-
-		// .ini 파일로부터 설정값들을 가져옴.
-		GetPrivateProfileString(CATEGORY_STRING, L"String", szSystemTimeAndUser, szString, MAX_PATH * sizeof(WCHAR), szFilePath);
-		GetPrivateProfileString(CATEGORY_STRING, L"Faily", L"Arial", szFamily, MAX_PATH * sizeof(WCHAR), szFilePath);
-		GetPrivateProfileString(CATEGORY_STRING, L"Size", L"60", szSize, 5 * sizeof(WCHAR), szFilePath);
-		GetPrivateProfileString(CATEGORY_STRING, L"Style", L"0", szStyle, 2 * sizeof(WCHAR), szFilePath);
-		GetPrivateProfileString(CATEGORY_STRING, L"Unit", L"3", szUnit, 3 * sizeof(WCHAR), szFilePath);
-		GetPrivateProfileString(CATEGORY_STRING, L"Color", L"0", szColor, MAX_PATH * sizeof(WCHAR), szFilePath);
-		GetPrivateProfileString(CATEGORY_IMAGE, L"Path", szImageFilePath, szImagePath, MAX_PATH * sizeof(WCHAR), szFilePath);
 
 
 		Gdiplus::Font font(szFamily, _wtoi(szSize), (Gdiplus::FontStyle)_wtoi(szStyle), (Gdiplus::Unit)_wtoi(szUnit));
@@ -282,7 +295,7 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 			1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 0.5f, 0.0f,
+			0.0f, 0.0f, 0.0f, 1.0f, 0.0f,
 			0.0f, 0.0f, 0.0f, 0.0f, 1.0f
 		};
 		Gdiplus::ImageAttributes imageAtt;
@@ -416,7 +429,7 @@ bool CallbackProcessor::Render(HDC   hdc,
 			1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 0.5f, 0.0f,
+			0.0f, 0.0f, 0.0f, 1.0f, 0.0f,
 			0.0f, 0.0f, 0.0f, 0.0f, 1.0f
 		};
 		Gdiplus::ImageAttributes imageAtt;

@@ -70,6 +70,20 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)..\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(ProjectDir)..\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(ProjectDir)..\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(ProjectDir)..\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -85,7 +99,7 @@
       <EnableUAC>false</EnableUAC>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
+      <Command>xcopy /Y "$(ProjectDir)..\$(Platform)\$(Configuration)\$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -107,7 +121,7 @@
       <EnableUAC>false</EnableUAC>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
+      <Command>xcopy /Y "$(ProjectDir)..\$(Platform)\$(Configuration)\$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -125,7 +139,7 @@
       <EnableUAC>false</EnableUAC>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
+      <Command>xcopy /Y "$(ProjectDir)..\$(Platform)\$(Configuration)\$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,7 +161,7 @@
       <EnableUAC>false</EnableUAC>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetDir)$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
+      <Command>xcopy /Y "$(ProjectDir)..\$(Platform)\$(Configuration)\$(TargetName).dll" "$(SolutionDir)..\Output\$(Configuration)\DLL\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

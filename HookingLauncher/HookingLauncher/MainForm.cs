@@ -42,9 +42,8 @@ namespace HookingLauncher
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "c:\\";
-                //openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog.Filter = "webp (*.webp)|*.webp|jpeg (*.jpeg)|*.jpeg|png (*.png)|*.png|bmp (*.bmp)|*.bmp";
-                openFileDialog.FilterIndex = 2;
+                openFileDialog.Filter = "All files (*.*)|*.*|webp (*.webp)|*.webp|jpeg (*.jpeg)|*.jpeg|png (*.png)|*.png|bmp (*.bmp)|*.bmp";
+                openFileDialog.FilterIndex = 0;
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -83,11 +82,6 @@ namespace HookingLauncher
                 MessageBox.Show("Can't stop hooking!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             m_bActivated = false;
-        }
-
-        private void OptionBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // No Imlementation..
         }
 
         private void WatermarkStringOpt_Click(object sender, EventArgs e)
@@ -133,8 +127,6 @@ namespace HookingLauncher
             m_SettingPath = settingDirectoryPath;
             m_SettingFilePath = settingFile;
 
-            WritePrivateProfileString("FileConfigure", "Injector", filePath + "\\..\\DLL\\ForceInjection.dll", m_SettingFilePath);
-            WritePrivateProfileString("FileConfigure", "CallbackDLL", filePath + "\\..\\DLL\\MyDLL.dll", m_SettingFilePath);
             InitializeWatermarkSetting();
             WatermarkImagePath.Text = m_SettingPath + "\\sample.bmp";
         }
@@ -143,10 +135,20 @@ namespace HookingLauncher
         {
             StringBuilder sb = new StringBuilder { Capacity = 256 };
 
+            // font & image alpha.
+            if (GetPrivateProfileString("Watermark", "Alpha", "", sb, sb.Capacity, m_SettingFilePath) == 0)
+            {
+                WritePrivateProfileString("watermark", "Alpha", "0.5", m_SettingFilePath);
+                sb.Append("0.5");
+            }
+            AlphaControl.Value = (int)(float.Parse(sb.ToString()) * 100.0);
+            sb.Clear();
+
             // font string.
             if (GetPrivateProfileString("Watermark-String", "String", "", sb, sb.Capacity, m_SettingFilePath) == 0)
             {
                 WritePrivateProfileString("Watermark-String", "String", "test", m_SettingFilePath);
+                sb.Append("test");
             }
             WatermarkString.Text = sb.ToString();
             sb.Clear();
@@ -170,30 +172,34 @@ namespace HookingLauncher
             {
                 WritePrivateProfileString("Watermark-String", "Style", "0", m_SettingFilePath);
             }
+            sb.Clear();
 
             // font unit.
             if (GetPrivateProfileString("Watermark-String", "Unit", "", sb, sb.Capacity, m_SettingFilePath) == 0)
             {
                 WritePrivateProfileString("Watermark-String", "Unit", "3", m_SettingFilePath);
             }
+            sb.Clear();
 
             // font brush.
             if (GetPrivateProfileString("Watermark-String", "Color", "", sb, sb.Capacity, m_SettingFilePath) == 0)
             {
                 WritePrivateProfileString("Watermark-String", "Color", "536805376", m_SettingFilePath); // 0x1FFF0000
             }
+            sb.Clear();
 
             // image path.
             if (GetPrivateProfileString("Watermark-Image", "Path", "", sb, sb.Capacity, m_SettingFilePath) == 0)
             {
                 WritePrivateProfileString("Watermark-Image", "Path", m_SettingPath + "\\sample.bmp", m_SettingFilePath);
             }
+            sb.Clear();
+        }
 
-            // image alpha value.
-            if (GetPrivateProfileString("Watermark-Image", "Alpha", "", sb, sb.Capacity, m_SettingFilePath) == 0)
-            { 
-                WritePrivateProfileString("Watermark-Image", "Alpha", "31", m_SettingFilePath);
-            }
+        private void AlphaControl_Scroll(object sender, EventArgs e)
+        {
+            double val = (double)AlphaControl.Value / 100.0;
+            WritePrivateProfileString("watermark", "Alpha", ((float)AlphaControl.Value / 100.0).ToString(), m_SettingFilePath);
         }
     }
 }
