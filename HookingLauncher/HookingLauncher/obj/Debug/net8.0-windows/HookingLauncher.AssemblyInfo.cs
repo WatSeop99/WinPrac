@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HookingLauncher")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8e712c2b343c93d930198f63b60315704468fef3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d1543e154fd57f72a8d3e525259830ba98aa6ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("HookingLauncher")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HookingLauncher")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
