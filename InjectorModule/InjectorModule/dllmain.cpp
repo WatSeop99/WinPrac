@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "TypeDef.h"
 
-HMODULE g_HookingModule = nullptr;
+HMODULE g_hHookingModule = nullptr;
 
 // StretchBlt pointer.
 PFnStrecthFunc g_pfnOriginStretchBlt = nullptr;
@@ -11,6 +11,8 @@ PFnBitBltFunc g_pfnOriginBitBlt = nullptr;
 PFnCallbackFunc g_pfnCallbackBitBlt = nullptr;
 
 bool GetCallbackModulePath(HMODULE hModule, WCHAR* pOutPath);
+
+// 후킹 대체 함수들
 BOOL WINAPI MyStretchBlt(HDC hdcDest, int xDest, int yDest, int wDest, int hDest, HDC hdcSrc, int xSrc, int ySrc, int wSrc, int hSrc, DWORD rop);
 BOOL WINAPI MyBitBlt(HDC hdc, int x, int y, int cx, int cy, HDC hdcSrc, int x1, int y1, DWORD rop);
 
@@ -29,9 +31,9 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 			}
 			
 			// 콜백 모듈 로드.
-			_ASSERT(!g_HookingModule);
-			g_HookingModule = LoadLibraryW(szCallbackModulePath);
-			if (!g_HookingModule)
+			_ASSERT(!g_hHookingModule);
+			g_hHookingModule = LoadLibraryW(szCallbackModulePath);
+			if (!g_hHookingModule)
 			{
 				WCHAR szDebugString[MAX_PATH];
 				swprintf_s(szDebugString, MAX_PATH, L"Failed in LoadLibraryW-Injector: %s, and get last Error at %d", szCallbackModulePath, GetLastError());
@@ -42,17 +44,17 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 
 
 			// 모듈 헤더 처리.
-			PIMAGE_DOS_HEADER pDosHeader = (PIMAGE_DOS_HEADER)g_HookingModule;
+			PIMAGE_DOS_HEADER pDosHeader = (PIMAGE_DOS_HEADER)g_hHookingModule;
 			PIMAGE_NT_HEADERS pNTHeader = (PIMAGE_NT_HEADERS)((LPBYTE)pDosHeader + (DWORD)pDosHeader->e_lfanew);
 
 			// 실행 모듈로부터 entry point 주소 가져옴.
-			PFnDLLMain pfnDllMain = (PFnDLLMain)((LPBYTE)g_HookingModule + pNTHeader->OptionalHeader.AddressOfEntryPoint);
+			PFnDLLMain pfnDllMain = (PFnDLLMain)((LPBYTE)g_hHookingModule + pNTHeader->OptionalHeader.AddressOfEntryPoint);
 
 			// 콜백함수 가져옴.
 			DWORD_PTR dwAddr = 0;
 			BOOL bResult = FALSE;
 
-			bResult = pfnDllMain(g_HookingModule, (DLL_PROCESS_GET_PROCEDURE | DLL_PROCEDURE_STRETCHBLT), &dwAddr);
+			bResult = pfnDllMain(g_hHookingModule, (DLL_PROCESS_GET_PROCEDURE | DLL_PROCEDURE_STRETCHBLT), &dwAddr);
 			if (!bResult || dwAddr == 0)
 			{
 				DEBUG_BREAK;
@@ -61,7 +63,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 			g_pfnCallbackStretchBlt = (PFnCallbackFunc)dwAddr;
 
 			dwAddr = 0;
-			bResult = pfnDllMain(g_HookingModule, (DLL_PROCESS_GET_PROCEDURE | DLL_PROCEDURE_BITBLT), &dwAddr);
+			bResult = pfnDllMain(g_hHookingModule, (DLL_PROCESS_GET_PROCEDURE | DLL_PROCEDURE_BITBLT), &dwAddr);
 			if (!bResult || dwAddr == 0)
 			{
 				MessageBox(nullptr, L"Failed in DllMain call-Injector", L"Error", MB_OK);
@@ -72,13 +74,13 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 			// StretchBlt, BitBlt의 원형 주소 가져옴.
 			const WCHAR* pszTARGET_MODULE_NAME = L"Gdi32.dll";
 			g_pfnOriginStretchBlt = (PFnStrecthFunc)GetProcAddress(GetModuleHandleW(pszTARGET_MODULE_NAME), "StretchBlt");
-			if (g_pfnOriginStretchBlt == nullptr)
+			if (!g_pfnOriginStretchBlt)
 			{
 				DEBUG_BREAK;
 				return FALSE;
 			}
 			g_pfnOriginBitBlt = (PFnBitBltFunc)GetProcAddress(GetModuleHandleW(pszTARGET_MODULE_NAME), "BitBlt");
-			if (g_pfnOriginBitBlt == nullptr)
+			if (!g_pfnOriginBitBlt)
 			{
 				MessageBox(nullptr, L"Failed in GetProcAddress-Injector", L"Error", MB_OK);
 				return FALSE;
@@ -101,7 +103,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 
 		case DLL_PROCESS_DETACH:
 		{
-			if (g_HookingModule)
+			if (g_hHookingModule)
 			{
 				// Detour 콜백 해제.
 				DetourTransactionBegin();
@@ -111,11 +113,11 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 				DetourTransactionCommit();
 
 				// 콜백 모듈 해제.
-				if (!FreeLibrary(g_HookingModule))
+				if (!FreeLibrary(g_hHookingModule))
 				{
 					return FALSE;
 				}
-				g_HookingModule = nullptr;
+				g_hHookingModule = nullptr;
 
 				// 콜백 관련 함수 해제.
 				g_pfnOriginStretchBlt = nullptr;
@@ -150,20 +152,14 @@ bool GetCallbackModulePath(HMODULE hModule, WCHAR* pOutPath)
 	// 경로만 복사.
 	wcsncpy_s(pOutPath, MAX_PATH, szCurrentFilePath, pszFilePart - szCurrentFilePath);
 
-	// 콜백 모듈 경로 붙임.
+	// 콜백 모듈 파일명 붙임.
 	wcsncat_s(pOutPath, MAX_PATH, L"\\CallbackModule.dll", wcslen(L"\\CallbackModule.dll"));
 
 	return true;
 }
 
 
-BOOL WINAPI MyStretchBlt(HDC hdcDest,
-						 int xDest, int yDest, 
-						 int wDest, int hDest,
-						 HDC hdcSrc, 
-						 int xSrc, int ySrc, 
-						 int wSrc, int hSrc,
-						 DWORD rop)
+BOOL WINAPI MyStretchBlt(HDC hdcDest, int xDest, int yDest, int wDest, int hDest, HDC hdcSrc, int xSrc, int ySrc, int wSrc, int hSrc, DWORD rop)
 {
 	_ASSERT(g_pfnOriginStretchBlt);
 	_ASSERT(g_pfnCallbackStretchBlt);
@@ -195,12 +191,7 @@ BOOL WINAPI MyStretchBlt(HDC hdcDest,
 
 	return TRUE;
 }
-BOOL WINAPI MyBitBlt(HDC hdc, 
-					 int x, int y, 
-					 int cx, int cy, 
-					 HDC hdcSrc, 
-					 int x1, int y1, 
-					 DWORD rop)
+BOOL WINAPI MyBitBlt(HDC hdc, int x, int y, int cx, int cy, HDC hdcSrc, int x1, int y1, DWORD rop)
 {
 	_ASSERT(g_pfnOriginBitBlt);
 	_ASSERT(g_pfnCallbackBitBlt);

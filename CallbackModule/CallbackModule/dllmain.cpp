@@ -6,11 +6,13 @@ BOOL DefaultDllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserve
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
+	// 특정 DLL 프로세싱이 아닐경우 일반 DLL entrypoint 처리.
 	if (ul_reason_for_call < DLL_PROCESS_GET_NONE)
 	{
 		return DefaultDllMain(hModule, ul_reason_for_call, lpReserved);
 	}
 
+	// 특정 DLL 프로세싱.
 	switch (ul_reason_for_call & DLL_PROCESS_TYPE_MASK)
 	{
 		case DLL_PROCESS_GET_PROCEDURE:
@@ -82,7 +84,6 @@ BOOL DefaultDllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved
 			break;
 
 		default:
-			DEBUG_BREAK;
 			return FALSE;
 	}
 

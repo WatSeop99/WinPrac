@@ -6,6 +6,7 @@
 HANDLE SearchTargetProcess(const WCHAR* pszPROCESS_NAME, DWORD* pOutProcessID, WCHAR* pOutPath);
 HMODULE SearchInjectionModule(HANDLE hProcess, const WCHAR* pszTARGET_MODULE_PATH);
 
+const WCHAR* pszTARGET_PROCESS = L"picpick.exe";
 HMODULE g_hModule = nullptr;
 WCHAR g_pszInjectorModulePath[MAX_PATH];
 
@@ -17,16 +18,21 @@ bool StartHook()
 	WCHAR pszTargetPath[MAX_PATH];
 
 	// 타깃 프로세스 핸들 값 가져옴.
-	HANDLE hTargetProcess = SearchTargetProcess(L"picpick.exe", &targetProcessID, pszTargetPath);
+	HANDLE hTargetProcess = SearchTargetProcess(pszTARGET_PROCESS, &targetProcessID, pszTargetPath);
 	if (!hTargetProcess || hTargetProcess == INVALID_HANDLE_VALUE)
 	{
 		MessageBox(nullptr, L"Target process not exists.", L"ERROR", MB_OK);
 		bRet = false;
 		goto LB_RET;
 	}
+	
+	if (!g_hModule)
+	{
+		bRet = false;
+		goto LB_RET;
+	}
 
 	// 타깃 프로세스에 Injector DLL 경로값 작성.
-	_ASSERT(g_hModule);
 	WCHAR* pszFilePart = nullptr;
 	GetModuleFileNameW(g_hModule, g_pszInjectorModulePath, MAX_PATH);
 	pszFilePart = wcsrchr(g_pszInjectorModulePath, L'\\');
@@ -50,7 +56,7 @@ bool StartHook()
 	}
 
 	// LoadLibrary 주소 가져옴.
-	PTHREAD_START_ROUTINE pfnThreadRtn = (PTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandle(TEXT("Kernel32")), "LoadLibraryW");
+	PTHREAD_START_ROUTINE pfnThreadRtn = (PTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandleW(L"Kernel32"), "LoadLibraryW");
 	if (!pfnThreadRtn)
 	{
 		MessageBox(nullptr, L"LoadLibrary is null.", L"ERROR", MB_OK);
@@ -98,7 +104,7 @@ bool StopHook()
 	WCHAR pszTargetPath[MAX_PATH];
 
 	// 타깃 프로세스 핸들 값 가져옴.
-	HANDLE hTargetProcess = SearchTargetProcess(L"picpick.exe", &targetProcessID, pszTargetPath);
+	HANDLE hTargetProcess = SearchTargetProcess(pszTARGET_PROCESS, &targetProcessID, pszTargetPath);
 	if (!hTargetProcess || hTargetProcess == INVALID_HANDLE_VALUE)
 	{
 		MessageBox(nullptr, L"Can't open target process.", L"ERROR", MB_OK);
@@ -116,7 +122,7 @@ bool StopHook()
 	}
 
 	// FreeLibrary 주소 가져옴.
-	PTHREAD_START_ROUTINE pfnThreadRtn = (PTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandle(TEXT("Kernel32")), "FreeLibrary");
+	PTHREAD_START_ROUTINE pfnThreadRtn = (PTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandleW(L"Kernel32"), "FreeLibrary");
 	if (!pfnThreadRtn)
 	{
 		MessageBox(nullptr, L"LoadLibrary is null.", L"ERROR", MB_OK);
@@ -170,6 +176,7 @@ HANDLE SearchTargetProcess(const WCHAR* pszPROCESS_NAME, DWORD* pOutProcessID, W
 	{
 		if (processIDs[i])
 		{
+			// 해당 프로세스 핸들 가져옴.
 			hRetProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, processIDs[i]);
 			if (!hRetProcess || hRetProcess == INVALID_HANDLE_VALUE)
 			{
@@ -177,15 +184,17 @@ HANDLE SearchTargetProcess(const WCHAR* pszPROCESS_NAME, DWORD* pOutProcessID, W
 				continue;
 			}
 
-			WCHAR buffer[MAX_PATH];
+			// 경로에서 프로세스명 가져옴.
+			WCHAR szBuffer[MAX_PATH];
 			WCHAR* pFilePart = nullptr;
-			GetModuleFileNameEx(hRetProcess, nullptr, buffer, MAX_PATH);
-			pFilePart = wcsrchr(buffer, '\\') + 1;
+			GetModuleFileNameExW(hRetProcess, nullptr, szBuffer, MAX_PATH);
+			pFilePart = wcsrchr(szBuffer, '\\') + 1;
 
-			if (wcsncmp(pszPROCESS_NAME, pFilePart, wcslen(pszPROCESS_NAME)) == 0)
+			// 인자로 들어온 프로세스 이름과 일치할 경우.
+			if (wcslen(pszPROCESS_NAME) == wcslen(pFilePart) && wcsncmp(pszPROCESS_NAME, pFilePart, wcslen(pszPROCESS_NAME)) == 0)
 			{
-				SIZE_T pathLen = pFilePart - buffer;
-				wcsncpy_s(pOutPath, MAX_PATH, buffer, pathLen);
+				SIZE_T pathLen = pFilePart - szBuffer;
+				wcsncpy_s(pOutPath, MAX_PATH, szBuffer, pathLen);
 
 				*pOutProcessID = processIDs[i];
 
@@ -229,10 +238,12 @@ HMODULE SearchInjectionModule(HANDLE hProcess, const WCHAR* pszTARGET_MODULE_PAT
 	// 루프를 돌면서 경로가 일치하는 모듈의 주소를 반환.
 	for (SIZE_T i = 0, size = needed / sizeof(HMODULE); i < size; ++i)
 	{
+		// 모듈 경로 가져옴.
 		WCHAR szModulePath[MAX_PATH];
-		GetModuleFileNameEx(hProcess, hModules[i], szModulePath, MAX_PATH);
+		GetModuleFileNameExW(hProcess, hModules[i], szModulePath, MAX_PATH);
 
-		if (wcsncmp(pszTARGET_MODULE_PATH, szModulePath, wcslen(szModulePath)) == 0)
+		// 인자로 들어온 모듈 경로와 일치할 경우.
+		if (wcslen(pszTARGET_MODULE_PATH) == wcslen(szModulePath) && wcsncmp(pszTARGET_MODULE_PATH, szModulePath, wcslen(szModulePath)) == 0)
 		{
 			hRetModule = hModules[i];
 			break;

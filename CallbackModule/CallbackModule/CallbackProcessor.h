@@ -2,6 +2,21 @@
 
 #include "TypeDef.h"
 
+// 워터마크 상태 구초제
+struct WatermarkState
+{
+	WCHAR szFilePath[MAX_PATH];
+	
+	WCHAR szString[MAX_PATH];
+	WCHAR szFamily[MAX_PATH];
+	WCHAR szSize[5];
+	WCHAR szStyle[2];
+	WCHAR szUnit[3];
+	WCHAR szColor[MAX_PATH];
+	WCHAR szImagePath[MAX_PATH];
+	WCHAR szAlpha[20];
+};
+
 class CallbackProcessor
 {
 private:
@@ -15,6 +30,7 @@ public:
 
 	bool Update(int targetX, int targetY, int targetWidth, int targetHeight);
 
+	// For StretchBlt
 	bool Render(HDC   hdcDest,
 				int   xDest,
 				int   yDest,
@@ -26,6 +42,7 @@ public:
 				int   wSrc,
 				int   hSrc,
 				DWORD rop);
+	// For BitBlt
 	bool Render(HDC   hdc,
 				int   x,
 				int   y,
@@ -58,6 +75,8 @@ private:
 	Gdiplus::Graphics* m_pWatermarkGraphics = nullptr;
 	Gdiplus::Graphics* m_pWatermarkStringGraphics = nullptr;
 	Gdiplus::Graphics* m_pWatermarkImageGraphics = nullptr;
+
+	WatermarkState m_WatermarkState = { 0, };
 
 	ULONG_PTR m_Token = 0;
 	Gdiplus::GdiplusStartupInput m_Input;

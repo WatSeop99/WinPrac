@@ -108,7 +108,6 @@
             WatermarkImagePath.Name = "WatermarkImagePath";
             WatermarkImagePath.Size = new Size(254, 23);
             WatermarkImagePath.TabIndex = 9;
-            WatermarkImagePath.Text = "D:\\workspace\\test\\MyDLL\\MyDLL\\sample.bmp";
             // 
             // WatermarkStringOpt
             // 
@@ -177,9 +176,9 @@
             AlphaLabel.AutoSize = true;
             AlphaLabel.Location = new Point(21, 155);
             AlphaLabel.Name = "AlphaLabel";
-            AlphaLabel.Size = new Size(38, 15);
+            AlphaLabel.Size = new Size(82, 15);
             AlphaLabel.TabIndex = 23;
-            AlphaLabel.Text = "Alpha";
+            AlphaLabel.Text = "Alpha(투명도)";
             // 
             // MainForm
             // 

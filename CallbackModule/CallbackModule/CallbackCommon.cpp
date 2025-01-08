@@ -3,34 +3,35 @@
 #include "TypeDef.h"
 #include "CallbackCommon.h"
 
+// 콜백 처리 개체
 CallbackProcessor* g_pCallbackProcessor = nullptr;
 
 int CallbackStretchBlt(LPFSP_EXTENSION_PARAM lpParam)
 {
 	BOOL retVal = FALSE;
 
-	if (lpParam == nullptr)
+	if (!lpParam)
 	{
 		return TRUE;
 	}
-	if (g_pCallbackProcessor == nullptr)
+	if (!g_pCallbackProcessor)
 	{
 		goto LB_RET;
 	}
 
-	// Get Param
+	// Get parameters.
 	int nCaller = (int)lpParam->dwParam1;
 	PFnStretchBlt pfnStretchBlt = (PFnStretchBlt)lpParam->dwParam2;
 	HDC hdcDest = (HDC)lpParam->dwParam3;
-	int nXOriginDest = (int)lpParam->dwParam4;
-	int nYOriginDest = (int)lpParam->dwParam5;
-	int nWidthDest = (int)lpParam->dwParam6;
-	int nHeightDest = (int)lpParam->dwParam7;
+	int xDest = (int)lpParam->dwParam4;
+	int yDest = (int)lpParam->dwParam5;
+	int wDest = (int)lpParam->dwParam6;
+	int hDest = (int)lpParam->dwParam7;
 	HDC hdcSrc = (HDC)lpParam->dwParam8;
-	int nXOriginSrc = (int)lpParam->dwParam9;
-	int nYOriginSrc = (int)lpParam->dwParam10;
-	int nWidthSrc = (int)lpParam->dwParam11;
-	int nHeightSrc = (int)lpParam->dwParam12;
+	int xSrc = (int)lpParam->dwParam9;
+	int ySrc = (int)lpParam->dwParam10;
+	int wSrc = (int)lpParam->dwParam11;
+	int hSrc = (int)lpParam->dwParam12;
 	DWORD dwRop = (DWORD)lpParam->dwParam13;
 
 	lpParam->dwParam1 = FSP_EXTRET_DEFAULT;
@@ -42,7 +43,7 @@ int CallbackStretchBlt(LPFSP_EXTENSION_PARAM lpParam)
 	DWORD windowStyle = GetWindowLong(hwndSrc, GWL_STYLE);
 	if (!(windowStyle & WS_POPUP) || (windowStyle & WS_CHILD))
 	{
-		pfnStretchBlt(hdcDest, nXOriginDest, nYOriginDest, nWidthDest, nHeightDest, hdcSrc, nXOriginSrc, nYOriginSrc, nWidthSrc, nHeightSrc, dwRop);
+		pfnStretchBlt(hdcDest, xDest, yDest, wDest, hDest, hdcSrc, xSrc, ySrc, wSrc, hSrc, dwRop);
 		retVal = TRUE;                       
 		goto LB_RET;
 	}
@@ -51,12 +52,12 @@ int CallbackStretchBlt(LPFSP_EXTENSION_PARAM lpParam)
 	g_pCallbackProcessor->SetOriginStretchBltFunc(pfnStretchBlt);
 
 	// Draw watermark..
-	retVal = g_pCallbackProcessor->Update(nXOriginSrc, nYOriginSrc, nWidthSrc, nHeightSrc);
+	retVal = g_pCallbackProcessor->Update(xSrc, ySrc, wSrc, hSrc);
 	if (!retVal)
 	{
 		goto LB_RET;
 	}
-	retVal = g_pCallbackProcessor->Render(hdcDest, nXOriginDest, nYOriginDest, nWidthDest, nHeightDest, hdcSrc, nXOriginSrc, nYOriginSrc, nWidthSrc, nHeightSrc, dwRop);
+	retVal = g_pCallbackProcessor->Render(hdcDest, xDest, yDest, wDest, hDest, hdcSrc, xSrc, ySrc, wSrc, hSrc, dwRop);
 	if (!retVal)
 	{
 		goto LB_RET;
@@ -136,27 +137,27 @@ LB_RET:
 
 DWORD_PTR GetProcedure(const DWORD PROCEDURE_TYPE)
 {
-	PFnCallbackFunc pfnNewFunc = nullptr;
+	PFnCallbackFunc pfnReturnFunc = nullptr;
 	switch (PROCEDURE_TYPE)
 	{
 		case DLL_PROCEDURE_STRETCHBLT:
-			pfnNewFunc = CallbackStretchBlt;
+			pfnReturnFunc = CallbackStretchBlt;
 			break;
 
 		case DLL_PROCEDURE_BITBLT:
-			pfnNewFunc = CallbackBitBlt;
+			pfnReturnFunc = CallbackBitBlt;
 			break;
 
 		default:
 			break;
 	}
 
-	return (DWORD_PTR)pfnNewFunc;
+	return (DWORD_PTR)pfnReturnFunc;
 }
 
 bool InitializeModule(HMODULE hModule)
 {
-	if (g_pCallbackProcessor == nullptr)
+	if (!g_pCallbackProcessor)
 	{
 		g_pCallbackProcessor = new CallbackProcessor;
 		return g_pCallbackProcessor->Initialize(hModule);
@@ -167,7 +168,7 @@ bool InitializeModule(HMODULE hModule)
 
 bool CleanupModule()
 {
-	if (g_pCallbackProcessor != nullptr)
+	if (g_pCallbackProcessor)
 	{
 		if (!g_pCallbackProcessor->Cleanup())
 		{

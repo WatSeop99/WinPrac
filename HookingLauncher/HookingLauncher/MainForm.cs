@@ -34,8 +34,7 @@ namespace HookingLauncher
         }
 
         ~MainForm()
-        {
-        }
+        { }
 
         private void WatermarkImageSet_Click(object sender, EventArgs e)
         {
@@ -77,6 +76,7 @@ namespace HookingLauncher
             {
                 return;
             }
+
             if (!StopHook())
             {
                 MessageBox.Show("Can't stop hooking!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -105,6 +105,7 @@ namespace HookingLauncher
             {
                 return;
             }
+
             StopHook();
             m_bActivated = false;
         }
@@ -138,10 +139,10 @@ namespace HookingLauncher
             // font & image alpha.
             if (GetPrivateProfileString("Watermark", "Alpha", "", sb, sb.Capacity, m_SettingFilePath) == 0)
             {
-                WritePrivateProfileString("watermark", "Alpha", "0.5", m_SettingFilePath);
+                WritePrivateProfileString("Watermark", "Alpha", "0.5", m_SettingFilePath);
                 sb.Append("0.5");
             }
-            AlphaControl.Value = (int)(float.Parse(sb.ToString()) * 100.0);
+            AlphaControl.Value = (int)(double.Parse(sb.ToString()) * 100.0);
             sb.Clear();
 
             // font string.
@@ -198,8 +199,8 @@ namespace HookingLauncher
 
         private void AlphaControl_Scroll(object sender, EventArgs e)
         {
-            double val = (double)AlphaControl.Value / 100.0;
-            WritePrivateProfileString("watermark", "Alpha", ((float)AlphaControl.Value / 100.0).ToString(), m_SettingFilePath);
+            double val = AlphaControl.Value / 100.0;
+            WritePrivateProfileString("Watermark", "Alpha", val.ToString(), m_SettingFilePath);
         }
     }
 }

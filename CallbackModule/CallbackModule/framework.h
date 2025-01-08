@@ -8,7 +8,6 @@
 // Windows Header Files
 #include <Windows.h>
 #include <process.h>
-#include <TlHelp32.h>
 #include <ole2.h>
 #include <gdiplus.h>
 #include <dwmapi.h>

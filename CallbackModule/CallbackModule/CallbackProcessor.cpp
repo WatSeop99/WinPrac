@@ -4,6 +4,7 @@
 
 BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam);
 
+// 타깃 윈도우 이름들
 const WCHAR* g_pszCLASS_NAMES[] =
 {
 	L"OpusApp",
@@ -17,11 +18,15 @@ bool CallbackProcessor::Initialize(HMODULE hModule)
 
 	m_hModule = hModule;
 
+	// Initialize gdiplus environment.
 	if (Gdiplus::GdiplusStartup(&m_Token, &m_Input, nullptr) != Gdiplus::Ok)
 	{
 		bRet = false;
 		goto LB_RET;
 	}
+
+
+	// 워터마크용 자원 생성 및 초기화.
 
 	m_pWatermark = new Gdiplus::Bitmap(GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), PixelFormat32bppARGB);
 	if (!m_pWatermark || m_pWatermark->GetLastStatus() != Gdiplus::Ok)
@@ -65,6 +70,18 @@ bool CallbackProcessor::Initialize(HMODULE hModule)
 		goto LB_RET;
 	}
 
+	// 워터마크 세팅 파일 경로 설정.
+	GetModuleFileNameW(m_hModule, m_WatermarkState.szFilePath, MAX_PATH);
+
+	WCHAR* pszFilePart = wcsrchr(m_WatermarkState.szFilePath, '\\');
+	if (!pszFilePart)
+	{
+		bRet = false;
+		goto LB_RET;
+	}
+	ZeroMemory(pszFilePart, wcslen(pszFilePart) * sizeof(WCHAR));
+	wcsncat_s(m_WatermarkState.szFilePath, MAX_PATH, L"\\..\\Settings\\setting.ini", wcslen(L"\\..\\Settings\\setting.ini"));
+
 LB_RET:
 	return bRet;
 }
@@ -77,72 +94,91 @@ bool CallbackProcessor::Update(int targetX, int targetY, int targetWidth, int ta
 	static int s_UpdateCount = 0;
 	bool bRet = true;
 
+
+	// 현재 시간을 기본 텍스트로 설정.
 	SYSTEMTIME curSystemTime = {};
 	GetLocalTime(&curSystemTime);
-
-	// 텍스트 설정.
+	
 	WCHAR szSystemTimeAndUser[MAX_PATH] = { 0, };
 	swprintf_s(szSystemTimeAndUser, MAX_PATH, L"%d-%d-%d %d:%d:%d TEST_USER",
 			   curSystemTime.wYear, curSystemTime.wMonth, curSystemTime.wDay, curSystemTime.wHour, curSystemTime.wMinute, curSystemTime.wSecond);
 	SIZE_T systemTimeAndUserLen = wcslen(szSystemTimeAndUser);
 
+	// 워터마크 세팅.
 	{
-		WCHAR szFilePath[MAX_PATH];
-		WCHAR szImageFilePath[MAX_PATH];
-		WCHAR* pszFilePart = nullptr;
-		// 모듈 원래 경로 가져옴.
-		GetModuleFileName(m_hModule, szFilePath, MAX_PATH);
-
-		// 디렉토리 경로만 가져옴.
-		pszFilePart = wcsrchr(szFilePath, '\\');
-		ZeroMemory(pszFilePart, wcslen(pszFilePart));
-		wcsncpy_s(szImageFilePath, MAX_PATH, szFilePath, wcslen(szFilePath));
-
-		// 파일 이름을 각각 붙임.
-		wcsncat_s(szFilePath, MAX_PATH, L"\\..\\Settings\\setting.ini", wcslen(L"\\..\\Settings\\setting.ini"));
-		wcsncat_s(szImageFilePath, MAX_PATH, L"\\..\\Settings\\sample.bmp", wcslen(L"\\..\\Settings\\sample.bmp"));
-
 		const WCHAR* CATEGORY_STRING = L"Watermark-String";
 		const WCHAR* CATEGORY_IMAGE = L"Watermark-Image";
 		const WCHAR* CATEGORY_WATERMARK = L"Watermark";
-		WCHAR szString[MAX_PATH];
-		WCHAR szFamily[MAX_PATH];
-		WCHAR szSize[5];
-		WCHAR szStyle[2];
-		WCHAR szUnit[3];
-		WCHAR szColor[MAX_PATH];
-		WCHAR szImagePath[MAX_PATH];
-		WCHAR szAlpha[20];
+		WCHAR szBuffer[MAX_PATH];
+		bool bUpdate = false;
 
 		// .ini 파일로부터 설정값들을 가져옴.
-		GetPrivateProfileStringW(CATEGORY_STRING, L"String", szSystemTimeAndUser, szString, MAX_PATH, szFilePath);
-		GetPrivateProfileStringW(CATEGORY_STRING, L"Faily", L"Arial", szFamily, MAX_PATH, szFilePath);
-		GetPrivateProfileStringW(CATEGORY_STRING, L"Size", L"60", szSize, 5, szFilePath);
-		GetPrivateProfileStringW(CATEGORY_STRING, L"Style", L"0", szStyle, 2, szFilePath);
-		GetPrivateProfileStringW(CATEGORY_STRING, L"Unit", L"3", szUnit, 3, szFilePath);
-		GetPrivateProfileStringW(CATEGORY_STRING, L"Color", L"0", szColor, MAX_PATH, szFilePath);
-		GetPrivateProfileStringW(CATEGORY_IMAGE, L"Path", szImageFilePath, szImagePath, MAX_PATH, szFilePath);
-		GetPrivateProfileStringW(CATEGORY_WATERMARK, L"Alpha", L"0.5", szAlpha, 20, szFilePath);
+		GetPrivateProfileStringW(CATEGORY_STRING, L"String", szSystemTimeAndUser, szBuffer, MAX_PATH, m_WatermarkState.szFilePath);
+		if (wcslen(m_WatermarkState.szString) != wcslen(szBuffer) || wcsncmp(m_WatermarkState.szString, szBuffer, wcslen(szBuffer)))
+		{
+			bUpdate = true;
+			wcsncpy_s(m_WatermarkState.szString, MAX_PATH, szBuffer, wcslen(szBuffer));
+		}
+		GetPrivateProfileStringW(CATEGORY_STRING, L"Faily", L"Arial", szBuffer, MAX_PATH, m_WatermarkState.szFilePath);
+		if (wcslen(m_WatermarkState.szFamily) != wcslen(szBuffer) || wcsncmp(m_WatermarkState.szFamily, szBuffer, wcslen(szBuffer)) != 0)
+		{
+			bUpdate = true;
+			wcsncpy_s(m_WatermarkState.szFamily, MAX_PATH, szBuffer, wcslen(szBuffer));
+		}
+		GetPrivateProfileStringW(CATEGORY_STRING, L"Size", L"60", szBuffer, MAX_PATH, m_WatermarkState.szFilePath);
+		if (wcslen(m_WatermarkState.szSize) != wcslen(szBuffer) || wcsncmp(m_WatermarkState.szSize, szBuffer, wcslen(szBuffer)) != 0)
+		{
+			bUpdate = true;
+			wcsncpy_s(m_WatermarkState.szSize, 5, szBuffer, wcslen(szBuffer));
+		}
+		GetPrivateProfileStringW(CATEGORY_STRING, L"Style", L"0", szBuffer, MAX_PATH, m_WatermarkState.szFilePath);
+		if (wcslen(m_WatermarkState.szStyle) != wcslen(szBuffer) || wcsncmp(m_WatermarkState.szStyle, szBuffer, wcslen(szBuffer)) != 0)
+		{
+			bUpdate = true;
+			wcsncpy_s(m_WatermarkState.szStyle, 2, szBuffer, wcslen(szBuffer));
+		}
+		GetPrivateProfileStringW(CATEGORY_STRING, L"Unit", L"3", szBuffer, MAX_PATH, m_WatermarkState.szFilePath);
+		if (wcslen(m_WatermarkState.szUnit) != wcslen(szBuffer) || wcsncmp(m_WatermarkState.szUnit, szBuffer, wcslen(szBuffer)) != 0)
+		{
+			bUpdate = true;
+			wcsncpy_s(m_WatermarkState.szUnit, 3, szBuffer, wcslen(szBuffer));
+		}
+		GetPrivateProfileStringW(CATEGORY_STRING, L"Color", L"0", szBuffer, MAX_PATH, m_WatermarkState.szFilePath);
+		if (wcslen(m_WatermarkState.szColor) != wcslen(szBuffer) || wcsncmp(m_WatermarkState.szColor, szBuffer, wcslen(szBuffer)) != 0)
+		{
+			bUpdate = true;
+			wcsncpy_s(m_WatermarkState.szColor, MAX_PATH, szBuffer, wcslen(szBuffer));
+		}
+		GetPrivateProfileStringW(CATEGORY_IMAGE, L"Path", L"", szBuffer, MAX_PATH, m_WatermarkState.szFilePath);
+		if (wcslen(m_WatermarkState.szImagePath) != wcslen(szBuffer) || wcsncmp(m_WatermarkState.szImagePath, szBuffer, wcslen(szBuffer)) != 0)
+		{
+			bUpdate = true;
+			wcsncpy_s(m_WatermarkState.szImagePath, MAX_PATH, szBuffer, wcslen(szBuffer));
+		}
+		GetPrivateProfileStringW(CATEGORY_WATERMARK, L"Alpha", L"0.5", szBuffer, MAX_PATH, m_WatermarkState.szFilePath);
+		if (wcslen(m_WatermarkState.szAlpha) != wcslen(szBuffer) || wcsncmp(m_WatermarkState.szAlpha, szBuffer, wcslen(szBuffer)) != 0)
+		{
+			bUpdate = true;
+			wcsncpy_s(m_WatermarkState.szAlpha, 20, szBuffer, wcslen(szBuffer));
+		}
 
+		// 업데이트 된게 없으면 넘김.
+		if (!bUpdate)
+		{
+			goto LB_RET;
+		}
 
 		// Initialize watermark backbuffer.
 		m_pWatermarkGraphics->Clear(Gdiplus::Color(0, 0, 0, 0));
 
-		/*char szAlphaA[10];
-		WideCharToMultiByte(CP_ACP, 0, szAlpha, -1, szAlphaA, 10, nullptr, nullptr);
-
-		float alpha = (float)atof(szAlphaA);*/
-		//setlocale(LC_NUMERIC, "C");
-		float alpha = _wtof(szAlpha);
-		//setlocale(LC_NUMERIC, nullptr);
-
-		Gdiplus::ColorMatrix colorMatrix = 
-		{ 
+		float alpha = _wtof(m_WatermarkState.szAlpha);
+		Gdiplus::ColorMatrix colorMatrix =
+		{
 			1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 0.5f, 0.0f,
-			0.0f, 0.0f, 0.0f, 0.0f, 1.0f 
+			0.0f, 0.0f, 0.0f, alpha, 0.0f,
+			0.0f, 0.0f, 0.0f, 0.0f, 1.0f
 		};
 		Gdiplus::ImageAttributes imageAtt;
 		imageAtt.SetColorMatrix(&colorMatrix, Gdiplus::ColorMatrixFlagsDefault, Gdiplus::ColorAdjustTypeBitmap);
@@ -160,13 +196,13 @@ bool CallbackProcessor::Update(int targetX, int targetY, int targetWidth, int ta
 		}*/
 
 
-		Gdiplus::Font font(szFamily, _wtoi(szSize), (Gdiplus::FontStyle)_wtoi(szStyle), (Gdiplus::Unit)_wtoi(szUnit));
+		Gdiplus::Font font(m_WatermarkState.szFamily, _wtoi(m_WatermarkState.szSize), (Gdiplus::FontStyle)_wtoi(m_WatermarkState.szStyle), (Gdiplus::Unit)_wtoi(m_WatermarkState.szUnit));
 		Gdiplus::PointF point(0.0f, 0.0f);
 		Gdiplus::HatchBrush hb(Gdiplus::HatchStyleSmallGrid, Gdiplus::Color(0xFF, 0xFF, 0, 0), Gdiplus::Color::Transparent);
-		Gdiplus::SolidBrush brush(Gdiplus::Color(_wtoi(szColor)));
+		Gdiplus::SolidBrush brush(Gdiplus::Color(_wtoi(m_WatermarkState.szColor)));
 		Gdiplus::RectF stringRect;
-		SIZE_T stringLen = wcslen(szString);
-		m_pWatermarkStringGraphics->MeasureString(szString, stringLen, &font, point, &stringRect);
+		SIZE_T stringLen = wcslen(m_WatermarkState.szString);
+		m_pWatermarkStringGraphics->MeasureString(m_WatermarkState.szString, stringLen, &font, point, &stringRect);
 
 		// 문구 Draw.
 		m_pWatermarkStringGraphics->Clear(Gdiplus::Color(0, 0, 0, 0));
@@ -176,7 +212,7 @@ bool CallbackProcessor::Update(int targetX, int targetY, int targetWidth, int ta
 			{
 				point.X = x;
 				point.Y = y;
-				m_pWatermarkStringGraphics->DrawString(szString, stringLen, &font, point, &brush);
+				m_pWatermarkStringGraphics->DrawString(m_WatermarkState.szString, stringLen, &font, point, &brush);
 				if (m_pWatermarkStringGraphics->GetLastStatus() != Gdiplus::Ok)
 				{
 					bRet = false;
@@ -185,9 +221,14 @@ bool CallbackProcessor::Update(int targetX, int targetY, int targetWidth, int ta
 			}
 		}
 
+		// 이미지 경로가 없으면 문구만 처리.
+		if (wcslen(m_WatermarkState.szImagePath) == 0)
+		{
+			goto LB_DRAW;
+		}
 
 		// 이미지 가져옴.
-		Gdiplus::Bitmap* pImage = Gdiplus::Bitmap::FromFile(szImagePath, 0);
+		Gdiplus::Bitmap* pImage = Gdiplus::Bitmap::FromFile(m_WatermarkState.szImagePath, 0);
 		if (!pImage || pImage->GetLastStatus() != Gdiplus::Ok)
 		{
 			bRet = false;
@@ -205,7 +246,8 @@ bool CallbackProcessor::Update(int targetX, int targetY, int targetWidth, int ta
 		delete pImage;
 		pImage = nullptr;
 
-
+		// 문구, 이미지를 같이 덮어 씌움.
+	LB_DRAW:
 		Gdiplus::RectF windowRect(0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight());
 		m_pWatermarkGraphics->DrawImage(m_pWatermarkImage, windowRect, 0, 0, m_pWatermarkImage->GetWidth(), m_pWatermarkImage->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
 		m_pWatermarkGraphics->DrawImage(m_pWatermarkString, windowRect, 0, 0, m_pWatermarkString->GetWidth(), m_pWatermarkString->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
@@ -227,7 +269,8 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 							   int   hSrc,
 							   DWORD rop)
 {
-	if (m_pfnOriginStretchBltFunc == nullptr)
+	// Win32의 StretchBlt가 필요함.
+	if (!m_pfnOriginStretchBltFunc)
 	{
 		return false;
 	}
@@ -273,7 +316,7 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 		goto LB_CLEAN_DUMMY_BITMAP;
 	}
 
-	// Create gdi+ graphics object for compatible dc.
+	// Create gdiplus graphics object for compatible DC.
 	pTempDCGraphics = Gdiplus::Graphics::FromHDC(hTempDC);
 	if (!pTempDCGraphics || pTempDCGraphics->GetLastStatus() != Gdiplus::Ok)
 	{
@@ -281,14 +324,14 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 		goto LB_CLEAN_DUMMY_WRITE;
 	}
 
-	// Capture whole screen.
+	// 원래 StretchBlt 처리.
 	if (!m_pfnOriginStretchBltFunc(hTempDC, 0, 0, wSrc, hSrc, hdcSrc, xSrc, ySrc, wSrc, hSrc, rop))
 	{
 		bRet = false;
 		goto LB_CLEANUP;
 	}
 
-	// Draw watermark to captured image.
+	// 워터마크 덮어씌움.
 	{
 		Gdiplus::ColorMatrix colorMatrix =
 		{
@@ -325,6 +368,7 @@ bool CallbackProcessor::Render(HDC   hdcDest,
 			pTempDCGraphics->DrawImage(m_pWatermark, windowRect, 0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
 		}
 	}
+	// 메모리 상 이미지를 대상 DC에 복사.
 	if (!m_pfnOriginStretchBltFunc(hdcDest, xDest, yDest, wDest, hDest, hTempDC, 0, 0, wSrc, hSrc, rop))
 	{
 		bRet = false;
@@ -361,7 +405,8 @@ bool CallbackProcessor::Render(HDC   hdc,
 							   int   y1, 
 							   DWORD rop)
 {
-	if (m_pfnOriginBitBlt == nullptr)
+	// Win32 BitBlt가 필요.
+	if (!m_pfnOriginBitBlt)
 	{
 		return false;
 	}
@@ -407,7 +452,7 @@ bool CallbackProcessor::Render(HDC   hdc,
 		goto LB_CLEAN_DUMMY_BITMAP;
 	}
 
-	// Create gdi+ graphics object for compatible dc.
+	// Create gdiplus graphics object for compatible dc.
 	pTempDCGraphics = Gdiplus::Graphics::FromHDC(hTempDC);
 	if (!pTempDCGraphics || pTempDCGraphics->GetLastStatus() != Gdiplus::Ok)
 	{
@@ -415,14 +460,14 @@ bool CallbackProcessor::Render(HDC   hdc,
 		goto LB_CLEAN_DUMMY_WRITE;
 	}
 
-	// Capture whole screen.
+	// 원래 BitBlt 처리.
 	if (!m_pfnOriginBitBlt(hTempDC, 0, 0, cx, cy, hdcSrc, x1, y1, rop))
 	{
 		bRet = false;
 		goto LB_CLEANUP;
 	}
 
-	// Draw watermark to captured image.
+	// 워터마크 덮어씌움.
 	{
 		Gdiplus::ColorMatrix colorMatrix =
 		{
@@ -459,6 +504,7 @@ bool CallbackProcessor::Render(HDC   hdc,
 			pTempDCGraphics->DrawImage(m_pWatermark, windowRect, 0, 0, m_pWatermark->GetWidth(), m_pWatermark->GetHeight(), Gdiplus::UnitPixel, &imageAtt);
 		}
 	}
+	// 메모리상 DC 이미지를 대상 DC에 복사.
 	if (!m_pfnOriginBitBlt(hdc, x, y, cx, cy, hTempDC, 0, 0, rop))
 	{
 		bRet = false;
@@ -527,10 +573,12 @@ bool CallbackProcessor::Cleanup()
 
 BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam)
 {
+	// 유효하지 않은 윈도우일 경우.
 	if (!hwnd || !IsWindow(hwnd))
 	{
 		return FALSE;
 	}
+	// 윈도우 가시속성이 없을 경우.
 	if (!IsWindowVisible(hwnd))
 	{
 		return TRUE;
