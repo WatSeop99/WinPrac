@@ -171,7 +171,11 @@ bool CallbackProcessor::Update(int targetX, int targetY, int targetWidth, int ta
 		// Initialize watermark backbuffer.
 		m_pWatermarkGraphics->Clear(Gdiplus::Color(0, 0, 0, 0));
 
+		std::wstring locale = _wsetlocale(LC_NUMERIC, nullptr);
+		setlocale(LC_NUMERIC, "C");
 		float alpha = _wtof(m_WatermarkState.szAlpha);
+		_wsetlocale(LC_NUMERIC, locale.c_str());
+
 		Gdiplus::ColorMatrix colorMatrix =
 		{
 			1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
