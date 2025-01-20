@@ -7,6 +7,7 @@ HANDLE SearchTargetProcess(const WCHAR* pszPROCESS_NAME, DWORD* pOutProcessID, W
 HMODULE SearchInjectionModule(HANDLE hProcess, const WCHAR* pszTARGET_MODULE_PATH);
 
 const WCHAR* pszTARGET_PROCESS = L"picpick.exe";
+//const WCHAR* pszTARGET_PROCESS = L"SimpleScreenCapture.exe";
 HMODULE g_hModule = nullptr;
 WCHAR g_pszInjectorModulePath[MAX_PATH];
 

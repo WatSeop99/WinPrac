@@ -255,6 +255,8 @@ bool Program::initInstance(HINSTANCE hInstance, int nCmdShow)
 		return false;
 	}
 
+	SetWindowLongW(m_hMainWindow, GWL_STYLE, GetWindowLongW(m_hMainWindow, GWL_STYLE) & ~(WS_MAXIMIZEBOX | WS_SIZEBOX));
+
 	ShowWindow(m_hMainWindow, nCmdShow);
 	UpdateWindow(m_hMainWindow);
 

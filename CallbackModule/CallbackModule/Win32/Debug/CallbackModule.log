@@ -1,17 +1,5 @@
 ﻿  CallbackProcessor.cpp
-D:\workspace\WinPrac\CallbackModule\CallbackModule\CallbackProcessor.cpp(174,37): error C2065: 'LC_NUMERIC': undeclared identifier
-  (compiling source file '/CallbackProcessor.cpp')
-  
-D:\workspace\WinPrac\CallbackModule\CallbackModule\CallbackProcessor.cpp(175,13): error C2065: 'LC_NUMERIC': undeclared identifier
-  (compiling source file '/CallbackProcessor.cpp')
-  
-D:\workspace\WinPrac\CallbackModule\CallbackModule\CallbackProcessor.cpp(175,3): error C3861: 'setlocale': identifier not found
-  (compiling source file '/CallbackProcessor.cpp')
-  
 D:\workspace\WinPrac\CallbackModule\CallbackModule\CallbackProcessor.cpp(176,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  (compiling source file '/CallbackProcessor.cpp')
-  
-D:\workspace\WinPrac\CallbackModule\CallbackModule\CallbackProcessor.cpp(177,15): error C2065: 'LC_NUMERIC': undeclared identifier
   (compiling source file '/CallbackProcessor.cpp')
   
 D:\workspace\WinPrac\CallbackModule\CallbackModule\CallbackProcessor.cpp(203,54): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
@@ -116,3 +104,6 @@ D:\workspace\WinPrac\CallbackModule\CallbackModule\CallbackProcessor.cpp(437,13)
       D:\workspace\WinPrac\CallbackModule\CallbackModule\CallbackProcessor.cpp(534,1):
       see declaration of 'LB_RET'
   
+  CallbackModule.vcxproj -> D:\workspace\WinPrac\CallbackModule\Win32\Debug\CallbackModule.dll
+  D:\workspace\WinPrac\CallbackModule\CallbackModule\..\Win32\Debug\CallbackModule.dll
+  1개 파일이 복사되었습니다.
